@@ -56,6 +56,8 @@
     <!-- END THEME LAYOUT STYLES -->
     
     <link rel="shortcut icon" href="favicon.ico"/>
+
+    @stack('styles')
 </head>
 <!-- END HEAD -->
 
@@ -299,7 +301,7 @@
 <script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
 <script src="../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
 <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-@yield('scripts')
+@stack('scripts')
 <!-- Datatables -->
 
 <!-- END THEME LAYOUT SCRIPTS -->
