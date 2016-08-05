@@ -19,9 +19,9 @@ class Districts extends Migration {
             $table->integer('shape_id')->unsigned()->nullable();
             $table->integer('city_id')->unsigned()->index();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
-
             $table->integer('location_meta_id')->unsigned()->index();
             $table->foreign('location_meta_id')->references('id')->on('location_metas')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

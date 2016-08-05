@@ -15,6 +15,7 @@ class ServiceProviderTypes extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->integer('count');
+            $table->softDeletes();	
             $table->timestamps();
         });
     }

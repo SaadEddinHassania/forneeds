@@ -16,6 +16,7 @@ class Answers extends Migration {
             $table->integer('question_id')->unsigned()->index();
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->string('answer');
+            $table->softDeletes();	
             $table->timestamps();
         });
     }

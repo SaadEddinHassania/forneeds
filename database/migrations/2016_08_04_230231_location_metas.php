@@ -17,6 +17,7 @@ class LocationMetas extends Migration {
             $table->integer('unemployment');
             $table->integer('poverty_lvl');
             $table->string('model'); //the type of the location this meta describes
+            $table->softDeletes();
             $table->timestamps();
         });
     }

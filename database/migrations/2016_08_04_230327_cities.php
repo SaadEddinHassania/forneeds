@@ -22,10 +22,9 @@ class Cities extends Migration {
             ;
             $table->integer('area_id')->unsigned()->index();
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
-
             $table->integer('location_meta_id')->unsigned()->index();
             $table->foreign('location_meta_id')->references('id')->on('location_metas')->onDelete('cascade');
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

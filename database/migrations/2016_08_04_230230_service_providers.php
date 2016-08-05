@@ -18,8 +18,8 @@ class ServiceProviders extends Migration {
             $table->integer('user_id')->unsigned()->index();
             $table->integer('service_provider_type_id')->unsigned()->nullable()->index();
             $table->foreign('service_provider_type_id')->references('id')->on('service_provider_types')->onDelete('SET NULL');
-
             $table->integer('sector_id')->unsigned()->index();
+            $table->softDeletes();	
             $table->timestamps();
         });
     }

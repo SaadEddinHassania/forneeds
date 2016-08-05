@@ -17,13 +17,11 @@ class Services extends Migration {
             $table->integer('sector_id')->unsigned()->index();
             $table->integer('service_type_id')->unsigned()->nullable()->index();
             $table->foreign('service_type_id')->references('id')->on('service_types')->onDelete('SET NULL');
-
             $table->integer('location_meta_id')->unsigned()->nullable()->index();
             $table->foreign('location_meta_id')->references('id')->on('location_metas')->onDelete('SET NULL');
-
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
-            ;
+            $table->softDeletes();	
             $table->timestamps();
         });
     }

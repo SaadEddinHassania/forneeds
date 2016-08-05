@@ -16,7 +16,7 @@ class ServiceTypes extends Migration {
             $table->string('name');
             $table->integer('sector_id')->unsigned()->nullable()->index();
             $table->foreign('sector_id')->references('id')->on('sectors')->onDelete('SET NULL');
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

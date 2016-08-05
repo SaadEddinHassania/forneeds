@@ -16,6 +16,7 @@ class SurveyMetas extends Migration {
             $table->string('name');
             $table->string('questions_count');
             $table->string('rule')->default('');
+            $table->softDeletes();	
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@ class Sectors extends Migration {
         Schema::create('sectors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
