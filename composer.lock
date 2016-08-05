@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0ce61f93f9a1b3923049b58e8754f115",
-    "content-hash": "5fa0458b62da4e9916944e9280eb9d3c",
+    "hash": "e0112fc253c4f1f1adbf20af64918d54",
+    "content-hash": "be8ea80b18a710d0186c90e1bdb94b5c",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -750,6 +750,43 @@
                 "templates"
             ],
             "time": "2016-06-15 14:15:01"
+        },
+        {
+            "name": "infyomlabs/swagger-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfyOmLabs/swagger-generator.git",
+                "reference": "a0d85f22acd100f73515d98901d6f23efc1d2443"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfyOmLabs/swagger-generator/zipball/a0d85f22acd100f73515d98901d6f23efc1d2443",
+                "reference": "a0d85f22acd100f73515d98901d6f23efc1d2443",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mitul Golakiya",
+                    "email": "me@mitul.me"
+                }
+            ],
+            "description": "Swagger Generator for InfyOm Laravel Generator",
+            "keywords": [
+                "generator",
+                "laravel",
+                "swagger",
+                "templates"
+            ],
+            "time": "2016-02-14 10:41:03"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -4423,6 +4460,7 @@
         "infyomlabs/laravel-generator": 20,
         "infyomlabs/metronic-templates": 20,
         "infyomlabs/generator-builder": 20,
+        "infyomlabs/swagger-generator": 20,
         "jlapp/swaggervel": 20
     },
     "prefer-stable": false,
