@@ -11,7 +11,7 @@ echo "scaffolding service_provider_types"
 php artisan infyom:scaffold ServiceProviderType --fromTable --tableName=service_provider_types
 echo "done"
 echo "scaffolding location_metas"
-php artisan infyom:scaffold locationMeta --fromTable --tableName=location_metas
+php artisan infyom:scaffold LocationMeta --fromTable --tableName=location_metas
 echo "done"
 echo "scaffolding areas"
 php artisan infyom:scaffold Area --fromTable --tableName=areas
