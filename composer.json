@@ -12,6 +12,7 @@
         "laravelcollective/html": "5.2.*",
         "infyomlabs/metronic-templates": "dev-master",
         "infyomlabs/generator-builder": "dev-master",
+        "jlapp/swaggervel": "dev-master",
         "doctrine/dbal": "^2.5"
     },
     "require-dev": {
