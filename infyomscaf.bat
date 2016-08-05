@@ -1,3 +1,5 @@
+initializing infyom
+php artisan  infyom:publish 
 echo "scaffolding Users"
 php artisan infyom:scaffold User --fromTable --tableName=users
 echo "done"
