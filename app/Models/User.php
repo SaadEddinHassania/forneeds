@@ -31,6 +31,72 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
+ *          property="mobile",
+ *          description="mobile",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="avatar",
+ *          description="avatar",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="location_meta_id",
+ *          description="location_meta_id",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="facebook_token",
+ *          description="facebook_token",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="facebook_id",
+ *          description="facebook_id",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="google_token",
+ *          description="google_token",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="google_id",
+ *          description="google_id",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="national_id",
+ *          description="national_id",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="verified",
+ *          description="verified",
+ *          type="boolean"
+ *      ),
+ *      @SWG\Property(
+ *          property="is_sp",
+ *          description="is_sp",
+ *          type="boolean"
+ *      ),
+ *      @SWG\Property(
+ *          property="is_ready",
+ *          description="is_ready",
+ *          type="boolean"
+ *      ),
+ *      @SWG\Property(
+ *          property="token",
+ *          description="token",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="api_token",
+ *          description="api_token",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
  *          property="remember_token",
  *          description="remember_token",
  *          type="string"
@@ -54,7 +120,20 @@ class User extends Model
         'name',
         'email',
         'password',
-        'deleted_at',
+        'mobile',
+        'avatar',
+        'dob',
+        'location_meta_id',
+        'facebook_token',
+        'facebook_id',
+        'google_token',
+        'google_id',
+        'national_id',
+        'verified',
+        'is_sp',
+        'is_ready',
+        'token',
+        'api_token',
         'remember_token'
     ];
 
@@ -68,7 +147,20 @@ class User extends Model
         'name' => 'string',
         'email' => 'string',
         'password' => 'string',
-        'deleted_at' => 'datetime',
+        'mobile' => 'string',
+        'avatar' => 'string',
+        'dob' => 'datetime',
+        'location_meta_id' => 'integer',
+        'facebook_token' => 'string',
+        'facebook_id' => 'string',
+        'google_token' => 'string',
+        'google_id' => 'string',
+        'national_id' => 'string',
+        'verified' => 'boolean',
+        'is_sp' => 'boolean',
+        'is_ready' => 'boolean',
+        'token' => 'string',
+        'api_token' => 'string',
         'remember_token' => 'string'
     ];
 
