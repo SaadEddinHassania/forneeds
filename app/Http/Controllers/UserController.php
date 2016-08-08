@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\UserDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
+use App\Http\Controllers\AppBaseController as InfyOmBaseController;
+use Illuminate\Http\Request;
 use Flash;
-use InfyOm\Generator\Controller\AppBaseController;
+use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class UserController extends AppBaseController
+class UserController extends InfyOmBaseController
 {
     /** @var  UserRepository */
     private $userRepository;
@@ -24,12 +25,16 @@ class UserController extends AppBaseController
     /**
      * Display a listing of the User.
      *
-     * @param UserDataTable $userDataTable
+     * @param Request $request
      * @return Response
      */
-    public function index(UserDataTable $userDataTable)
+    public function index(Request $request)
     {
-        return $userDataTable->render('users.index');
+        $this->userRepository->pushCriteria(new RequestCriteria($request));
+        $users = $this->userRepository->all();
+
+        return view('users.index')
+            ->with('users', $users);
     }
 
     /**
