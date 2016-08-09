@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\AreaDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateAreaRequest;
 use App\Http\Requests\UpdateAreaRequest;
 use App\Repositories\AreaRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class AreaController extends InfyOmBaseController
+class AreaController extends AppBaseController
 {
     /** @var  AreaRepository */
     private $areaRepository;
@@ -25,16 +24,12 @@ class AreaController extends InfyOmBaseController
     /**
      * Display a listing of the Area.
      *
-     * @param Request $request
+     * @param AreaDataTable $areaDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(AreaDataTable $areaDataTable)
     {
-        $this->areaRepository->pushCriteria(new RequestCriteria($request));
-        $areas = $this->areaRepository->all();
-
-        return view('areas.index')
-            ->with('areas', $areas);
+        return $areaDataTable->render('areas.index');
     }
 
     /**

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\SectorDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateSectorRequest;
 use App\Http\Requests\UpdateSectorRequest;
 use App\Repositories\SectorRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class SectorController extends InfyOmBaseController
+class SectorController extends AppBaseController
 {
     /** @var  SectorRepository */
     private $sectorRepository;
@@ -25,16 +24,12 @@ class SectorController extends InfyOmBaseController
     /**
      * Display a listing of the Sector.
      *
-     * @param Request $request
+     * @param SectorDataTable $sectorDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(SectorDataTable $sectorDataTable)
     {
-        $this->sectorRepository->pushCriteria(new RequestCriteria($request));
-        $sectors = $this->sectorRepository->all();
-
-        return view('sectors.index')
-            ->with('sectors', $sectors);
+        return $sectorDataTable->render('sectors.index');
     }
 
     /**

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ServiceRequestsDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateServiceRequestsRequest;
 use App\Http\Requests\UpdateServiceRequestsRequest;
 use App\Repositories\ServiceRequestsRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class ServiceRequestsController extends InfyOmBaseController
+class ServiceRequestsController extends AppBaseController
 {
     /** @var  ServiceRequestsRepository */
     private $serviceRequestsRepository;
@@ -25,16 +24,12 @@ class ServiceRequestsController extends InfyOmBaseController
     /**
      * Display a listing of the ServiceRequests.
      *
-     * @param Request $request
+     * @param ServiceRequestsDataTable $serviceRequestsDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(ServiceRequestsDataTable $serviceRequestsDataTable)
     {
-        $this->serviceRequestsRepository->pushCriteria(new RequestCriteria($request));
-        $serviceRequests = $this->serviceRequestsRepository->all();
-
-        return view('serviceRequests.index')
-            ->with('serviceRequests', $serviceRequests);
+        return $serviceRequestsDataTable->render('serviceRequests.index');
     }
 
     /**

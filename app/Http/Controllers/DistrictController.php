@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\DistrictDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateDistrictRequest;
 use App\Http\Requests\UpdateDistrictRequest;
 use App\Repositories\DistrictRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class DistrictController extends InfyOmBaseController
+class DistrictController extends AppBaseController
 {
     /** @var  DistrictRepository */
     private $districtRepository;
@@ -25,16 +24,12 @@ class DistrictController extends InfyOmBaseController
     /**
      * Display a listing of the District.
      *
-     * @param Request $request
+     * @param DistrictDataTable $districtDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(DistrictDataTable $districtDataTable)
     {
-        $this->districtRepository->pushCriteria(new RequestCriteria($request));
-        $districts = $this->districtRepository->all();
-
-        return view('districts.index')
-            ->with('districts', $districts);
+        return $districtDataTable->render('districts.index');
     }
 
     /**

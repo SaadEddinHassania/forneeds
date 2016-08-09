@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\StreetDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateStreetRequest;
 use App\Http\Requests\UpdateStreetRequest;
 use App\Repositories\StreetRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class StreetController extends InfyOmBaseController
+class StreetController extends AppBaseController
 {
     /** @var  StreetRepository */
     private $streetRepository;
@@ -25,16 +24,12 @@ class StreetController extends InfyOmBaseController
     /**
      * Display a listing of the Street.
      *
-     * @param Request $request
+     * @param StreetDataTable $streetDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(StreetDataTable $streetDataTable)
     {
-        $this->streetRepository->pushCriteria(new RequestCriteria($request));
-        $streets = $this->streetRepository->all();
-
-        return view('streets.index')
-            ->with('streets', $streets);
+        return $streetDataTable->render('streets.index');
     }
 
     /**

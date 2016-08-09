@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProjectDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Repositories\ProjectRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class ProjectController extends InfyOmBaseController
+class ProjectController extends AppBaseController
 {
     /** @var  ProjectRepository */
     private $projectRepository;
@@ -25,16 +24,12 @@ class ProjectController extends InfyOmBaseController
     /**
      * Display a listing of the Project.
      *
-     * @param Request $request
+     * @param ProjectDataTable $projectDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(ProjectDataTable $projectDataTable)
     {
-        $this->projectRepository->pushCriteria(new RequestCriteria($request));
-        $projects = $this->projectRepository->all();
-
-        return view('projects.index')
-            ->with('projects', $projects);
+        return $projectDataTable->render('projects.index');
     }
 
     /**

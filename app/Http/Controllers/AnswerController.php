@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\AnswerDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateAnswerRequest;
 use App\Http\Requests\UpdateAnswerRequest;
 use App\Repositories\AnswerRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class AnswerController extends InfyOmBaseController
+class AnswerController extends AppBaseController
 {
     /** @var  AnswerRepository */
     private $answerRepository;
@@ -25,16 +24,12 @@ class AnswerController extends InfyOmBaseController
     /**
      * Display a listing of the Answer.
      *
-     * @param Request $request
+     * @param AnswerDataTable $answerDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(AnswerDataTable $answerDataTable)
     {
-        $this->answerRepository->pushCriteria(new RequestCriteria($request));
-        $answers = $this->answerRepository->all();
-
-        return view('answers.index')
-            ->with('answers', $answers);
+        return $answerDataTable->render('answers.index');
     }
 
     /**

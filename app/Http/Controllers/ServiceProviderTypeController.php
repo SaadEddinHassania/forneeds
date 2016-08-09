@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ServiceProviderTypeDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateServiceProviderTypeRequest;
 use App\Http\Requests\UpdateServiceProviderTypeRequest;
 use App\Repositories\ServiceProviderTypeRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class ServiceProviderTypeController extends InfyOmBaseController
+class ServiceProviderTypeController extends AppBaseController
 {
     /** @var  ServiceProviderTypeRepository */
     private $serviceProviderTypeRepository;
@@ -25,16 +24,12 @@ class ServiceProviderTypeController extends InfyOmBaseController
     /**
      * Display a listing of the ServiceProviderType.
      *
-     * @param Request $request
+     * @param ServiceProviderTypeDataTable $serviceProviderTypeDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(ServiceProviderTypeDataTable $serviceProviderTypeDataTable)
     {
-        $this->serviceProviderTypeRepository->pushCriteria(new RequestCriteria($request));
-        $serviceProviderTypes = $this->serviceProviderTypeRepository->all();
-
-        return view('serviceProviderTypes.index')
-            ->with('serviceProviderTypes', $serviceProviderTypes);
+        return $serviceProviderTypeDataTable->render('serviceProviderTypes.index');
     }
 
     /**
