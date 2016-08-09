@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\QuestionDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 use App\Repositories\QuestionRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class QuestionController extends InfyOmBaseController
+class QuestionController extends AppBaseController
 {
     /** @var  QuestionRepository */
     private $questionRepository;
@@ -25,16 +24,12 @@ class QuestionController extends InfyOmBaseController
     /**
      * Display a listing of the Question.
      *
-     * @param Request $request
+     * @param QuestionDataTable $questionDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(QuestionDataTable $questionDataTable)
     {
-        $this->questionRepository->pushCriteria(new RequestCriteria($request));
-        $questions = $this->questionRepository->all();
-
-        return view('questions.index')
-            ->with('questions', $questions);
+        return $questionDataTable->render('questions.index');
     }
 
     /**

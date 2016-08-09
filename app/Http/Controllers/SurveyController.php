@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\SurveyDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\UpdateSurveyRequest;
 use App\Repositories\SurveyRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class SurveyController extends InfyOmBaseController
+class SurveyController extends AppBaseController
 {
     /** @var  SurveyRepository */
     private $surveyRepository;
@@ -25,16 +24,12 @@ class SurveyController extends InfyOmBaseController
     /**
      * Display a listing of the Survey.
      *
-     * @param Request $request
+     * @param SurveyDataTable $surveyDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(SurveyDataTable $surveyDataTable)
     {
-        $this->surveyRepository->pushCriteria(new RequestCriteria($request));
-        $surveys = $this->surveyRepository->all();
-
-        return view('surveys.index')
-            ->with('surveys', $surveys);
+        return $surveyDataTable->render('surveys.index');
     }
 
     /**

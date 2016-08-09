@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\MarginalizedSituationDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateMarginalizedSituationRequest;
 use App\Http\Requests\UpdateMarginalizedSituationRequest;
 use App\Repositories\MarginalizedSituationRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class MarginalizedSituationController extends InfyOmBaseController
+class MarginalizedSituationController extends AppBaseController
 {
     /** @var  MarginalizedSituationRepository */
     private $marginalizedSituationRepository;
@@ -25,16 +24,12 @@ class MarginalizedSituationController extends InfyOmBaseController
     /**
      * Display a listing of the MarginalizedSituation.
      *
-     * @param Request $request
+     * @param MarginalizedSituationDataTable $marginalizedSituationDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(MarginalizedSituationDataTable $marginalizedSituationDataTable)
     {
-        $this->marginalizedSituationRepository->pushCriteria(new RequestCriteria($request));
-        $marginalizedSituations = $this->marginalizedSituationRepository->all();
-
-        return view('marginalizedSituations.index')
-            ->with('marginalizedSituations', $marginalizedSituations);
+        return $marginalizedSituationDataTable->render('marginalizedSituations.index');
     }
 
     /**

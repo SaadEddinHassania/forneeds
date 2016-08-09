@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Traits\HasLocationMeta;
 
 /**
  * @SWG\Definition(
@@ -45,17 +44,19 @@ use App\Models\Traits\HasLocationMeta;
  *      )
  * )
  */
-class Area extends Model {
-
-    use SoftDeletes,
-        HasLocationMeta;
+class Area extends Model
+{
+    use SoftDeletes;
 
     public $table = 'areas';
-
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
+
     protected $dates = ['deleted_at'];
+
+
     public $fillable = [
         'name',
         'lat',
@@ -86,6 +87,6 @@ class Area extends Model {
      * @var array
      */
     public static $rules = [
+        
     ];
-
 }

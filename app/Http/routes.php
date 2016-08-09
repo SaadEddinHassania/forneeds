@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@logout');
@@ -38,21 +33,19 @@ Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuil
 
 Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
 
-Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', 'Auth\AuthController@postLogin');
-Route::get('logout', 'Auth\AuthController@logout');
 
-// Registration Routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');
+/*
+|--------------------------------------------------------------------------
+| API routes
+|--------------------------------------------------------------------------
+*/
 
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
+Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
+    Route::group(['prefix' => 'v1'], function () {
+        require config('infyom.laravel_generator.path.api_routes');
+    });
+});
 
-Route::get('/home', 'HomeController@index');
 
 Route::resource('users', 'UserController');
 
@@ -90,14 +83,38 @@ Route::resource('services', 'ServiceController');
 
 Route::resource('serviceRequests', 'ServiceRequestsController');
 
-/*
-|--------------------------------------------------------------------------
-| API routes
-|--------------------------------------------------------------------------
-*/
+Route::resource('users', 'UserController');
 
-Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
-    Route::group(['prefix' => 'v1'], function () {
-        require config('infyom.laravel_generator.path.api_routes');
-    });
-});
+Route::resource('sectors', 'SectorController');
+
+Route::resource('serviceTypes', 'ServiceTypeController');
+
+Route::resource('serviceProviderTypes', 'ServiceProviderTypeController');
+
+Route::resource('locationMetas', 'LocationMetaController');
+
+Route::resource('areas', 'AreaController');
+
+Route::resource('cities', 'CityController');
+
+Route::resource('districts', 'DistrictController');
+
+Route::resource('streets', 'StreetController');
+
+Route::resource('services', 'ServiceController');
+
+Route::resource('marginalizedSituations', 'MarginalizedSituationController');
+
+Route::resource('projects', 'ProjectController');
+
+Route::resource('surveyMetas', 'SurveyMetasController');
+
+Route::resource('surveys', 'SurveyController');
+
+Route::resource('questions', 'QuestionController');
+
+Route::resource('answers', 'AnswerController');
+
+Route::resource('services', 'ServiceController');
+
+Route::resource('serviceRequests', 'ServiceRequestsController');

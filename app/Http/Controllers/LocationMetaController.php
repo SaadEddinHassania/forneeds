@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\LocationMetaDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateLocationMetaRequest;
 use App\Http\Requests\UpdateLocationMetaRequest;
 use App\Repositories\LocationMetaRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class LocationMetaController extends InfyOmBaseController
+class LocationMetaController extends AppBaseController
 {
     /** @var  LocationMetaRepository */
     private $locationMetaRepository;
@@ -25,16 +24,12 @@ class LocationMetaController extends InfyOmBaseController
     /**
      * Display a listing of the LocationMeta.
      *
-     * @param Request $request
+     * @param LocationMetaDataTable $locationMetaDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(LocationMetaDataTable $locationMetaDataTable)
     {
-        $this->locationMetaRepository->pushCriteria(new RequestCriteria($request));
-        $locationMetas = $this->locationMetaRepository->all();
-
-        return view('locationMetas.index')
-            ->with('locationMetas', $locationMetas);
+        return $locationMetaDataTable->render('locationMetas.index');
     }
 
     /**

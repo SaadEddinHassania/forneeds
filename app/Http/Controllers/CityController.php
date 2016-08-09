@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CityDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateCityRequest;
 use App\Http\Requests\UpdateCityRequest;
 use App\Repositories\CityRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use InfyOm\Generator\Controller\AppBaseController;
 use Response;
 
-class CityController extends InfyOmBaseController
+class CityController extends AppBaseController
 {
     /** @var  CityRepository */
     private $cityRepository;
@@ -25,16 +24,12 @@ class CityController extends InfyOmBaseController
     /**
      * Display a listing of the City.
      *
-     * @param Request $request
+     * @param CityDataTable $cityDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(CityDataTable $cityDataTable)
     {
-        $this->cityRepository->pushCriteria(new RequestCriteria($request));
-        $cities = $this->cityRepository->all();
-
-        return view('cities.index')
-            ->with('cities', $cities);
+        return $cityDataTable->render('cities.index');
     }
 
     /**
