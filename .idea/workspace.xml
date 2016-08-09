@@ -2,87 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="673c5743-44e1-4796-94aa-c7953f87e543" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/AnswerDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/AreaDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/CityDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/DistrictDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/LocationMetaDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/MarginalizedSituationDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/ProjectDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/QuestionDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/SectorDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/ServiceDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/ServiceProviderTypeDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/ServiceRequestsDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/ServiceTypeDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/StreetDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/SurveyDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/DataTables/SurveyMetasDataTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/answers/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/areas/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/cities/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/districts/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/locationMetas/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/marginalizedSituations/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/projects/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/questions/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/sectors/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/serviceProviderTypes/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/serviceRequests/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/serviceTypes/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/services/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/streets/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/surveyMetas/datatables_actions.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/surveys/datatables_actions.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php___jb_tmp___" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/DataTables/UserDataTable.php" afterPath="$PROJECT_DIR$/app/DataTables/UserDataTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AreaController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AreaController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/DistrictController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/DistrictController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationMetaController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocationMetaController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MarginalizedSituationController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MarginalizedSituationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SectorController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SectorController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceProviderTypeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceProviderTypeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceRequestsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceRequestsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceTypeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceTypeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/StreetController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/StreetController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SurveyMetasController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SurveyMetasController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Area.php" afterPath="$PROJECT_DIR$/app/Models/Area.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/City.php" afterPath="$PROJECT_DIR$/app/Models/City.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/District.php" afterPath="$PROJECT_DIR$/app/Models/District.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Street.php" afterPath="$PROJECT_DIR$/app/Models/Street.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/answers/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/answers/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/areas/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/areas/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/cities/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/cities/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/districts/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/districts/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/locationMetas/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/locationMetas/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/marginalizedSituations/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/marginalizedSituations/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/projects/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/projects/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/questions/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/questions/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/sectors/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/sectors/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/serviceProviderTypes/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/serviceProviderTypes/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/serviceRequests/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/serviceRequests/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/serviceTypes/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/serviceTypes/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/services/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/services/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/streets/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/streets/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/surveyMetas/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/surveyMetas/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/surveys/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/surveys/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/users/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/users/table.blade.php" />
     </list>
     <ignored path="forneeds.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,16 +24,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="table.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/users/table.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="3" column="73" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="inbox.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/apps/scripts/inbox.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,31 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/users/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DatabaseSeeder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
               <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="table-datatables-buttons.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/pages/scripts/table-datatables-buttons.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -198,8 +88,10 @@
         <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="343">
-              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-              <folding />
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -211,7 +103,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="FORCE_PUSH_ALLOWED" value="true" />
@@ -406,6 +298,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forneeds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forneeds" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -488,7 +394,7 @@
       <option name="presentableId" value="Default" />
       <updated>1469996471389</updated>
       <workItem from="1469996482448" duration="16010000" />
-      <workItem from="1470262753885" duration="10733000" />
+      <workItem from="1470262753885" duration="11209000" />
     </task>
     <task id="LOCAL-00001" summary="1- infyom automatically create datatable,menu&#10;&#10;2- users crud example">
       <created>1470265130812</created>
@@ -511,11 +417,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470681172082</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Create datatables by infyom and resolve some errors">
+      <created>1470780244529</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1470780244529</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26743000" />
+    <option name="totallyTimeSpent" value="27219000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -528,7 +441,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3504823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3504823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -555,20 +468,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1- infyom automatically create datatable,menu&#10;&#10;2- users crud example" />
-    <option name="LAST_COMMIT_MESSAGE" value="1- infyom automatically create datatable,menu&#10;&#10;2- users crud example" />
+    <MESSAGE value="Create datatables by infyom and resolve some errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create datatables by infyom and resolve some errors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -669,7 +576,7 @@
         <state relative-caret-position="860">
           <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
           <folding>
-            <marker date="1470681201463" expanded="true" signature="23:28" placeholder="..." />
+            <marker date="1470780560860" expanded="true" signature="23:28" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -758,11 +665,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding>
-            <marker date="1470776046505" expanded="true" signature="387:582" placeholder="..." />
-            <marker date="1470776046505" expanded="true" signature="401:580" placeholder="..." />
-            <marker date="1470776046505" expanded="true" signature="447:579" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -771,12 +674,12 @@
         <state relative-caret-position="1432">
           <caret line="119" column="64" selection-start-line="119" selection-start-column="64" selection-end-line="119" selection-end-column="64" />
           <folding>
-            <marker date="1470776210926" expanded="false" signature="9:390" placeholder="..." />
-            <marker date="1470776210926" expanded="true" signature="1397:1563" placeholder="..." />
-            <marker date="1470776210926" expanded="true" signature="1580:1765" placeholder="..." />
-            <marker date="1470776210926" expanded="true" signature="1636:1764" placeholder="..." />
-            <marker date="1470776210926" expanded="true" signature="1654:1761" placeholder="..." />
-            <marker date="1470776210926" expanded="true" signature="1687:1760" placeholder="..." />
+            <marker date="1470780611499" expanded="false" signature="9:390" placeholder="..." />
+            <marker date="1470780611499" expanded="true" signature="1397:1563" placeholder="..." />
+            <marker date="1470780611499" expanded="true" signature="1580:1765" placeholder="..." />
+            <marker date="1470780611499" expanded="true" signature="1636:1764" placeholder="..." />
+            <marker date="1470780611499" expanded="true" signature="1654:1761" placeholder="..." />
+            <marker date="1470780611499" expanded="true" signature="1687:1760" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -803,17 +706,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#40#73#0#PHP" expanded="true" />
-            <marker date="1470776046405" expanded="true" signature="404:516" placeholder="//..." />
-            <marker date="1470776046405" expanded="true" signature="525:643" placeholder=" Display a listing of the User. ..." />
-            <marker date="1470776046405" expanded="true" signature="776:859" placeholder=" Show the form for creating a new User. ..." />
-            <marker date="1470776046405" expanded="true" signature="948:1079" placeholder=" Store a newly created User in storage. ..." />
-            <marker date="1470776046405" expanded="true" signature="1347:1449" placeholder=" Display the specified User. ..." />
-            <marker date="1470776046405" expanded="true" signature="1755:1875" placeholder=" Show the form for editing the specified User. ..." />
-            <marker date="1470776046405" expanded="true" signature="2181:2347" placeholder=" Update the specified User in storage. ..." />
-            <marker date="1470776046405" expanded="true" signature="2799:2913" placeholder=" Remove the specified User from storage. ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -839,9 +732,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
-          <folding>
-            <element signature="e#34#54#0#PHP" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -973,11 +864,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/ServiceRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding />
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
