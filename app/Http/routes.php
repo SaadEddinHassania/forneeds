@@ -70,3 +70,54 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
 
 
 Route::resource('users', 'UserController');
+
+/*
+|--------------------------------------------------------------------------
+| API routes
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
+    Route::group(['prefix' => 'v1'], function () {
+        require config('infyom.laravel_generator.path.api_routes');
+    });
+});
+
+
+Route::resource('users', 'UserController');
+
+Route::resource('sectors', 'SectorController');
+
+Route::resource('serviceTypes', 'ServiceTypeController');
+
+Route::resource('serviceProviders', 'ServiceProviderController');
+
+Route::resource('serviceProviderTypes', 'ServiceProviderTypeController');
+
+Route::resource('locationMetas', 'LocationMetaController');
+
+Route::resource('areas', 'AreaController');
+
+Route::resource('cities', 'CityController');
+
+Route::resource('districts', 'DistrictController');
+
+Route::resource('streets', 'StreetController');
+
+Route::resource('services', 'ServiceController');
+
+Route::resource('marginalizedSituations', 'MarginalizedSituationController');
+
+Route::resource('projects', 'ProjectController');
+
+Route::resource('surveyMetas', 'SurveyMetasController');
+
+Route::resource('surveys', 'SurveyController');
+
+Route::resource('questions', 'QuestionController');
+
+Route::resource('answers', 'AnswerController');
+
+Route::resource('services', 'ServiceController');
+
+Route::resource('serviceRequests', 'ServiceRequestsController');
