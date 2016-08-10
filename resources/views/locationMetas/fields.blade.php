@@ -24,8 +24,8 @@
 
 <!-- Model Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('model', 'Model:') !!}
-    {!! Form::text('model', null, ['class' => 'form-control']) !!}
+    {!! Form::label('model', 'Location Type:') !!}
+    {!! Form::select('model', ['Area','City','District','Street'],null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Deleted At Field -->

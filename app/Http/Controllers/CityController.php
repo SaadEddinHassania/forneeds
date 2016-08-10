@@ -6,6 +6,7 @@ use App\DataTables\CityDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateCityRequest;
 use App\Http\Requests\UpdateCityRequest;
+use App\Repositories\AreaRepository;
 use App\Repositories\CityRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
@@ -16,9 +17,13 @@ class CityController extends AppBaseController
     /** @var  CityRepository */
     private $cityRepository;
 
-    public function __construct(CityRepository $cityRepo)
+    /** @var  AreaRepository */
+    private $areaRepository;
+
+    public function __construct(CityRepository $cityRepo, AreaRepository $areaRepo)
     {
         $this->cityRepository = $cityRepo;
+        $this->areaRepository = $areaRepo;
     }
 
     /**
@@ -39,7 +44,8 @@ class CityController extends AppBaseController
      */
     public function create()
     {
-        return view('cities.create');
+
+        return view('cities.create', ['areas' =>$this->areaRepository->all()->lists('name','id')]);
     }
 
     /**
@@ -103,7 +109,7 @@ class CityController extends AppBaseController
     /**
      * Update the specified City in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateCityRequest $request
      *
      * @return Response

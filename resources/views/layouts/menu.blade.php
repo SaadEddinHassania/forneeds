@@ -23,6 +23,12 @@
     <span  class="title">ServiceTypes</span></a>
 </li>
 
+<li class="{!! Request::is('serviceProviders*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('serviceProviders.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">ServiceProviders</span></a>
+</li>
+
 <li class="{!! Request::is('serviceProviderTypes*') ? 'active' : '' !!}">
     <a class="nav-link nav-toggle" href="{!! route('serviceProviderTypes.index') !!}">
     <i class="fa fa-edit"></i>

@@ -54,7 +54,7 @@ class AreaController extends AppBaseController
         $input = $request->all();
 
         $area = $this->areaRepository->create($input);
-
+        
         Flash::success('Area saved successfully.');
 
         return redirect(route('areas.index'));

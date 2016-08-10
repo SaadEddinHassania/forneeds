@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\DistrictDataTable;
-use App\Http\Requests;
 use App\Http\Requests\CreateDistrictRequest;
 use App\Http\Requests\UpdateDistrictRequest;
 use App\Repositories\DistrictRepository;
+use App\Repositories\CityRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +16,15 @@ class DistrictController extends AppBaseController
     /** @var  DistrictRepository */
     private $districtRepository;
 
-    public function __construct(DistrictRepository $districtRepo)
+    /** @var  CityRepository */
+    private $cityRepository;
+
+
+    public function __construct(DistrictRepository $districtRepo,CityRepository $cityRepo)
     {
         $this->districtRepository = $districtRepo;
+        $this->cityRepository = $cityRepo;
+
     }
 
     /**
@@ -30,6 +36,8 @@ class DistrictController extends AppBaseController
     public function index(DistrictDataTable $districtDataTable)
     {
         return $districtDataTable->render('districts.index');
+        $this->cityRepository = $cityRepo;
+
     }
 
     /**
@@ -39,7 +47,7 @@ class DistrictController extends AppBaseController
      */
     public function create()
     {
-        return view('districts.create');
+        return view('districts.create', ['cities' =>$this->cityRepository->all()->lists('name','id')]);
     }
 
     /**

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="User",
+ *      definition="ServiceProvider",
  *      required={""},
  *      @SWG\Property(
  *          property="id",
@@ -21,27 +21,35 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="email",
- *          description="email",
+ *          property="mission_statement",
+ *          description="mission_statement",
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="password",
- *          description="password",
- *          type="string"
+ *          property="user_id",
+ *          description="user_id",
+ *          type="integer",
+ *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="remember_token",
- *          description="remember_token",
- *          type="string"
+ *          property="service_provider_type_id",
+ *          description="service_provider_type_id",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="sector_id",
+ *          description="sector_id",
+ *          type="integer",
+ *          format="int32"
  *      )
  * )
  */
-class User extends Model
+class ServiceProvider extends Model
 {
     use SoftDeletes;
 
-    public $table = 'users';
+    public $table = 'service_providers';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -52,10 +60,11 @@ class User extends Model
 
     public $fillable = [
         'name',
-        'email',
-        'password',
-        'deleted_at',
-        'remember_token'
+        'mission_statement',
+        'user_id',
+        'service_provider_type_id',
+        'sector_id',
+        'deleted_at'
     ];
 
     /**
@@ -66,10 +75,11 @@ class User extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'email' => 'string',
-        'password' => 'string',
-        'deleted_at' => 'datetime',
-        'remember_token' => 'string'
+        'mission_statement' => 'string',
+        'user_id' => 'integer',
+        'service_provider_type_id' => 'integer',
+        'sector_id' => 'integer',
+        'deleted_at' => 'datetime'
     ];
 
     /**

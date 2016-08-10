@@ -5,7 +5,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">District</span>
+                <span class="caption-subject font-red-sunglo bold uppercase">ServiceProvider</span>
             </div>
         </div>
         <div>
@@ -13,9 +13,9 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'districts.store']) !!}
+                {!! Form::open(['route' => 'serviceProviders.store']) !!}
 
-                    @include('districts.fields',array('cities'=>$cities))
+                    @include('serviceProviders.fields')
 
                  {!! Form::close() !!}
             </div>

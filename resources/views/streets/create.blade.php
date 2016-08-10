@@ -15,7 +15,7 @@
             <div class="row">
                 {!! Form::open(['route' => 'streets.store']) !!}
 
-                    @include('streets.fields')
+                    @include('streets.fields',array('districts'=>$districts))
 
                  {!! Form::close() !!}
             </div>

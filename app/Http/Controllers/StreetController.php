@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateStreetRequest;
 use App\Http\Requests\UpdateStreetRequest;
 use App\Repositories\StreetRepository;
+use App\Repositories\DistrictRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +17,14 @@ class StreetController extends AppBaseController
     /** @var  StreetRepository */
     private $streetRepository;
 
-    public function __construct(StreetRepository $streetRepo)
+    /** @var  DistrictRepository */
+    private $districtRepository;
+
+    public function __construct(StreetRepository $streetRepo, DistrictRepository $districtRepo)
     {
         $this->streetRepository = $streetRepo;
+        $this->districtRepository = $districtRepo;
+
     }
 
     /**
@@ -39,7 +45,7 @@ class StreetController extends AppBaseController
      */
     public function create()
     {
-        return view('streets.create');
+        return view('streets.create', ['districts' =>$this->districtRepository->all()->lists('name','id')]);
     }
 
     /**
@@ -103,7 +109,7 @@ class StreetController extends AppBaseController
     /**
      * Update the specified Street in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateStreetRequest $request
      *
      * @return Response

@@ -9,6 +9,9 @@ echo "done"
 echo "scaffolding service_types"
 php artisan infyom:scaffold ServiceType --fromTable --tableName=service_types
 echo "done"
+echo "scaffolding service_providers"
+php artisan infyom:scaffold ServiceProvider --fromTable --tableName=service_providers
+echo "done"
 echo "scaffolding service_provider_types"
 php artisan infyom:scaffold ServiceProviderType --fromTable --tableName=service_provider_types
 echo "done"
