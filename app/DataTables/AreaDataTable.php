@@ -28,7 +28,7 @@ class AreaDataTable extends DataTable
     public function query()
     {
         $areas = Area::query();
-
+        dd($this->applyScopes($areas)->get());
         return $this->applyScopes($areas);
     }
 
