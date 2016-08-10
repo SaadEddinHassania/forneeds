@@ -3,11 +3,25 @@
 namespace App\DataTables;
 
 use App\Models\User;
+use App\Repositories\UserRepository;
 use Form;
 use Yajra\Datatables\Services\DataTable;
+use Yajra\Datatables\Datatables;
+use Illuminate\Contracts\View\Factory;
 
 class UserDataTable extends DataTable
 {
+
+    private $userRepository;
+
+    public function __construct(Datatables $datatables, Factory $viewFactory, UserRepository $userRepo)
+    {
+        parent::__construct($datatables, $viewFactory);
+        $this->userRepository = $userRepo;
+
+
+    }
+
 
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -28,7 +42,6 @@ class UserDataTable extends DataTable
     public function query()
     {
         $users = User::query();
-
         return $this->applyScopes($users);
     }
 
@@ -52,13 +65,13 @@ class UserDataTable extends DataTable
                     'reset',
                     'reload',
                     [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                             'pdf',
-                         ],
+                        'extend' => 'collection',
+                        'text' => '<i class="fa fa-download"></i> Export',
+                        'buttons' => [
+                            'csv',
+                            'excel',
+                            'pdf',
+                        ],
                     ]
                 ]
             ]);
