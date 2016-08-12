@@ -30,7 +30,11 @@ class UserDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'layouts.datatables_actions')
+            ->addColumn('action', function ($row) {
+                $model = "users";
+                $id = $row->id;
+                return view('layouts.datatables_actions', compact('model','id'));
+            })
             ->make(true);
     }
 
