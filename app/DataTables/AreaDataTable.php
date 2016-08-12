@@ -16,7 +16,7 @@ class AreaDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'areas.datatables_actions')
+            ->addColumn('action', 'layouts.datatables_actions')
             ->make(true);
     }
 
@@ -28,7 +28,6 @@ class AreaDataTable extends DataTable
     public function query()
     {
         $areas = Area::query();
-        dd($this->applyScopes($areas)->get());
         return $this->applyScopes($areas);
     }
 

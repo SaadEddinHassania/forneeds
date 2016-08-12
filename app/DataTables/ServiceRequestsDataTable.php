@@ -16,7 +16,7 @@ class ServiceRequestsDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'serviceRequests.datatables_actions')
+            ->addColumn('action', 'layouts.datatables_actions')
             ->make(true);
     }
 

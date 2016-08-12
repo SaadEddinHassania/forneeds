@@ -15,7 +15,7 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                @include('surveyMetas.table')
+                @include('layouts.table')
             </div>
         </div>
  </div>

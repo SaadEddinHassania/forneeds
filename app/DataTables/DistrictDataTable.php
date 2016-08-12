@@ -16,7 +16,7 @@ class DistrictDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'districts.datatables_actions')
+            ->addColumn('action', 'layouts.datatables_actions')
             ->make(true);
     }
 

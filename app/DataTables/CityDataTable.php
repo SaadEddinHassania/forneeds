@@ -16,7 +16,7 @@ class CityDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'cities.datatables_actions')
+            ->addColumn('action', 'layouts.datatables_actions')
             ->make(true);
     }
 

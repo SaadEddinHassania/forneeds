@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | Application Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the controller to call when that URI is requested.
+  |
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -57,10 +57,10 @@ Route::get('/home', 'HomeController@index');
 Route::resource('users', 'UserController');
 
 /*
-|--------------------------------------------------------------------------
-| API routes
-|--------------------------------------------------------------------------
-*/
+  |--------------------------------------------------------------------------
+  | API routes
+  |--------------------------------------------------------------------------
+ */
 
 Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
     Route::group(['prefix' => 'v1'], function () {
@@ -69,13 +69,22 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
 });
 
 
-Route::resource('users', 'UserController');
+/*
+  |--------------------------------------------------------------------------
+  | Ajax API routes
+  |--------------------------------------------------------------------------
+ */
+
+Route::get('location/cities/{area_id}', "AjaxApiController@cities");
+Route::get('location/districts/{city_id}', "AjaxApiController@districts");
+Route::get('location/streets/{district_id}', "AjaxApiController@streets");
+Route::get('listings/service_types/{sector_id}', "AjaxApiController@serviceTypes");
 
 /*
-|--------------------------------------------------------------------------
-| API routes
-|--------------------------------------------------------------------------
-*/
+  |--------------------------------------------------------------------------
+  | API routes
+  |--------------------------------------------------------------------------
+ */
 
 Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
     Route::group(['prefix' => 'v1'], function () {
@@ -121,3 +130,5 @@ Route::resource('answers', 'AnswerController');
 Route::resource('services', 'ServiceController');
 
 Route::resource('serviceRequests', 'ServiceRequestsController');
+
+

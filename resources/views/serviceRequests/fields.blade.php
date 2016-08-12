@@ -1,50 +1,28 @@
-<!-- Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('id', 'Id:') !!}
-    {!! Form::number('id', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- User Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('user_id', array(null=>"Please select user") + $users ,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Service Type Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('service_type_id', 'Service Type Id:') !!}
-    {!! Form::number('service_type_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('sectors-drop-down', 'Sector :') !!}
+    {!! Form::select('sectors-drop-down',array(null=>"Please select one option")+ $sectors, null, ['class' => 'form-control']) !!}
+</div>
+<!-- Service Type Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('service-type-drop-down', 'Service Type Id:') !!}
+    {!! Form::select('service_type_id',array(null=>"Please select a sector")+ array(), null, ['class' => 'form-control','id'=>'service-type-drop-down']) !!}
 </div>
 
-<!-- Location Meta Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('location_meta_id', 'Location Meta Id:') !!}
-    {!! Form::number('location_meta_id', null, ['class' => 'form-control']) !!}
-</div>
+@include('formsComponents.location',$areas)
 
 <!-- State Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('state', 'State:') !!}
-    {!! Form::text('state', null, ['class' => 'form-control']) !!}
+    {!! Form::select('state',array(0=>"Pending",1=>"done"), 0, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Deleted At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    {!! Form::date('deleted_at', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Created At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('created_at', 'Created At:') !!}
-    {!! Form::date('created_at', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    {!! Form::date('updated_at', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
@@ -55,3 +33,7 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script src="/assets/ajax_dynamic_forms.js" type="text/javascript"></script>
+@endpush
