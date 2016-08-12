@@ -16,7 +16,11 @@ class AreaDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'layouts.datatables_actions')
+            ->addColumn('action', function ($row) {
+                $model = "areas";
+                $id = $row->id;
+                return view('layouts.datatables_actions', compact('model', 'id'));
+            })
             ->make(true);
     }
 
@@ -51,13 +55,13 @@ class AreaDataTable extends DataTable
                     'reset',
                     'reload',
                     [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                             'pdf',
-                         ],
+                        'extend' => 'collection',
+                        'text' => '<i class="fa fa-download"></i> Export',
+                        'buttons' => [
+                            'csv',
+                            'excel',
+                            'pdf',
+                        ],
                     ]
                 ]
             ]);
