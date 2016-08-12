@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateServiceTypeRequest;
 use App\Http\Requests\UpdateServiceTypeRequest;
 use App\Repositories\ServiceTypeRepository;
+use App\Repositories\SectorRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +17,14 @@ class ServiceTypeController extends AppBaseController
     /** @var  ServiceTypeRepository */
     private $serviceTypeRepository;
 
-    public function __construct(ServiceTypeRepository $serviceTypeRepo)
+    /** @var  SectorRepository */
+    private $sectorRepository;
+
+    public function __construct(ServiceTypeRepository $serviceTypeRepo,SectorRepository $sectorRepo )
     {
         $this->serviceTypeRepository = $serviceTypeRepo;
+        $this->sectorRepository = $sectorRepo;
+
     }
 
     /**
@@ -39,7 +45,7 @@ class ServiceTypeController extends AppBaseController
      */
     public function create()
     {
-        return view('serviceTypes.create');
+        return view('serviceTypes.create',['sectors'=>$this->sectorRepository->all()->lists('name','id')->toarray()]);
     }
 
     /**

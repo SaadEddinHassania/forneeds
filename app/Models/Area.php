@@ -63,7 +63,6 @@ class Area extends Model
         'lng',
         'shape_id',
         'location_meta_id',
-        'deleted_at'
     ];
 
     /**
@@ -78,7 +77,6 @@ class Area extends Model
         'lng' => 'string',
         'shape_id' => 'integer',
         'location_meta_id' => 'integer',
-        'deleted_at' => 'datetime'
     ];
 
     /**

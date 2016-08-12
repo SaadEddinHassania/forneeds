@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ServiceRequestsDataTable;
-use App\Http\Requests;
 use App\Http\Requests\CreateServiceRequestsRequest;
 use App\Http\Requests\UpdateServiceRequestsRequest;
+use App\Models\Street;
 use App\Repositories\ServiceRequestsRepository;
+use App\Repositories\SectorRepository;
+use App\Repositories\AreaRepository;
+use App\Repositories\UserRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +19,22 @@ class ServiceRequestsController extends AppBaseController
     /** @var  ServiceRequestsRepository */
     private $serviceRequestsRepository;
 
-    public function __construct(ServiceRequestsRepository $serviceRequestsRepo)
+    /** @var  AreaRepository */
+    private $areaRepository;
+
+    /** @var  SectorRepository */
+    private $sectorRepository;
+
+    /** @var  UserRepository */
+    private $userRepository;
+
+    public function __construct(ServiceRequestsRepository $serviceRequestsRepo, AreaRepository $areaRepo, SectorRepository $sectorRepo, UserRepository $userRepo)
     {
         $this->serviceRequestsRepository = $serviceRequestsRepo;
+        $this->areaRepository = $areaRepo;
+        $this->sectorRepository = $sectorRepo;
+        $this->userRepository = $userRepo;
+
     }
 
     /**
@@ -39,7 +55,11 @@ class ServiceRequestsController extends AppBaseController
      */
     public function create()
     {
-        return view('serviceRequests.create');
+        return view('serviceRequests.create', [
+            'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray(),
+            'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
+            'users' => $this->userRepository->all()->lists('name', 'id')->toarray(),
+        ]);
     }
 
     /**
@@ -52,7 +72,8 @@ class ServiceRequestsController extends AppBaseController
     public function store(CreateServiceRequestsRequest $request)
     {
         $input = $request->all();
-
+        $st = Street::find($input['street_id']);
+        $input['location_meta_id']=$st->location_meta_id;
         $serviceRequests = $this->serviceRequestsRepository->create($input);
 
         Flash::success('ServiceRequests saved successfully.');
@@ -103,7 +124,7 @@ class ServiceRequestsController extends AppBaseController
     /**
      * Update the specified ServiceRequests in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateServiceRequestsRequest $request
      *
      * @return Response

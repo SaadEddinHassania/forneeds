@@ -15,7 +15,7 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                @include('marginalizedSituations.table')
+                @include('layouts.table')
             </div>
         </div>
  </div>
