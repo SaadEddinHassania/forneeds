@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\UpdateSurveyRequest;
 use App\Repositories\SurveyRepository;
+use App\Repositories\ProjectRepository;
+use App\Repositories\ServiceProviderRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +18,19 @@ class SurveyController extends AppBaseController
     /** @var  SurveyRepository */
     private $surveyRepository;
 
-    public function __construct(SurveyRepository $surveyRepo)
+    /** @var  ServiceProviderRepository */
+    private $serviceProviderRepository;
+
+    /** @var  ProjectRepository */
+    private $projectRepository;
+
+
+    public function __construct(SurveyRepository $surveyRepo, ServiceProviderRepository $serviceProviderRepo, ProjectRepository $projectRepo)
     {
         $this->surveyRepository = $surveyRepo;
+        $this->serviceProviderRepository = $serviceProviderRepo;
+        $this->projectRepository = $projectRepo;
+
     }
 
     /**
@@ -39,7 +51,10 @@ class SurveyController extends AppBaseController
      */
     public function create()
     {
-        return view('surveys.create');
+        return view('surveys.create', [
+            'projects' => $this->projectRepository->all()->lists('name', 'id')->toarray(),
+            'serviceProviders' => $this->serviceProviderRepository->all()->lists('name', 'id')->toarray(),
+        ]);
     }
 
     /**
@@ -103,7 +118,7 @@ class SurveyController extends AppBaseController
     /**
      * Update the specified Survey in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateSurveyRequest $request
      *
      * @return Response

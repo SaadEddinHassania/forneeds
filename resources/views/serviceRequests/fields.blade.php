@@ -4,7 +4,7 @@
     {!! Form::select('user_id', array(null=>"Please select user") + $users ,null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Service Type Id Field -->
+<!-- Sector Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('sectors-drop-down', 'Sector :') !!}
     {!! Form::select('sectors-drop-down',array(null=>"Please select one option")+ $sectors, null, ['class' => 'form-control']) !!}

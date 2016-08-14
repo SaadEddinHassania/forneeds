@@ -31,7 +31,7 @@ class CityDataTable extends DataTable
      */
     public function query()
     {
-        $cities = City::query();
+        $cities = City::with('area');
 
         return $this->applyScopes($cities);
     }
@@ -80,7 +80,7 @@ class CityDataTable extends DataTable
             'lat' => ['name' => 'lat', 'data' => 'lat'],
             'lng' => ['name' => 'lng', 'data' => 'lng'],
             'shape_id' => ['name' => 'shape_id', 'data' => 'shape_id'],
-            'area_id' => ['name' => 'area_id', 'data' => 'area_id'],
+            'area.name' => ['name' => 'area', 'data' => 'area.name'],
             'location_meta_id' => ['name' => 'location_meta_id', 'data' => 'location_meta_id'],
             'deleted_at' => ['name' => 'deleted_at', 'data' => 'deleted_at'],
             'created_at' => ['name' => 'created_at', 'data' => 'created_at'],
