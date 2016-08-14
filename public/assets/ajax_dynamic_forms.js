@@ -53,4 +53,16 @@ jQuery(document).ready(function ($) {
                 });
             });
     });
+    $('#service-providers-drop-down').change(function () {
+        $.get(document.location.origin + "/listings/projects/" + $(this).val(),
+            null,
+            function (data) {
+                var model = $('#projects-drop-down');
+                model.empty();
+                model.append("<option value='' selected='selected' disabled='disabled'>Please select a project</option>");
+                $.each(data, function (index, element) {
+                    model.append("<option value='" + element.id + "'>" + element.name + "</option>");
+                });
+            });
+    });
 });

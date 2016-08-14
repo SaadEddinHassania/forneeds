@@ -54,7 +54,7 @@ class AjaxApiController extends Controller {
         return response()->json($serviceTypes);
     }
     public function projects($service_provider_id) {
-        $projects = $this->serviceProviderRepository->findByField('service_provider_id', $service_provider_id, array('id', 'name'));
+        $projects = $this->projectRepository->findByField('service_provider_id', $service_provider_id, array('id', 'name'));
         return response()->json($projects);
     }
 

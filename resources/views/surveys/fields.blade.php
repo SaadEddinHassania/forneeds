@@ -19,13 +19,13 @@
 </div>
 <!-- Service Provider Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('service_provider_id', 'Service Provider Id:') !!}
-    {!! Form::select('service_provider_id',array(null=>"Please select one option")+$serviceProviders, null, ['class' => 'form-control']) !!}
+    {!! Form::label('service-providers-drop-down', 'Service Provider Id:') !!}
+    {!! Form::select('service-providers-drop-down',array(null=>"Please select one option")+$serviceProviders, null, ['class' => 'form-control','id'=>'service-providers-drop-down']) !!}
 </div>
 <!-- Project Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('project_id', 'Project Id:') !!}
-    {!! Form::select('project_id',array(null=>"Please select one project")+ $projects, null, ['class' => 'form-control']) !!}
+    {!! Form::label('projects-drop-down', 'Project Id:') !!}
+    {!! Form::select('project_id',array(null=>"Please select a serviceProvider"), null, ['class' => 'form-control','id'=>'projects-drop-down']) !!}
 </div>
 
 
@@ -38,3 +38,6 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script src="/assets/ajax_dynamic_forms.js" type="text/javascript"></script>
+@endpush
