@@ -31,7 +31,7 @@ class DistrictDataTable extends DataTable
      */
     public function query()
     {
-        $districts = District::query();
+        $districts = District::select();
 
         return $this->applyScopes($districts);
     }

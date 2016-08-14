@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Requests\CreateServiceProviderRequest;
 use App\Http\Requests\UpdateServiceProviderRequest;
 use App\Repositories\ServiceProviderRepository;
+use App\Repositories\SectorRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\ServiceProviderTypeRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +19,22 @@ class ServiceProviderController extends AppBaseController
     /** @var  ServiceProviderRepository */
     private $serviceProviderRepository;
 
-    public function __construct(ServiceProviderRepository $serviceProviderRepo)
+    /** @var  SectorRepository */
+    private $sectorRepository;
+
+    /** @var  UserRepository */
+    private $userRepository;
+
+    /** @var  ServiceProviderTypeRepository */
+    private $serviceProviderTypeRepository;
+    public function __construct(ServiceProviderRepository $serviceProviderRepo, SectorRepository $sectorRepo, UserRepository $userRepo,ServiceProviderTypeRepository $serviceProviderTypeRepo
+    )
     {
         $this->serviceProviderRepository = $serviceProviderRepo;
+        $this->sectorRepository = $sectorRepo;
+        $this->userRepository = $userRepo;
+        $this->serviceProviderTypeRepository = $serviceProviderTypeRepo;
+
     }
 
     /**
@@ -39,7 +55,11 @@ class ServiceProviderController extends AppBaseController
      */
     public function create()
     {
-        return view('serviceProviders.create');
+        return view('serviceProviders.create',[
+            'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
+            'users' => $this->userRepository->all()->lists('name', 'id')->toarray(),
+            'serviceProviderTypes' => $this->serviceProviderTypeRepository->all()->lists('name', 'id')->toarray(),
+        ]);
     }
 
     /**

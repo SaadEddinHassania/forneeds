@@ -79,6 +79,7 @@ Route::get('location/cities/{area_id}', "AjaxApiController@cities");
 Route::get('location/districts/{city_id}', "AjaxApiController@districts");
 Route::get('location/streets/{district_id}', "AjaxApiController@streets");
 Route::get('listings/service_types/{sector_id}', "AjaxApiController@serviceTypes");
+Route::get('listings/projects/{service_provider_id}', "AjaxApiController@projects");
 
 /*
   |--------------------------------------------------------------------------

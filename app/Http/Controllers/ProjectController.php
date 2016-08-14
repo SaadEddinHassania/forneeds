@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Repositories\ProjectRepository;
+use App\Repositories\SectorRepository;
+use App\Repositories\ServiceProviderRepository;
+use App\Repositories\MarginalizedSituationRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +19,23 @@ class ProjectController extends AppBaseController
     /** @var  ProjectRepository */
     private $projectRepository;
 
-    public function __construct(ProjectRepository $projectRepo)
+    /** @var  SectorRepository */
+    private $sectorRepository;
+
+    /** @var  ServiceProviderRepository */
+    private $serviceProviderRepository;
+
+    /** @var  MarginalizedSituationRepository */
+    private $marginalizedSituationRepository;
+    public function __construct(ProjectRepository $projectRepo,SectorRepository $sectorRepo,ServiceProviderRepository $serviceProviderRepo,MarginalizedSituationRepository $marginalizedSituationRepo)
     {
         $this->projectRepository = $projectRepo;
+        $this->sectorRepository = $sectorRepo;
+        $this->serviceProviderRepository = $serviceProviderRepo;
+        $this->marginalizedSituationRepository = $marginalizedSituationRepo;
+
+
+
     }
 
     /**
@@ -39,7 +56,11 @@ class ProjectController extends AppBaseController
      */
     public function create()
     {
-        return view('projects.create');
+        return view('projects.create',[
+            'sectors'=>$this->sectorRepository->all()->lists('name','id')->toarray(),
+            'serviceProviders'=>$this->serviceProviderRepository->all()->lists('name','id')->toarray(),
+            'marginalizedSituations'=>$this->marginalizedSituationRepository->all()->lists('name','id')->toarray()
+        ]);
     }
 
     /**

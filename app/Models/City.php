@@ -97,4 +97,8 @@ class City extends Model
     public static $rules = [
         
     ];
+
+    public function area(){
+        return $this->belongsTo(Area::class);
+    }
 }
