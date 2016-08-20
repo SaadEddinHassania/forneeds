@@ -17,7 +17,7 @@ class AreaDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "areas";
+                $model = "admin.areas";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })

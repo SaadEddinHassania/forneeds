@@ -17,7 +17,7 @@ class DistrictDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "districts";
+                $model = "admin.districts";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })

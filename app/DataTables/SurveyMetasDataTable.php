@@ -17,7 +17,7 @@ class SurveyMetasDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "surveyMetas";
+                $model = "admin.surveyMetas";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })

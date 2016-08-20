@@ -15,20 +15,7 @@ Route::get('/test', function () {
     return view('user_profile');
 });
 
-
-Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', 'Auth\AuthController@postLogin');
-Route::get('logout', 'Auth\AuthController@logout');
-
-// Registration Routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');
-
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
+Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
@@ -37,21 +24,6 @@ Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorB
 Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
 
 Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
-
-Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', 'Auth\AuthController@postLogin');
-Route::get('logout', 'Auth\AuthController@logout');
-
-// Registration Routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');
-
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
-
 Route::get('/home', 'HomeController@index');
 
 Route::resource('users', 'UserController');
@@ -93,43 +65,49 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
     });
 });
 
+Route::group(['middleware' => 'auth'], function () {
 
-Route::resource('users', 'UserController');
+    Route::controller('profile','ProfilePageController');
 
-Route::resource('sectors', 'SectorController');
+});
 
-Route::resource('serviceTypes', 'ServiceTypeController');
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('users', 'Admin\UserController');
 
-Route::resource('serviceProviders', 'ServiceProviderController');
+    Route::resource('sectors', 'Admin\SectorController');
 
-Route::resource('serviceProviderTypes', 'ServiceProviderTypeController');
+    Route::resource('serviceTypes', 'Admin\ServiceTypeController');
 
-Route::resource('locationMetas', 'LocationMetaController');
+    Route::resource('serviceProviders', 'Admin\ServiceProviderController');
 
-Route::resource('areas', 'AreaController');
+    Route::resource('serviceProviderTypes', 'Admin\ServiceProviderTypeController');
 
-Route::resource('cities', 'CityController');
+    Route::resource('locationMetas', 'Admin\LocationMetaController');
 
-Route::resource('districts', 'DistrictController');
+    Route::resource('areas', 'Admin\AreaController');
 
-Route::resource('streets', 'StreetController');
+    Route::resource('cities', 'Admin\CityController');
 
-Route::resource('services', 'ServiceController');
+    Route::resource('districts', 'Admin\DistrictController');
 
-Route::resource('marginalizedSituations', 'MarginalizedSituationController');
+    Route::resource('streets', 'Admin\StreetController');
 
-Route::resource('projects', 'ProjectController');
+    Route::resource('services', 'Admin\ServiceController');
 
-Route::resource('surveyMetas', 'SurveyMetasController');
+    Route::resource('marginalizedSituations', 'Admin\MarginalizedSituationController');
 
-Route::resource('surveys', 'SurveyController');
+    Route::resource('projects', 'Admin\ProjectController');
 
-Route::resource('questions', 'QuestionController');
+    Route::resource('surveyMetas', 'Admin\SurveyMetasController');
 
-Route::resource('answers', 'AnswerController');
+    Route::resource('surveys', 'Admin\SurveyController');
 
-Route::resource('services', 'ServiceController');
+    Route::resource('questions', 'Admin\QuestionController');
 
-Route::resource('serviceRequests', 'ServiceRequestsController');
+    Route::resource('answers', 'Admin\AnswerController');
 
+    Route::resource('services', 'Admin\ServiceController');
 
+    Route::resource('serviceRequests', 'Admin\ServiceRequestsController');
+
+});

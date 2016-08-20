@@ -23,4 +23,32 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isServiceProvider(){
+        return false;
+    }
+
+    public function isUser(){
+        return true;
+    }
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'name' => 'string',
+        'email' => 'email',
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+
+    ];
 }

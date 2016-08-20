@@ -17,7 +17,7 @@ class CityDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "cities";
+                $model = "admin.cities";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })

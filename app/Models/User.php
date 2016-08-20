@@ -41,14 +41,15 @@ class User extends Model
 {
     use SoftDeletes;
 
-    public $table = 'users';
-    
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-
-
     protected $dates = ['deleted_at'];
 
+    public function isServiceProvider(){
+        return false;
+    }
+
+    public function isUser(){
+        return true;
+    }
 
     public $fillable = [
         'name',

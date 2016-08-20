@@ -17,7 +17,7 @@ class QuestionDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "questions";
+                $model = "admin.questions";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })
