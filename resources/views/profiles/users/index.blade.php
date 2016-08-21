@@ -147,7 +147,7 @@
                 <div class="portlet light profile-sidebar-portlet ">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img src="{{url('profile/image')}}" class="img-responsive" alt=""></div>
+                        <img src="{{url('/profile/image')}}" class="img-responsive" alt=""></div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
@@ -228,7 +228,7 @@
                             <div class="portlet-title">
                                 <div class="caption caption-md">
                                     <i class="icon-bar-chart theme-font hide"></i>
-                                    <span class="caption-subject font-blue-madison bold uppercase">Your Activity</span>
+                                    <span class="caption-subject font-blue-madison bold uppercase">Your Services Requests</span>
                                     <span class="caption-helper hide">weekly stats...</span>
                                 </div>
                                 <div class="actions">
@@ -273,69 +273,23 @@
                                     <table class="table table-hover table-light">
                                         <thead>
                                         <tr class="uppercase">
-                                            <th colspan="2"> MEMBER</th>
-                                            <th> Earnings</th>
-                                            <th> CASES</th>
-                                            <th> CLOSED</th>
-                                            <th> RATE</th>
+                                            <th > id </th>
+                                            <th> service type</th>
+                                            <th> location</th>
+                                            <th> state</th>
                                         </tr>
                                         </thead>
+                                        @foreach ($sRequests as $sRequest)
                                         <tr>
-                                            <td class="fit">
-                                                <img class="user-pic" src="../assets/pages/media/users/avatar4.jpg">
-                                            </td>
                                             <td>
-                                                <a href="javascript:;" class="primary-link">Brain</a>
+                                                {{$sRequest->id}}
                                             </td>
-                                            <td> $345</td>
-                                            <td> 45</td>
-                                            <td> 124</td>
-                                            <td>
-                                                <span class="bold theme-font">80%</span>
-                                            </td>
+                                            <td> {{$sRequest->serviceType->name}}</td>
+                                            <td> {{$sRequest->location_meta_id}}</td>
+                                            <td> {{$sRequest->state}}</td>
                                         </tr>
-                                        <tr>
-                                            <td class="fit">
-                                                <img class="user-pic" src="../assets/pages/media/users/avatar5.jpg">
-                                            </td>
-                                            <td>
-                                                <a href="javascript:;" class="primary-link">Nick</a>
-                                            </td>
-                                            <td> $560</td>
-                                            <td> 12</td>
-                                            <td> 24</td>
-                                            <td>
-                                                <span class="bold theme-font">67%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fit">
-                                                <img class="user-pic" src="../assets/pages/media/users/avatar6.jpg">
-                                            </td>
-                                            <td>
-                                                <a href="javascript:;" class="primary-link">Tim</a>
-                                            </td>
-                                            <td> $1,345</td>
-                                            <td> 450</td>
-                                            <td> 46</td>
-                                            <td>
-                                                <span class="bold theme-font">98%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fit">
-                                                <img class="user-pic" src="../assets/pages/media/users/avatar7.jpg">
-                                            </td>
-                                            <td>
-                                                <a href="javascript:;" class="primary-link">Tom</a>
-                                            </td>
-                                            <td> $645</td>
-                                            <td> 50</td>
-                                            <td> 89</td>
-                                            <td>
-                                                <span class="bold theme-font">58%</span>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+
                                     </table>
                                 </div>
                             </div>

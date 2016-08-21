@@ -18,8 +18,10 @@ class ProfilePageController extends Controller
 
         if($user->isServiceProvider()) {
             return view('profiles.serviceProviders.index',compact('user'));
-        }else if($user->isUser()){
-            return view('profiles.users.index',compact('user'));
+        }else if($user->isCitizen()){
+            $sRequests = $user->citizen->servicesRequests;
+//            dd($sRequests);
+            return view('profiles.users.index',compact('user','sRequests'));
         }
     }
 

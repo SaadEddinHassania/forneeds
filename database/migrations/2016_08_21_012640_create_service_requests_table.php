@@ -13,8 +13,8 @@ class CreateServiceRequestsTable extends Migration {
     public function up() {
         Schema::create('service_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable()->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
+            $table->integer('citizen_id')->unsigned()->nullable()->index();
+            $table->foreign('citizen_id')->references('id')->on('citizens')->onDelete('SET NULL');
 
             $table->integer('service_type_id')->unsigned()->nullable()->index();
              $table->foreign('service_type_id')->references('id')->on('service_types')->onDelete('SET NULL');

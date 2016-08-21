@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\Citizen;
+use App\Models\ServiceProvider;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -25,11 +27,17 @@ class User extends Authenticatable
     ];
 
     public function isServiceProvider(){
-        return false;
+        if($this->serviceProvider === null)
+            return false;
+        else
+            return true;
     }
 
-    public function isUser(){
-        return true;
+    public function isCitizen(){
+        if($this->citizen === null)
+            return false;
+        else
+            return true;
     }
 
     /**
@@ -51,4 +59,12 @@ class User extends Authenticatable
     public static $rules = [
 
     ];
+
+    public function serviceProvider(){
+        return $this->hasOne('App\Models\ServiceProvider');
+    }
+
+    public function citizen(){
+        return $this->hasOne('App\Models\Citizen');
+    }
 }

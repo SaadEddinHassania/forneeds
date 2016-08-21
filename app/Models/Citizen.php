@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -37,26 +37,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class User extends Model
+class Citizen extends Model
 {
-    use SoftDeletes;
-
-    protected $dates = ['deleted_at'];
-
-    public function isServiceProvider(){
-        return false;
-    }
-
-    public function isUser(){
-        return true;
-    }
 
     public $fillable = [
-        'name',
-        'email',
-        'password',
-        'deleted_at',
-        'remember_token'
     ];
 
     /**
@@ -65,12 +49,6 @@ class User extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'name' => 'string',
-        'email' => 'string',
-        'password' => 'string',
-        'deleted_at' => 'datetime',
-        'remember_token' => 'string'
     ];
 
     /**
@@ -79,6 +57,13 @@ class User extends Model
      * @var array
      */
     public static $rules = [
-        
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function servicesRequests(){
+       return $this->hasMany('App\Models\ServiceRequest');
+    }
 }
