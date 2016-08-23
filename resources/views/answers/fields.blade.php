@@ -1,13 +1,14 @@
-<!-- Id Field -->
+
+<!-- Survey Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('id', 'Id:') !!}
-    {!! Form::number('id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('surveys-drop-down', 'Survey Id:') !!}
+    {!! Form::select('survey_id',array(null=>"Please select a survey")+$surveys ,null, ['class' => 'form-control','id'=>"surveys-drop-down"]) !!}
 </div>
 
 <!-- Question Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('question_id', 'Question Id:') !!}
-    {!! Form::number('question_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('questions-drop-down', 'Question Id:') !!}
+    {!! Form::select('question_id', array(null=>"Please select a survey"),null, ['class' => 'form-control',"id"=>"questions-drop-down"]) !!}
 </div>
 
 <!-- Answer Field -->
@@ -16,23 +17,13 @@
     {!! Form::text('answer', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Deleted At Field -->
+<!-- Order Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    {!! Form::date('deleted_at', null, ['class' => 'form-control']) !!}
+    {!! Form::label('order', 'Order:') !!}
+    {!! Form::selectRange('order',1,100,1, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Created At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('created_at', 'Created At:') !!}
-    {!! Form::date('created_at', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Updated At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    {!! Form::date('updated_at', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
@@ -43,3 +34,6 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script src="/assets/ajax_dynamic_forms.js" type="text/javascript"></script>
+@endpush

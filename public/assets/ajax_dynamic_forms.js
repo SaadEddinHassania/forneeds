@@ -65,4 +65,27 @@ jQuery(document).ready(function ($) {
                 });
             });
     });
+    $('#projects-drop-down').change(function () {
+        $.get(document.location.origin + "/listings/surveys/" + $(this).val(),
+            null,
+            function (data) {
+                var model = $('#surveys-drop-down');
+                model.empty();
+                model.append("<option value='' selected='selected' disabled='disabled'>Please select a survey</option>");
+                $.each(data, function (index, element) {
+                    model.append("<option value='" + element.id + "'>" + element.subject + "</option>");
+                });
+            });
+    });$('#surveys-drop-down').change(function () {
+        $.get(document.location.origin + "/listings/questions/" + $(this).val(),
+            null,
+            function (data) {
+                var model = $('#questions-drop-down');
+                model.empty();
+                model.append("<option value='' selected='selected' disabled='disabled'>Please select a question</option>");
+                $.each(data, function (index, element) {
+                    model.append("<option value='" + element.id + "'>" + element.body + "</option>");
+                });
+            });
+    });
 });

@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Survey;
+use App\Models\Config;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 
-class SurveyDataTable extends DataTable
+class ConfigDataTable extends DataTable
 {
 
     /**
@@ -16,11 +16,7 @@ class SurveyDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', function ($row) {
-                $model = "surveys";
-                $id = $row->id;
-                return view('layouts.datatables_actions', compact('model', 'id'));
-            })
+            ->addColumn('action', 'configs.datatables_actions')
             ->make(true);
     }
 
@@ -31,9 +27,9 @@ class SurveyDataTable extends DataTable
      */
     public function query()
     {
-        $surveys = Survey::query();
+        $configs = Config::query();
 
-        return $this->applyScopes($surveys);
+        return $this->applyScopes($configs);
     }
 
     /**
@@ -56,13 +52,13 @@ class SurveyDataTable extends DataTable
                     'reset',
                     'reload',
                     [
-                        'extend' => 'collection',
-                        'text' => '<i class="fa fa-download"></i> Export',
-                        'buttons' => [
-                            'csv',
-                            'excel',
-                            'pdf',
-                        ],
+                         'extend'  => 'collection',
+                         'text'    => '<i class="fa fa-download"></i> Export',
+                         'buttons' => [
+                             'csv',
+                             'excel',
+                             'pdf',
+                         ],
                     ]
                 ]
             ]);
@@ -76,10 +72,12 @@ class SurveyDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'subject' => ['name' => 'subject', 'data' => 'subject'],
-            'expires_at' => ['name' => 'expires_at', 'data' => 'expires_at'],
-            'description' => ['name' => 'description', 'data' => 'description'],
-            'project_id' => ['name' => 'project_id', 'data' => 'project_id'],
+            'user_attr_name' => ['name' => 'user_attr_name', 'data' => 'user_attr_name'],
+            'coefficient' => ['name' => 'coefficient', 'data' => 'coefficient'],
+            'operator' => ['name' => 'operator', 'data' => 'operator'],
+            'deleted_at' => ['name' => 'deleted_at', 'data' => 'deleted_at'],
+            'created_at' => ['name' => 'created_at', 'data' => 'created_at'],
+            'updated_at' => ['name' => 'updated_at', 'data' => 'updated_at']
         ];
     }
 
@@ -90,6 +88,6 @@ class SurveyDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'surveys';
+        return 'configs';
     }
 }

@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Requests\CreateQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 use App\Repositories\QuestionRepository;
+use App\Repositories\ProjectRepository;
+use App\Repositories\ServiceProviderRepository;
+
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +19,18 @@ class QuestionController extends AppBaseController
     /** @var  QuestionRepository */
     private $questionRepository;
 
-    public function __construct(QuestionRepository $questionRepo)
+    /** @var  ServiceProviderRepository */
+    private $serviceProviderRepository;
+
+    /** @var  ProjectRepository */
+    private $projectRepository;
+
+
+    public function __construct(QuestionRepository $questionRepo, ServiceProviderRepository $serviceProviderRepo, ProjectRepository $projectRepo)
     {
         $this->questionRepository = $questionRepo;
+        $this->serviceProviderRepository = $serviceProviderRepo;
+        $this->projectRepository = $projectRepo;
     }
 
     /**
@@ -39,7 +51,10 @@ class QuestionController extends AppBaseController
      */
     public function create()
     {
-        return view('questions.create');
+        return view('questions.create', [
+            'projects' => $this->projectRepository->all()->lists('name', 'id')->toarray(),
+            'serviceProviders' => $this->serviceProviderRepository->all()->lists('name', 'id')->toarray(),
+        ]);
     }
 
     /**
@@ -103,7 +118,7 @@ class QuestionController extends AppBaseController
     /**
      * Update the specified Question in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateQuestionRequest $request
      *
      * @return Response

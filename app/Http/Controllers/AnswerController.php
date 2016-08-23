@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateAnswerRequest;
 use App\Http\Requests\UpdateAnswerRequest;
 use App\Repositories\AnswerRepository;
+use App\Repositories\SurveyRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -16,9 +17,14 @@ class AnswerController extends AppBaseController
     /** @var  AnswerRepository */
     private $answerRepository;
 
-    public function __construct(AnswerRepository $answerRepo)
+  /** @var  SurveyRepository */
+    private $surveyRepository;
+
+
+    public function __construct(AnswerRepository $answerRepo,SurveyRepository $surveyRepo)
     {
         $this->answerRepository = $answerRepo;
+        $this->surveyRepository = $surveyRepo;
     }
 
     /**
@@ -39,7 +45,7 @@ class AnswerController extends AppBaseController
      */
     public function create()
     {
-        return view('answers.create');
+        return view('answers.create',['surveys'=>$this->surveyRepository->all()->lists('subject','id')->toarray()]);
     }
 
     /**

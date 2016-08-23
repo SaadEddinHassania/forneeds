@@ -17,6 +17,7 @@ class Questions extends Migration {
             $table->integer('survey_id')->unsigned()->nullable();
             $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
             $table->integer('step')->unsigned();
+            $table->integer('order')->unsigned();
             $table->string('rule')->default('');
             $table->softDeletes();	
             $table->timestamps();

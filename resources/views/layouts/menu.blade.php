@@ -119,3 +119,9 @@
     <span  class="title">ServiceRequests</span></a>
 </li>
 
+<li class="{!! Request::is('configs*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('configs.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">Config</span></a>
+</li>
+

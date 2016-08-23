@@ -6,6 +6,12 @@
     {!! Form::text('subject', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Starts At Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('starts_at', 'Starts At:') !!}
+    {!! Form::date('starts_at', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Expires At Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('expires_at', 'Expires At:') !!}

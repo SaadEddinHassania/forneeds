@@ -80,6 +80,18 @@ Route::get('location/districts/{city_id}', "AjaxApiController@districts");
 Route::get('location/streets/{district_id}', "AjaxApiController@streets");
 Route::get('listings/service_types/{sector_id}', "AjaxApiController@serviceTypes");
 Route::get('listings/projects/{service_provider_id}', "AjaxApiController@projects");
+Route::get('listings/surveys/{project_id}', "AjaxApiController@surveys");
+Route::get('listings/questions/{survey_id}', "AjaxApiController@questions");
+
+/*
+  |--------------------------------------------------------------------------
+  | Survey Gateway API routes
+  |--------------------------------------------------------------------------
+ */
+Route::get('gateways/surveys/create', "Surveys\\SurveysController@create");
+Route::post('gateways/surveys/store/survey', "Surveys\\SurveysController@storeSurvey")->name('storeSurvey');
+Route::post('gateways/surveys/store/questions', "Surveys\\SurveysController@storeQuestions")->name('storeQuestions');
+Route::post('gateways/surveys/store/configs', "Surveys\\SurveysController@storeConfig")->name('storeConfig');
 
 /*
   |--------------------------------------------------------------------------
@@ -133,3 +145,6 @@ Route::resource('services', 'ServiceController');
 Route::resource('serviceRequests', 'ServiceRequestsController');
 
 
+
+
+Route::resource('configs', 'ConfigController');

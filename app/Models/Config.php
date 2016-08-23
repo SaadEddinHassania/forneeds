@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="Survey",
+ *      definition="Config",
  *      required={""},
  *      @SWG\Property(
  *          property="id",
@@ -16,34 +16,27 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="subject",
- *          description="subject",
+ *          property="user_attr_name",
+ *          description="user_attr_name",
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="description",
- *          description="description",
+ *          property="coefficient",
+ *          description="coefficient",
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="project_id",
- *          description="project_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="survey_meta_id",
- *          description="survey_meta_id",
- *          type="integer",
- *          format="int32"
+ *          property="operator",
+ *          description="operator",
+ *          type="string"
  *      )
  * )
  */
-class Survey extends Model
+class Config extends Model
 {
     use SoftDeletes;
 
-    public $table = 'surveys';
+    public $table = 'configs';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -53,11 +46,9 @@ class Survey extends Model
 
 
     public $fillable = [
-        'subject',
-        'expires_at',
-        'description',
-        'project_id',
-        'survey_meta_id',
+        'user_attr_name',
+        'coefficient',
+        'operator',
         'deleted_at'
     ];
 
@@ -68,11 +59,9 @@ class Survey extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'subject' => 'string',
-        'expires_at' => 'datetime',
-        'description' => 'string',
-        'project_id' => 'integer',
-        'survey_meta_id' => 'integer',
+        'user_attr_name' => 'string',
+        'coefficient' => 'string',
+        'operator' => 'string',
         'deleted_at' => 'datetime'
     ];
 
@@ -85,7 +74,7 @@ class Survey extends Model
         
     ];
 
-    public function Config(){
-        return $this->belongsToMany(Config::class);
+    public function surveys(){
+        return $this->belongsToMany(Survey::class);
     }
 }

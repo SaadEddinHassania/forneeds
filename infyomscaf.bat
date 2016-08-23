@@ -41,6 +41,9 @@ php artisan infyom:scaffold Project --fromTable --tableName=projects
 echo "done"
 echo "scaffolding survey_metas"
 php artisan infyom:scaffold SurveyMetas --fromTable --tableName=survey_metas
+echo "done
+echo "scaffolding configs"
+php artisan infyom:scaffold Config --fromTable --tableName=configs
 echo "done"
 echo "scaffolding surveys"
 php artisan infyom:scaffold Survey --fromTable --tableName=surveys

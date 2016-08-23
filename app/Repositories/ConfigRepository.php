@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
+use App\Models\Config;
 use InfyOm\Generator\Common\BaseRepository;
 
-class UserRepository extends BaseRepository
+class ConfigRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'gender','bod','location_meta_id'
+        
     ];
 
     /**
@@ -19,6 +19,6 @@ class UserRepository extends BaseRepository
      **/
     public function model()
     {
-        return User::class;
+        return Config::class;
     }
 }

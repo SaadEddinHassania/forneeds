@@ -7,6 +7,8 @@ use App\Repositories\DistrictRepository;
 use App\Repositories\StreetRepository;
 use App\Repositories\ServiceTypeRepository;
 use App\Repositories\ProjectRepository;
+use App\Repositories\SurveyRepository;
+use App\Repositories\QuestionRepository;
 use function response;
 
 class AjaxApiController extends Controller {
@@ -25,12 +27,21 @@ class AjaxApiController extends Controller {
 
     /** @var  ProjectRepository */
     private $projectRepository;
-    public function __construct(CityRepository $cityRepo, DistrictRepository $districtRepo, StreetRepository $streetRepo, ServiceTypeRepository $serviceTypeRepo,ProjectRepository $projectRepo) {
+
+    /** @var  SurveyRepository */
+    private $surveyRepository;
+
+    /** @var  QuestionRepository */
+    private $questionRepository;
+
+    public function __construct(CityRepository $cityRepo, DistrictRepository $districtRepo, StreetRepository $streetRepo, ServiceTypeRepository $serviceTypeRepo,ProjectRepository $projectRepo,SurveyRepository $surveyRepo,QuestionRepository $questionRepo) {
         $this->cityRepository = $cityRepo;
         $this->districtRepository = $districtRepo;
         $this->streetRepository = $streetRepo;
         $this->serviceTypeRepository = $serviceTypeRepo;
         $this->projectRepository = $projectRepo;
+        $this->surveyRepository=$surveyRepo;
+        $this->questionRepository = $questionRepo;
 
     }
 
@@ -56,6 +67,14 @@ class AjaxApiController extends Controller {
     public function projects($service_provider_id) {
         $projects = $this->projectRepository->findByField('service_provider_id', $service_provider_id, array('id', 'name'));
         return response()->json($projects);
+    }
+    public function surveys($project_id) {
+        $surveys = $this->surveyRepository->findByField('project_id', $project_id, array('id', 'subject'));
+        return response()->json($surveys);
+    }
+    public function questions($survey_id) {
+        $questions = $this->questionRepository->findByField('survey_id', $survey_id, array('id', 'body'));
+        return response()->json($questions);
     }
 
 }
