@@ -169,6 +169,7 @@ return [
         \InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

@@ -15,7 +15,7 @@
     {!! Form::select('service_type_id',array(null=>"Please select a sector")+ array(), null, ['class' => 'form-control','id'=>'service-type-drop-down']) !!}
 </div>
 
-@include('formsComponents.location',$areas)
+@include('admin.formsComponents.location',$areas)
 
 <!-- State Field -->
 <div class="form-group col-sm-6">

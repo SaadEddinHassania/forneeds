@@ -15,7 +15,7 @@
         <div class="row">
            {!! Form::model($marginalizedSituation, ['route' => ['marginalizedSituations.update', $marginalizedSituation->id], 'method' => 'patch']) !!}
 
-            @include('marginalizedSituations.fields')
+            @include('admin.marginalizedSituations.fields')
 
            {!! Form::close() !!}
         </div>

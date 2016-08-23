@@ -15,7 +15,8 @@
         "InfyOmLabs/swagger-generator": "dev-master",
         "jlapp/swaggervel": "dev-master",
         "doctrine/dbal": "^2.5",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "barryvdh/laravel-ide-helper": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

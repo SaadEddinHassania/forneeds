@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_number')->nullable();
             $table->boolean('verified')->default(false);
             $table->boolean('is_ready')->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->string('token')->nullable();
             $table->rememberToken();
             $table->char('api_token', 60)->nullable();

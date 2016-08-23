@@ -7,9 +7,6 @@
                 <i class="icon-equalizer font-red-sunglo"></i>
                 <span class="caption-subject font-red-sunglo bold uppercase">Questions</span>
             </div>
-            <h1 class="pull-right">
-                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('admin.questions.create') !!}">Add New</a>
-            </h1>
         </div>
         @include('flash::message')
         <div class="clearfix"></div>

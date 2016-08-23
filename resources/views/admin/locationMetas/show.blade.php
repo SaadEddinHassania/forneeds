@@ -13,7 +13,7 @@
             </div>
             <div class="portlet-body form">
                 <div class="row" style="padding-left: 20px">
-                   @include('locationMetas.show_fields')
+                   @include('admin.locationMetas.show_fields')
                    <a href="{!! route('admin.locationMetas.index') !!}" class="btn btn-default">Back</a>
                 </div>
             </div>

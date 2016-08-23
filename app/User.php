@@ -26,18 +26,25 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function isServiceProvider(){
-        if($this->serviceProvider === null)
+    public function isServiceProvider()
+    {
+        if ($this->serviceProvider === null)
             return false;
         else
             return true;
     }
 
-    public function isCitizen(){
-        if($this->citizen === null)
+    public function isCitizen()
+    {
+        if ($this->citizen === null)
             return false;
         else
             return true;
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
     }
 
     /**
@@ -60,11 +67,13 @@ class User extends Authenticatable
 
     ];
 
-    public function serviceProvider(){
+    public function serviceProvider()
+    {
         return $this->hasOne('App\Models\ServiceProvider');
     }
 
-    public function citizen(){
+    public function citizen()
+    {
         return $this->hasOne('App\Models\Citizen');
     }
 }

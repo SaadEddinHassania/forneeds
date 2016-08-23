@@ -15,7 +15,7 @@
         <div class="row">
            {!! Form::model($service, ['route' => ['services.update', $service->id], 'method' => 'patch']) !!}
 
-            @include('services.fields')
+            @include('admin.services.fields')
 
            {!! Form::close() !!}
         </div>

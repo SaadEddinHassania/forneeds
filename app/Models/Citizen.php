@@ -41,6 +41,7 @@ class Citizen extends Model
 {
 
     public $fillable = [
+        'national_id','gender','dob'
     ];
 
     /**

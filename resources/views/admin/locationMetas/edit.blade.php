@@ -15,7 +15,7 @@
         <div class="row">
            {!! Form::model($locationMeta, ['route' => ['locationMetas.update', $locationMeta->id], 'method' => 'patch']) !!}
 
-            @include('locationMetas.fields')
+            @include('admin.locationMetas.fields')
 
            {!! Form::close() !!}
         </div>

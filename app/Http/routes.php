@@ -17,8 +17,6 @@ Route::get('/test', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder');
 
 Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
@@ -67,9 +65,17 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::controller('profile','ProfilePageController');
-
+    Route::group(['middleware' => 'notCompleted'], function () {
+        Route::get('complete_registration', 'Auth\CompleteRegistrationController@getCompleteRegistration');
+        Route::post('complete_citizen_registration', 'Auth\CompleteRegistrationController@postCompleteCitizenRegistration');
+        Route::post('complete_service_provider_registration', 'Auth\CompleteRegistrationController@postCompleteServiceProviderRegistration');
 });
+    Route::group(['middleware' => 'completed'], function () {
+
+        Route::controller('profile', 'ProfilePageController');
+    });
+});
+
 
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('users', 'Admin\UserController');

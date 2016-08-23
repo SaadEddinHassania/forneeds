@@ -55,7 +55,7 @@ class ServiceProvider extends Model
 
     public $fillable = [
         'mission_statement',
-        'user_id',
+//        'user_id',
         'service_provider_type_id',
         'sector_id',
     ];
@@ -82,5 +82,9 @@ class ServiceProvider extends Model
     
     public function user(){
         $this->belongsTo('App\User');
+    }
+
+    public function serviceProviderType(){
+        $this->belongsTo(ServiceProviderType::class);
     }
 }

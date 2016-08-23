@@ -13,9 +13,9 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'areas.store']) !!}
+                {!! Form::open(['route' => 'admin.areas.store']) !!}
 
-                    @include('areas.fields')
+                    @include('admin.areas.fields')
 
                  {!! Form::close() !!}
             </div>

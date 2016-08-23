@@ -15,7 +15,7 @@
         <div class="row">
            {!! Form::model($street, ['route' => ['streets.update', $street->id], 'method' => 'patch']) !!}
 
-            @include('streets.fields')
+            @include('admin.streets.fields')
 
            {!! Form::close() !!}
         </div>

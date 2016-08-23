@@ -13,7 +13,7 @@
             </div>
             <div class="portlet-body form">
                 <div class="row" style="padding-left: 20px">
-                   @include('surveys.show_fields')
+                   @include('admin.surveys.show_fields')
                    <a href="{!! route('admin.surveys.index') !!}" class="btn btn-default">Back</a>
                 </div>
             </div>
