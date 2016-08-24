@@ -1,8 +1,5 @@
-@extends('layouts.app')
 
-@section('content')
 
-    <div class="col-md-12">
 
         <div class="portlet light " id="form_wizard_1">
             <div class="portlet-title">
@@ -102,13 +99,9 @@
                     </div>
             </div>
         </div>
-    </div>
 
 
-
-@endsection
-
-@push('styles')
+        @push('styles')
 <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
 @endpush
 

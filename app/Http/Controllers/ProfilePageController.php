@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Repositories\AreaRepository;
+use App\Repositories\ProjectRepository;
 use App\Repositories\SectorRepository;
+use App\Repositories\ServiceProviderRepository;
 use App\Repositories\ServiceRequestsRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,11 +27,23 @@ class ProfilePageController extends Controller
     /** @var  AreaRepository */
     private $serviceRequestsRepository;
 
-    public function __construct(AreaRepository $areaRepo, SectorRepository $sectorRepo,ServiceRequestsRepository $serviceRequestsRepo)
+    /** @var  ServiceProviderRepository */
+    private $serviceProviderRepository;
+
+    /** @var  ProjectRepository */
+    private $projectRepository;
+
+    /** @var  UserRepository */
+    private $userRepository;
+
+    public function __construct(AreaRepository $areaRepo, SectorRepository $sectorRepo, ServiceRequestsRepository $serviceRequestsRepo, ServiceProviderRepository $serviceProviderRepo, ProjectRepository $projectRepo, UserRepository $userRepo)
     {
         $this->areaRepository=$areaRepo;
         $this->sectorRepository=$sectorRepo;
         $this->serviceRequestsRepository=$serviceRequestsRepo;
+        $this->serviceProviderRepository = $serviceProviderRepo;
+        $this->projectRepository = $projectRepo;
+        $this->userRepository = $userRepo;
     }
 
     public function getIndex(Request $request)
@@ -36,7 +51,11 @@ class ProfilePageController extends Controller
         $user = Auth::user();
 
         if($user->isServiceProvider()) {
-            return view('profiles.serviceProviders.index',compact('user'));
+            return view('profiles.serviceProviders.index', [
+                "user" => $user,
+                'serviceProviders' => $this->serviceProviderRepository->all()->lists('name', 'id')->toarray(),
+                "user_attrs" => $this->userRepository->getFieldsSearchable()
+            ]);
         }else if($user->isCitizen()){
             $sRequests = $user->citizen->servicesRequests;
 //            dd($sRequests);
@@ -46,6 +65,7 @@ class ProfilePageController extends Controller
                 "sRequests"=>$sRequests,
                 'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray(),
                 'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
+
             ]);
         }
     }
