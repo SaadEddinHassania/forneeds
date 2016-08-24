@@ -57,7 +57,7 @@ class AreaController extends AppBaseController
         
         Flash::success('Area saved successfully.');
 
-        return redirect(route('areas.index'));
+        return redirect(route('admin.areas.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class AreaController extends AppBaseController
         if (empty($area)) {
             Flash::error('Area not found');
 
-            return redirect(route('areas.index'));
+            return redirect(route('admin.areas.index'));
         }
 
         return view('admin.areas.show')->with('area', $area);
@@ -94,7 +94,7 @@ class AreaController extends AppBaseController
         if (empty($area)) {
             Flash::error('Area not found');
 
-            return redirect(route('areas.index'));
+            return redirect(route('admin.areas.index'));
         }
 
         return view('admin.areas.edit')->with('area', $area);
@@ -115,14 +115,14 @@ class AreaController extends AppBaseController
         if (empty($area)) {
             Flash::error('Area not found');
 
-            return redirect(route('areas.index'));
+            return redirect(route('admin.areas.index'));
         }
 
         $area = $this->areaRepository->update($request->all(), $id);
 
         Flash::success('Area updated successfully.');
 
-        return redirect(route('areas.index'));
+        return redirect(route('admin.areas.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class AreaController extends AppBaseController
         if (empty($area)) {
             Flash::error('Area not found');
 
-            return redirect(route('areas.index'));
+            return redirect(route('admin.areas.index'));
         }
 
         $this->areaRepository->delete($id);
 
         Flash::success('Area deleted successfully.');
 
-        return redirect(route('areas.index'));
+        return redirect(route('admin.areas.index'));
     }
 }

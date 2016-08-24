@@ -57,7 +57,7 @@ class ServiceController extends AppBaseController
 
         Flash::success('Service saved successfully.');
 
-        return redirect(route('services.index'));
+        return redirect(route('admin.services.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class ServiceController extends AppBaseController
         if (empty($service)) {
             Flash::error('Service not found');
 
-            return redirect(route('services.index'));
+            return redirect(route('admin.services.index'));
         }
 
         return view('admin.services.show')->with('service', $service);
@@ -94,7 +94,7 @@ class ServiceController extends AppBaseController
         if (empty($service)) {
             Flash::error('Service not found');
 
-            return redirect(route('services.index'));
+            return redirect(route('admin.services.index'));
         }
 
         return view('admin.services.edit')->with('service', $service);
@@ -115,14 +115,14 @@ class ServiceController extends AppBaseController
         if (empty($service)) {
             Flash::error('Service not found');
 
-            return redirect(route('services.index'));
+            return redirect(route('admin.services.index'));
         }
 
         $service = $this->serviceRepository->update($request->all(), $id);
 
         Flash::success('Service updated successfully.');
 
-        return redirect(route('services.index'));
+        return redirect(route('admin.services.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class ServiceController extends AppBaseController
         if (empty($service)) {
             Flash::error('Service not found');
 
-            return redirect(route('services.index'));
+            return redirect(route('admin.services.index'));
         }
 
         $this->serviceRepository->delete($id);
 
         Flash::success('Service deleted successfully.');
 
-        return redirect(route('services.index'));
+        return redirect(route('admin.services.index'));
     }
 }

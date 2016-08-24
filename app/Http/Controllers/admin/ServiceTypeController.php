@@ -63,7 +63,7 @@ class ServiceTypeController extends AppBaseController
 
         Flash::success('ServiceType saved successfully.');
 
-        return redirect(route('serviceTypes.index'));
+        return redirect(route('admin.serviceTypes.index'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ServiceTypeController extends AppBaseController
         if (empty($serviceType)) {
             Flash::error('ServiceType not found');
 
-            return redirect(route('serviceTypes.index'));
+            return redirect(route('admin.serviceTypes.index'));
         }
 
         return view('admin.serviceTypes.show')->with('serviceType', $serviceType);
@@ -100,7 +100,7 @@ class ServiceTypeController extends AppBaseController
         if (empty($serviceType)) {
             Flash::error('ServiceType not found');
 
-            return redirect(route('serviceTypes.index'));
+            return redirect(route('admin.serviceTypes.index'));
         }
 
         return view('admin.serviceTypes.edit')->with('serviceType', $serviceType);
@@ -121,14 +121,14 @@ class ServiceTypeController extends AppBaseController
         if (empty($serviceType)) {
             Flash::error('ServiceType not found');
 
-            return redirect(route('serviceTypes.index'));
+            return redirect(route('admin.serviceTypes.index'));
         }
 
         $serviceType = $this->serviceTypeRepository->update($request->all(), $id);
 
         Flash::success('ServiceType updated successfully.');
 
-        return redirect(route('serviceTypes.index'));
+        return redirect(route('admin.serviceTypes.index'));
     }
 
     /**
@@ -145,13 +145,13 @@ class ServiceTypeController extends AppBaseController
         if (empty($serviceType)) {
             Flash::error('ServiceType not found');
 
-            return redirect(route('serviceTypes.index'));
+            return redirect(route('admin.serviceTypes.index'));
         }
 
         $this->serviceTypeRepository->delete($id);
 
         Flash::success('ServiceType deleted successfully.');
 
-        return redirect(route('serviceTypes.index'));
+        return redirect(route('admin.serviceTypes.index'));
     }
 }

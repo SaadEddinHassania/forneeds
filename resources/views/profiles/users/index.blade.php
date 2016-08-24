@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @push('styles')
-    <link href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
-    <link href="../assets/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>
 @endpush
 @section('content')
 
@@ -226,7 +226,7 @@
                         <div class="portlet-title">
                             <div class="caption caption-md">
                                 <i class="icon-bar-chart theme-font hide"></i>
-                                <span class="caption-subject font-blue-madison bold uppercase">Your Services Requests</span>
+                                <span class="caption-subject font-blue-madison bold uppercase">Request a service !</span>
                                 <span class="caption-helper hide">weekly stats...</span>
                             </div>
 
@@ -323,16 +323,19 @@
     {{--</div>--}}
 
 @endsection
-
+@push('scripts')
+<script src="/assets/ajax_dynamic_forms.js" type="text/javascript"></script>
+@endpush
 
 @push('scripts')
 
-<script src="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-<script src="../assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-<script src="../assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
 
 
-<script src="../assets/pages/scripts/profile.min.js" type="text/javascript"></script>
-<script src="../assets/pages/scripts/timeline.min.js" type="text/javascript"></script>
+<script src="/assets/pages/scripts/profile.min.js" type="text/javascript"></script>
+<script src="/assets/pages/scripts/timeline.min.js" type="text/javascript"></script>
+
 @endpush

@@ -57,7 +57,7 @@ class MarginalizedSituationController extends AppBaseController
 
         Flash::success('MarginalizedSituation saved successfully.');
 
-        return redirect(route('marginalizedSituations.index'));
+        return redirect(route('admin.marginalizedSituations.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class MarginalizedSituationController extends AppBaseController
         if (empty($marginalizedSituation)) {
             Flash::error('MarginalizedSituation not found');
 
-            return redirect(route('marginalizedSituations.index'));
+            return redirect(route('admin.marginalizedSituations.index'));
         }
 
         return view('admin.marginalizedSituations.show')->with('marginalizedSituation', $marginalizedSituation);
@@ -94,7 +94,7 @@ class MarginalizedSituationController extends AppBaseController
         if (empty($marginalizedSituation)) {
             Flash::error('MarginalizedSituation not found');
 
-            return redirect(route('marginalizedSituations.index'));
+            return redirect(route('admin.marginalizedSituations.index'));
         }
 
         return view('admin.marginalizedSituations.edit')->with('marginalizedSituation', $marginalizedSituation);
@@ -115,14 +115,14 @@ class MarginalizedSituationController extends AppBaseController
         if (empty($marginalizedSituation)) {
             Flash::error('MarginalizedSituation not found');
 
-            return redirect(route('marginalizedSituations.index'));
+            return redirect(route('admin.marginalizedSituations.index'));
         }
 
         $marginalizedSituation = $this->marginalizedSituationRepository->update($request->all(), $id);
 
         Flash::success('MarginalizedSituation updated successfully.');
 
-        return redirect(route('marginalizedSituations.index'));
+        return redirect(route('admin.marginalizedSituations.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class MarginalizedSituationController extends AppBaseController
         if (empty($marginalizedSituation)) {
             Flash::error('MarginalizedSituation not found');
 
-            return redirect(route('marginalizedSituations.index'));
+            return redirect(route('admin.marginalizedSituations.index'));
         }
 
         $this->marginalizedSituationRepository->delete($id);
 
         Flash::success('MarginalizedSituation deleted successfully.');
 
-        return redirect(route('marginalizedSituations.index'));
+        return redirect(route('admin.marginalizedSituations.index'));
     }
 }

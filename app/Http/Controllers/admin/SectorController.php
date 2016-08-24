@@ -57,7 +57,7 @@ class SectorController extends AppBaseController
 
         Flash::success('Sector saved successfully.');
 
-        return redirect(route('sectors.index'));
+        return redirect(route('admin.sectors.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class SectorController extends AppBaseController
         if (empty($sector)) {
             Flash::error('Sector not found');
 
-            return redirect(route('sectors.index'));
+            return redirect(route('admin.sectors.index'));
         }
 
         return view('admin.sectors.show')->with('sector', $sector);
@@ -94,7 +94,7 @@ class SectorController extends AppBaseController
         if (empty($sector)) {
             Flash::error('Sector not found');
 
-            return redirect(route('sectors.index'));
+            return redirect(route('admin.sectors.index'));
         }
 
         return view('admin.sectors.edit')->with('sector', $sector);
@@ -115,14 +115,14 @@ class SectorController extends AppBaseController
         if (empty($sector)) {
             Flash::error('Sector not found');
 
-            return redirect(route('sectors.index'));
+            return redirect(route('admin.sectors.index'));
         }
 
         $sector = $this->sectorRepository->update($request->all(), $id);
 
         Flash::success('Sector updated successfully.');
 
-        return redirect(route('sectors.index'));
+        return redirect(route('admin.sectors.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class SectorController extends AppBaseController
         if (empty($sector)) {
             Flash::error('Sector not found');
 
-            return redirect(route('sectors.index'));
+            return redirect(route('admin.sectors.index'));
         }
 
         $this->sectorRepository->delete($id);
 
         Flash::success('Sector deleted successfully.');
 
-        return redirect(route('sectors.index'));
+        return redirect(route('admin.sectors.index'));
     }
 }

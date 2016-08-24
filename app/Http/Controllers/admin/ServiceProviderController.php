@@ -77,7 +77,7 @@ class ServiceProviderController extends AppBaseController
 
         Flash::success('ServiceProvider saved successfully.');
 
-        return redirect(route('serviceProviders.index'));
+        return redirect(route('admin.serviceProviders.index'));
     }
 
     /**
@@ -94,7 +94,7 @@ class ServiceProviderController extends AppBaseController
         if (empty($serviceProvider)) {
             Flash::error('ServiceProvider not found');
 
-            return redirect(route('serviceProviders.index'));
+            return redirect(route('admin.serviceProviders.index'));
         }
 
         return view('admin.serviceProviders.show')->with('serviceProvider', $serviceProvider);
@@ -114,7 +114,7 @@ class ServiceProviderController extends AppBaseController
         if (empty($serviceProvider)) {
             Flash::error('ServiceProvider not found');
 
-            return redirect(route('serviceProviders.index'));
+            return redirect(route('admin.serviceProviders.index'));
         }
 
         return view('admin.serviceProviders.edit')->with('serviceProvider', $serviceProvider);
@@ -135,14 +135,14 @@ class ServiceProviderController extends AppBaseController
         if (empty($serviceProvider)) {
             Flash::error('ServiceProvider not found');
 
-            return redirect(route('serviceProviders.index'));
+            return redirect(route('admin.serviceProviders.index'));
         }
 
         $serviceProvider = $this->serviceProviderRepository->update($request->all(), $id);
 
         Flash::success('ServiceProvider updated successfully.');
 
-        return redirect(route('serviceProviders.index'));
+        return redirect(route('admin.serviceProviders.index'));
     }
 
     /**
@@ -159,13 +159,13 @@ class ServiceProviderController extends AppBaseController
         if (empty($serviceProvider)) {
             Flash::error('ServiceProvider not found');
 
-            return redirect(route('serviceProviders.index'));
+            return redirect(route('admin.serviceProviders.index'));
         }
 
         $this->serviceProviderRepository->delete($id);
 
         Flash::success('ServiceProvider deleted successfully.');
 
-        return redirect(route('serviceProviders.index'));
+        return redirect(route('admin.serviceProviders.index'));
     }
 }

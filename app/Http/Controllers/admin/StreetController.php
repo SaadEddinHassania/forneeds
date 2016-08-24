@@ -63,7 +63,7 @@ class StreetController extends AppBaseController
 
         Flash::success('Street saved successfully.');
 
-        return redirect(route('streets.index'));
+        return redirect(route('admin.streets.index'));
     }
 
     /**
@@ -80,7 +80,7 @@ class StreetController extends AppBaseController
         if (empty($street)) {
             Flash::error('Street not found');
 
-            return redirect(route('streets.index'));
+            return redirect(route('admin.streets.index'));
         }
 
         return view('admin.streets.show')->with('street', $street);
@@ -100,7 +100,7 @@ class StreetController extends AppBaseController
         if (empty($street)) {
             Flash::error('Street not found');
 
-            return redirect(route('streets.index'));
+            return redirect(route('admin.streets.index'));
         }
 
         return view('admin.streets.edit')->with('street', $street);
@@ -121,14 +121,14 @@ class StreetController extends AppBaseController
         if (empty($street)) {
             Flash::error('Street not found');
 
-            return redirect(route('streets.index'));
+            return redirect(route('admin.streets.index'));
         }
 
         $street = $this->streetRepository->update($request->all(), $id);
 
         Flash::success('Street updated successfully.');
 
-        return redirect(route('streets.index'));
+        return redirect(route('admin.streets.index'));
     }
 
     /**
@@ -145,13 +145,13 @@ class StreetController extends AppBaseController
         if (empty($street)) {
             Flash::error('Street not found');
 
-            return redirect(route('streets.index'));
+            return redirect(route('admin.streets.index'));
         }
 
         $this->streetRepository->delete($id);
 
         Flash::success('Street deleted successfully.');
 
-        return redirect(route('streets.index'));
+        return redirect(route('admin.streets.index'));
     }
 }

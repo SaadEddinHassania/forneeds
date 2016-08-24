@@ -1,7 +1,7 @@
 /**
  * Created by blackthrone on 12/08/2016.
  */
-jQuery(document).ready(function ($) {
+$(function ($) {
     $('#area-drop-down option').first().attr('disabled','disabled')
     $('#sectors-drop-down option').first().attr('disabled','disabled')
     $('#area-drop-down').change(function () {

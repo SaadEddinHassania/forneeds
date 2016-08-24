@@ -40,12 +40,7 @@ class ProfilePageController extends Controller
         }else if($user->isCitizen()){
             $sRequests = $user->citizen->servicesRequests;
 //            dd($sRequests);
-            dd([
-                "user"=>$user,
-                "sRequests"=>$sRequests,
-                'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray(),
-                'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
-            ]);
+
             return view('profiles.users.index',[
                 "user"=>$user,
                 "sRequests"=>$sRequests,

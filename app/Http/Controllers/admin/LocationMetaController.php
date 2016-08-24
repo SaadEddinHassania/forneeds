@@ -57,7 +57,7 @@ class LocationMetaController extends AppBaseController
 
         Flash::success('LocationMeta saved successfully.');
 
-        return redirect(route('locationMetas.index'));
+        return redirect(route('admin.locationMetas.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class LocationMetaController extends AppBaseController
         if (empty($locationMeta)) {
             Flash::error('LocationMeta not found');
 
-            return redirect(route('locationMetas.index'));
+            return redirect(route('admin.locationMetas.index'));
         }
 
         return view('admin.locationMetas.show')->with('locationMeta', $locationMeta);
@@ -94,7 +94,7 @@ class LocationMetaController extends AppBaseController
         if (empty($locationMeta)) {
             Flash::error('LocationMeta not found');
 
-            return redirect(route('locationMetas.index'));
+            return redirect(route('admin.locationMetas.index'));
         }
 
         return view('admin.locationMetas.edit')->with('locationMeta', $locationMeta);
@@ -115,14 +115,14 @@ class LocationMetaController extends AppBaseController
         if (empty($locationMeta)) {
             Flash::error('LocationMeta not found');
 
-            return redirect(route('locationMetas.index'));
+            return redirect(route('admin.locationMetas.index'));
         }
 
         $locationMeta = $this->locationMetaRepository->update($request->all(), $id);
 
         Flash::success('LocationMeta updated successfully.');
 
-        return redirect(route('locationMetas.index'));
+        return redirect(route('admin.locationMetas.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class LocationMetaController extends AppBaseController
         if (empty($locationMeta)) {
             Flash::error('LocationMeta not found');
 
-            return redirect(route('locationMetas.index'));
+            return redirect(route('admin.locationMetas.index'));
         }
 
         $this->locationMetaRepository->delete($id);
 
         Flash::success('LocationMeta deleted successfully.');
 
-        return redirect(route('locationMetas.index'));
+        return redirect(route('admin.locationMetas.index'));
     }
 }

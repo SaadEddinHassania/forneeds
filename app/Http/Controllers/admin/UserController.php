@@ -57,7 +57,7 @@ class UserController extends AppBaseController
 
         Flash::success('User saved successfully.');
 
-        return redirect(route('users.index'));
+        return redirect(route('admin.users.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(route('admin.users.index'));
         }
 
         return view('admin.users.show')->with('user', $user);
@@ -94,7 +94,7 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(route('admin.users.index'));
         }
 
         return view('admin.users.edit')->with('user', $user);
@@ -115,14 +115,14 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(route('admin.users.index'));
         }
 
         $user = $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');
 
-        return redirect(route('users.index'));
+        return redirect(route('admin.users.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(route('admin.users.index'));
         }
 
         $this->userRepository->delete($id);
 
         Flash::success('User deleted successfully.');
 
-        return redirect(route('users.index'));
+        return redirect(route('admin.users.index'));
     }
 }

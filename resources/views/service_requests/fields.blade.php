@@ -11,7 +11,7 @@
     {!! Form::select('service_type_id',array(null=>"Please select a sector")+ array(), null, ['class' => 'form-control','id'=>'service-type-drop-down']) !!}
 </div>
 
-@include('admin.formsComponents.location',$areas)
+@include('formsComponents.location',$areas)
 
 <!-- State Field -->
 <div class="form-group col-sm-6">
@@ -30,6 +30,4 @@
     </div>
 </div>
 
-@push('scripts')
-<script src="/assets/ajax_dynamic_forms.js" type="text/javascript"></script>
-@endpush
+

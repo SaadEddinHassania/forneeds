@@ -63,7 +63,7 @@ class AnswerController extends AppBaseController
 
         Flash::success('Answer saved successfully.');
 
-        return redirect(route('answers.index'));
+        return redirect(route('admin.answers.index'));
     }
 
     /**
@@ -80,7 +80,7 @@ class AnswerController extends AppBaseController
         if (empty($answer)) {
             Flash::error('Answer not found');
 
-            return redirect(route('answers.index'));
+            return redirect(route('admin.answers.index'));
         }
 
         return view('answers.show')->with('answer', $answer);
@@ -100,7 +100,7 @@ class AnswerController extends AppBaseController
         if (empty($answer)) {
             Flash::error('Answer not found');
 
-            return redirect(route('answers.index'));
+            return redirect(route('admin.answers.index'));
         }
 
         return view('answers.edit')->with('answer', $answer);
@@ -121,14 +121,14 @@ class AnswerController extends AppBaseController
         if (empty($answer)) {
             Flash::error('Answer not found');
 
-            return redirect(route('answers.index'));
+            return redirect(route('admin.answers.index'));
         }
 
         $answer = $this->answerRepository->update($request->all(), $id);
 
         Flash::success('Answer updated successfully.');
 
-        return redirect(route('answers.index'));
+        return redirect(route('admin.answers.index'));
     }
 
     /**
@@ -145,13 +145,13 @@ class AnswerController extends AppBaseController
         if (empty($answer)) {
             Flash::error('Answer not found');
 
-            return redirect(route('answers.index'));
+            return redirect(route('admin.answers.index'));
         }
 
         $this->answerRepository->delete($id);
 
         Flash::success('Answer deleted successfully.');
 
-        return redirect(route('answers.index'));
+        return redirect(route('admin.answers.index'));
     }
 }

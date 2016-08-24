@@ -57,7 +57,7 @@ class ServiceProviderTypeController extends AppBaseController
 
         Flash::success('ServiceProviderType saved successfully.');
 
-        return redirect(route('serviceProviderTypes.index'));
+        return redirect(route('admin.serviceProviderTypes.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class ServiceProviderTypeController extends AppBaseController
         if (empty($serviceProviderType)) {
             Flash::error('ServiceProviderType not found');
 
-            return redirect(route('serviceProviderTypes.index'));
+            return redirect(route('admin.serviceProviderTypes.index'));
         }
 
         return view('admin.serviceProviderTypes.show')->with('serviceProviderType', $serviceProviderType);
@@ -94,7 +94,7 @@ class ServiceProviderTypeController extends AppBaseController
         if (empty($serviceProviderType)) {
             Flash::error('ServiceProviderType not found');
 
-            return redirect(route('serviceProviderTypes.index'));
+            return redirect(route('admin.serviceProviderTypes.index'));
         }
 
         return view('admin.serviceProviderTypes.edit')->with('serviceProviderType', $serviceProviderType);
@@ -115,14 +115,14 @@ class ServiceProviderTypeController extends AppBaseController
         if (empty($serviceProviderType)) {
             Flash::error('ServiceProviderType not found');
 
-            return redirect(route('serviceProviderTypes.index'));
+            return redirect(route('admin.serviceProviderTypes.index'));
         }
 
         $serviceProviderType = $this->serviceProviderTypeRepository->update($request->all(), $id);
 
         Flash::success('ServiceProviderType updated successfully.');
 
-        return redirect(route('serviceProviderTypes.index'));
+        return redirect(route('admin.serviceProviderTypes.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class ServiceProviderTypeController extends AppBaseController
         if (empty($serviceProviderType)) {
             Flash::error('ServiceProviderType not found');
 
-            return redirect(route('serviceProviderTypes.index'));
+            return redirect(route('admin.serviceProviderTypes.index'));
         }
 
         $this->serviceProviderTypeRepository->delete($id);
 
         Flash::success('ServiceProviderType deleted successfully.');
 
-        return redirect(route('serviceProviderTypes.index'));
+        return redirect(route('admin.serviceProviderTypes.index'));
     }
 }

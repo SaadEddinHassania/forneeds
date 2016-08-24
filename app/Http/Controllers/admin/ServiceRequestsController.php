@@ -78,7 +78,7 @@ class ServiceRequestsController extends AppBaseController
 
         Flash::success('ServiceRequests saved successfully.');
 
-        return redirect(route('serviceRequests.index'));
+        return redirect(route('admin.serviceRequests.index'));
     }
 
     /**
@@ -95,7 +95,7 @@ class ServiceRequestsController extends AppBaseController
         if (empty($serviceRequests)) {
             Flash::error('ServiceRequests not found');
 
-            return redirect(route('serviceRequests.index'));
+            return redirect(route('admin.serviceRequests.index'));
         }
 
         return view('admin.serviceRequests.show')->with('serviceRequests', $serviceRequests);
@@ -115,7 +115,7 @@ class ServiceRequestsController extends AppBaseController
         if (empty($serviceRequests)) {
             Flash::error('ServiceRequests not found');
 
-            return redirect(route('serviceRequests.index'));
+            return redirect(route('admin.serviceRequests.index'));
         }
 
         return view('admin.serviceRequests.edit')->with('serviceRequests', $serviceRequests);
@@ -136,14 +136,14 @@ class ServiceRequestsController extends AppBaseController
         if (empty($serviceRequests)) {
             Flash::error('ServiceRequests not found');
 
-            return redirect(route('serviceRequests.index'));
+            return redirect(route('admin.serviceRequests.index'));
         }
 
         $serviceRequests = $this->serviceRequestsRepository->update($request->all(), $id);
 
         Flash::success('ServiceRequests updated successfully.');
 
-        return redirect(route('serviceRequests.index'));
+        return redirect(route('admin.serviceRequests.index'));
     }
 
     /**
@@ -160,13 +160,13 @@ class ServiceRequestsController extends AppBaseController
         if (empty($serviceRequests)) {
             Flash::error('ServiceRequests not found');
 
-            return redirect(route('serviceRequests.index'));
+            return redirect(route('admin.serviceRequests.index'));
         }
 
         $this->serviceRequestsRepository->delete($id);
 
         Flash::success('ServiceRequests deleted successfully.');
 
-        return redirect(route('serviceRequests.index'));
+        return redirect(route('admin.serviceRequests.index'));
     }
 }

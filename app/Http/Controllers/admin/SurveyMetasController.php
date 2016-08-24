@@ -57,7 +57,7 @@ class SurveyMetasController extends AppBaseController
 
         Flash::success('SurveyMetas saved successfully.');
 
-        return redirect(route('surveyMetas.index'));
+        return redirect(route('admin.surveyMetas.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class SurveyMetasController extends AppBaseController
         if (empty($surveyMetas)) {
             Flash::error('SurveyMetas not found');
 
-            return redirect(route('surveyMetas.index'));
+            return redirect(route('admin.surveyMetas.index'));
         }
 
         return view('admin.surveyMetas.show')->with('surveyMetas', $surveyMetas);
@@ -94,7 +94,7 @@ class SurveyMetasController extends AppBaseController
         if (empty($surveyMetas)) {
             Flash::error('SurveyMetas not found');
 
-            return redirect(route('surveyMetas.index'));
+            return redirect(route('admin.surveyMetas.index'));
         }
 
         return view('admin.surveyMetas.edit')->with('surveyMetas', $surveyMetas);
@@ -115,14 +115,14 @@ class SurveyMetasController extends AppBaseController
         if (empty($surveyMetas)) {
             Flash::error('SurveyMetas not found');
 
-            return redirect(route('surveyMetas.index'));
+            return redirect(route('admin.surveyMetas.index'));
         }
 
         $surveyMetas = $this->surveyMetasRepository->update($request->all(), $id);
 
         Flash::success('SurveyMetas updated successfully.');
 
-        return redirect(route('surveyMetas.index'));
+        return redirect(route('admin.surveyMetas.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class SurveyMetasController extends AppBaseController
         if (empty($surveyMetas)) {
             Flash::error('SurveyMetas not found');
 
-            return redirect(route('surveyMetas.index'));
+            return redirect(route('admin.surveyMetas.index'));
         }
 
         $this->surveyMetasRepository->delete($id);
 
         Flash::success('SurveyMetas deleted successfully.');
 
-        return redirect(route('surveyMetas.index'));
+        return redirect(route('admin.surveyMetas.index'));
     }
 }

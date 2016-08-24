@@ -65,7 +65,7 @@ class DistrictController extends AppBaseController
 
         Flash::success('District saved successfully.');
 
-        return redirect(route('districts.index'));
+        return redirect(route('admin.districts.index'));
     }
 
     /**
@@ -82,7 +82,7 @@ class DistrictController extends AppBaseController
         if (empty($district)) {
             Flash::error('District not found');
 
-            return redirect(route('districts.index'));
+            return redirect(route('admin.districts.index'));
         }
 
         return view('admin.districts.show')->with('district', $district);
@@ -102,7 +102,7 @@ class DistrictController extends AppBaseController
         if (empty($district)) {
             Flash::error('District not found');
 
-            return redirect(route('districts.index'));
+            return redirect(route('admin.districts.index'));
         }
 
         return view('admin.districts.edit')->with('district', $district);
@@ -123,14 +123,14 @@ class DistrictController extends AppBaseController
         if (empty($district)) {
             Flash::error('District not found');
 
-            return redirect(route('districts.index'));
+            return redirect(route('admin.districts.index'));
         }
 
         $district = $this->districtRepository->update($request->all(), $id);
 
         Flash::success('District updated successfully.');
 
-        return redirect(route('districts.index'));
+        return redirect(route('admin.districts.index'));
     }
 
     /**
@@ -147,13 +147,13 @@ class DistrictController extends AppBaseController
         if (empty($district)) {
             Flash::error('District not found');
 
-            return redirect(route('districts.index'));
+            return redirect(route('admin.districts.index'));
         }
 
         $this->districtRepository->delete($id);
 
         Flash::success('District deleted successfully.');
 
-        return redirect(route('districts.index'));
+        return redirect(route('admin.districts.index'));
     }
 }

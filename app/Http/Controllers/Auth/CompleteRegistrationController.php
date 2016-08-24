@@ -34,11 +34,11 @@ class CompleteRegistrationController extends Controller
 
         $this->validate($request, [
             'mission_statement' => 'required',
-            'service_provider_type_id' => 'required:service_provider_types,id',
+            'service_provider_type_id' => 'required|exists:service_provider_types,id',
             'sector_id' => 'required|exists:sectors,id'
         ]);
 
-//        dd(array_add($request->all(), 'user_id', $user->id));
+    //   dd(array_add($request->all(), 'user_id', $user->id));
         $serviceProvider = ServiceProvider::create($request->all());
 
         $serviceProvider->user_id = $user->id;
@@ -55,9 +55,10 @@ class CompleteRegistrationController extends Controller
         $user = Auth::user();
 
         $this->validate($request, [
+
         ]);
 
-//        dd(array_add($request->all(), 'user_id', $user->id));
+       //dd(array_add($request->all(), 'user_id', $user->id));
         $citizen = Citizen::create($request->all());
 
         $citizen->user_id = $user->id;

@@ -72,7 +72,7 @@ class SurveyController extends AppBaseController
 
         Flash::success('Survey saved successfully.');
 
-        return redirect(route('surveys.index'));
+        return redirect(route('admin.surveys.index'));
     }
 
     /**
@@ -89,7 +89,7 @@ class SurveyController extends AppBaseController
         if (empty($survey)) {
             Flash::error('Survey not found');
 
-            return redirect(route('surveys.index'));
+            return redirect(route('admin.surveys.index'));
         }
 
         return view('admin.surveys.show')->with('survey', $survey);
@@ -109,7 +109,7 @@ class SurveyController extends AppBaseController
         if (empty($survey)) {
             Flash::error('Survey not found');
 
-            return redirect(route('surveys.index'));
+            return redirect(route('admin.surveys.index'));
         }
 
         return view('admin.surveys.edit')->with('survey', $survey);
@@ -130,14 +130,14 @@ class SurveyController extends AppBaseController
         if (empty($survey)) {
             Flash::error('Survey not found');
 
-            return redirect(route('surveys.index'));
+            return redirect(route('admin.surveys.index'));
         }
 
         $survey = $this->surveyRepository->update($request->all(), $id);
 
         Flash::success('Survey updated successfully.');
 
-        return redirect(route('surveys.index'));
+        return redirect(route('admin.surveys.index'));
     }
 
     /**
@@ -154,13 +154,13 @@ class SurveyController extends AppBaseController
         if (empty($survey)) {
             Flash::error('Survey not found');
 
-            return redirect(route('surveys.index'));
+            return redirect(route('admin.surveys.index'));
         }
 
         $this->surveyRepository->delete($id);
 
         Flash::success('Survey deleted successfully.');
 
-        return redirect(route('surveys.index'));
+        return redirect(route('admin.surveys.index'));
     }
 }

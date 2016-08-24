@@ -57,7 +57,7 @@ class QuestionController extends AppBaseController
 
         Flash::success('Question saved successfully.');
 
-        return redirect(route('questions.index'));
+        return redirect(route('admin.questions.index'));
     }
 
     /**
@@ -74,7 +74,7 @@ class QuestionController extends AppBaseController
         if (empty($question)) {
             Flash::error('Question not found');
 
-            return redirect(route('questions.index'));
+            return redirect(route('admin.questions.index'));
         }
 
         return view('admin.questions.show')->with('question', $question);
@@ -94,7 +94,7 @@ class QuestionController extends AppBaseController
         if (empty($question)) {
             Flash::error('Question not found');
 
-            return redirect(route('questions.index'));
+            return redirect(route('admin.questions.index'));
         }
 
         return view('admin.questions.edit')->with('question', $question);
@@ -115,14 +115,14 @@ class QuestionController extends AppBaseController
         if (empty($question)) {
             Flash::error('Question not found');
 
-            return redirect(route('questions.index'));
+            return redirect(route('admin.questions.index'));
         }
 
         $question = $this->questionRepository->update($request->all(), $id);
 
         Flash::success('Question updated successfully.');
 
-        return redirect(route('questions.index'));
+        return redirect(route('admin.questions.index'));
     }
 
     /**
@@ -139,13 +139,13 @@ class QuestionController extends AppBaseController
         if (empty($question)) {
             Flash::error('Question not found');
 
-            return redirect(route('questions.index'));
+            return redirect(route('admin.questions.index'));
         }
 
         $this->questionRepository->delete($id);
 
         Flash::success('Question deleted successfully.');
 
-        return redirect(route('questions.index'));
+        return redirect(route('admin.questions.index'));
     }
 }

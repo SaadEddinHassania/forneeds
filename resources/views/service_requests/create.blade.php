@@ -1,6 +1,5 @@
-@extends('admin.layouts.app')
 
-@section('content')
+
  <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
@@ -15,10 +14,9 @@
             <div class="row">
                 {!! Form::open(['route' => 'admin.serviceRequests.store']) !!}
 
-                    @include('admin.serviceRequests.fields')
+                    @include('service_requests.fields',array("areas"=>$areas,"sectors"=>$sectors))
 
                  {!! Form::close() !!}
             </div>
         </div>
   </div>
-@endsection

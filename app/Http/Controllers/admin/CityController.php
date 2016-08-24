@@ -63,7 +63,7 @@ class CityController extends AppBaseController
 
         Flash::success('City saved successfully.');
 
-        return redirect(route('cities.index'));
+        return redirect(route('admin.cities.index'));
     }
 
     /**
@@ -80,7 +80,7 @@ class CityController extends AppBaseController
         if (empty($city)) {
             Flash::error('City not found');
 
-            return redirect(route('cities.index'));
+            return redirect(route('admin.cities.index'));
         }
 
         return view('admin.cities.show')->with('city', $city);
@@ -100,7 +100,7 @@ class CityController extends AppBaseController
         if (empty($city)) {
             Flash::error('City not found');
 
-            return redirect(route('cities.index'));
+            return redirect(route('admin.cities.index'));
         }
 
         return view('admin.cities.edit')->with('city', $city);
@@ -121,14 +121,14 @@ class CityController extends AppBaseController
         if (empty($city)) {
             Flash::error('City not found');
 
-            return redirect(route('cities.index'));
+            return redirect(route('admin.cities.index'));
         }
 
         $city = $this->cityRepository->update($request->all(), $id);
 
         Flash::success('City updated successfully.');
 
-        return redirect(route('cities.index'));
+        return redirect(route('admin.cities.index'));
     }
 
     /**
@@ -145,13 +145,13 @@ class CityController extends AppBaseController
         if (empty($city)) {
             Flash::error('City not found');
 
-            return redirect(route('cities.index'));
+            return redirect(route('admin.cities.index'));
         }
 
         $this->cityRepository->delete($id);
 
         Flash::success('City deleted successfully.');
 
-        return redirect(route('cities.index'));
+        return redirect(route('admin.cities.index'));
     }
 }

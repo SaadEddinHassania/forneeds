@@ -78,7 +78,7 @@ class ProjectController extends AppBaseController
 
         Flash::success('Project saved successfully.');
 
-        return redirect(route('projects.index'));
+        return redirect(route('admin.projects.index'));
     }
 
     /**
@@ -95,7 +95,7 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('admin.projects.index'));
         }
 
         return view('admin.projects.show')->with('project', $project);
@@ -115,7 +115,7 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('admin.projects.index'));
         }
 
         return view('admin.projects.edit')->with('project', $project);
@@ -136,14 +136,14 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('admin.projects.index'));
         }
 
         $project = $this->projectRepository->update($request->all(), $id);
 
         Flash::success('Project updated successfully.');
 
-        return redirect(route('projects.index'));
+        return redirect(route('admin.projects.index'));
     }
 
     /**
@@ -160,13 +160,13 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('admin.projects.index'));
         }
 
         $this->projectRepository->delete($id);
 
         Flash::success('Project deleted successfully.');
 
-        return redirect(route('projects.index'));
+        return redirect(route('admin.projects.index'));
     }
 }
