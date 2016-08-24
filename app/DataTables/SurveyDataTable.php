@@ -17,7 +17,7 @@ class SurveyDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "surveys";
+                $model = "admin.surveys";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })
@@ -80,6 +80,10 @@ class SurveyDataTable extends DataTable
             'expires_at' => ['name' => 'expires_at', 'data' => 'expires_at'],
             'description' => ['name' => 'description', 'data' => 'description'],
             'project_id' => ['name' => 'project_id', 'data' => 'project_id'],
+            'survey_meta_id' => ['name' => 'survey_meta_id', 'data' => 'survey_meta_id'],
+            'deleted_at' => ['name' => 'deleted_at', 'data' => 'deleted_at'],
+            'created_at' => ['name' => 'created_at', 'data' => 'created_at'],
+            'updated_at' => ['name' => 'updated_at', 'data' => 'updated_at']
         ];
     }
 

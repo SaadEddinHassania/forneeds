@@ -17,7 +17,7 @@ class ServiceDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "services";
+                $model = "admin.services";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })

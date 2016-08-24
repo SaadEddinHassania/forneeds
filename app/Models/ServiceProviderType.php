@@ -67,4 +67,8 @@ class ServiceProviderType extends Model
     public static $rules = [
         
     ];
+
+    public function serviceProvider(){
+        $this->hasMany(ServiceProvider::class);
+    }
 }

@@ -17,7 +17,7 @@ class ProjectDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "projects";
+                $model = "admin.projects";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })

@@ -17,7 +17,7 @@ class SectorDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "sectors";
+                $model = "admin.sectors";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })
