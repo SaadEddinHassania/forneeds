@@ -12,7 +12,7 @@
         </p>
     </div>
 
-    <form class="citizen-form" method="post" action="{!! url('/register') !!}">
+    <form class="citizen-form" method="post" action="{!! url('/complete_citizen_registration') !!}">
 
         {!! csrf_field() !!}
         <div class="form-title">

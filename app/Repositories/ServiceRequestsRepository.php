@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\ServiceRequests;
+use App\Models\ServiceRequest;
 use InfyOm\Generator\Common\BaseRepository;
 
 class ServiceRequestsRepository extends BaseRepository
@@ -19,6 +19,6 @@ class ServiceRequestsRepository extends BaseRepository
      **/
     public function model()
     {
-        return ServiceRequests::class;
+        return ServiceRequest::class;
     }
 }

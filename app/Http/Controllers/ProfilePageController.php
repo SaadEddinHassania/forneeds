@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Repositories\AreaRepository;
+use App\Repositories\SectorRepository;
+use App\Repositories\ServiceRequestsRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,6 +15,22 @@ use Intervention\Image\Facades\Image;
 
 class ProfilePageController extends Controller
 {
+    /** @var  AreaRepository */
+    private $areaRepository;
+
+    /** @var  SectorRepository */
+    private $sectorRepository;
+
+    /** @var  AreaRepository */
+    private $serviceRequestsRepository;
+
+    public function __construct(AreaRepository $areaRepo, SectorRepository $sectorRepo,ServiceRequestsRepository $serviceRequestsRepo)
+    {
+        $this->areaRepository=$areaRepo;
+        $this->sectorRepository=$sectorRepo;
+        $this->serviceRequestsRepository=$serviceRequestsRepo;
+    }
+
     public function getIndex(Request $request)
     {
         $user = Auth::user();
@@ -21,7 +40,18 @@ class ProfilePageController extends Controller
         }else if($user->isCitizen()){
             $sRequests = $user->citizen->servicesRequests;
 //            dd($sRequests);
-            return view('profiles.users.index',compact('user','sRequests'));
+            dd([
+                "user"=>$user,
+                "sRequests"=>$sRequests,
+                'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray(),
+                'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
+            ]);
+            return view('profiles.users.index',[
+                "user"=>$user,
+                "sRequests"=>$sRequests,
+                'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray(),
+                'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
+            ]);
         }
     }
 
