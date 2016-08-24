@@ -34,7 +34,7 @@ class CompleteRegistrationController extends Controller
 
         $this->validate($request, [
             'mission_statement' => 'required',
-            'service_provider_type_id' => 'required|exists:service_provider_types,id',
+            'service_provider_type_id' => 'required:service_provider_types,id',
             'sector_id' => 'required|exists:sectors,id'
         ]);
 
@@ -50,12 +50,11 @@ class CompleteRegistrationController extends Controller
         return redirect('profile');
     }
 
-    protected function postCompleteCitizenRegistration()
+    protected function postCompleteCitizenRegistration(Request $request)
     {
         $user = Auth::user();
 
         $this->validate($request, [
-            'dob' => 'date',
         ]);
 
 //        dd(array_add($request->all(), 'user_id', $user->id));

@@ -20,11 +20,12 @@ $(function () {
     });
     $('#config-handler').on('click', '#add_config', function ($event) {
         $event.preventDefault();
-        FN_App.configWrapper.clone().appendTo($(this).parent().parent().siblings('.config-wrapper').children('form'));
+        FN_App.configWrapper.clone().appendTo($(this).parent().parent().siblings('.row'));
+        $('.config_form').ajaxForm(ConfigAjaxForm);
     });
 
     $('form.currSurvey').ajaxForm(function (data) {
-        FN_App.currentSurveyId = data.id;
+        FN_App.currentSurveyId = data.id;   
         $('.question-wrapper .curr-survey').val(FN_App.currentSurveyId);
         FN_App.questionWrapper = $(".question-wrapper").clone();
     $('.config-wrapper .curr-survey').val(FN_App.currentSurveyId);
@@ -43,7 +44,8 @@ $(function () {
 
     });
 
-    $('.config_form').ajaxForm(function(data){
+    function ConfigAjaxForm(data){
 
-    });
+    }
+
 })

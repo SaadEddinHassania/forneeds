@@ -10,7 +10,7 @@
     </div>
     <div class="portlet-body form " id="config-handler">
 
-        <div class="row">
+        <div class="row" >
 
             <div class="config-wrapper col-lg-12 row ">
 
@@ -34,11 +34,12 @@
                 {!! Form::close() !!}
 
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <button id="add_config" class="btn btn-lg btn-block glyphicon glyphicon-plus-sign"></button>
 
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <button id="add_config" class="btn btn-lg btn-block glyphicon glyphicon-plus-sign"></button>
+
             </div>
         </div>
     </div>
