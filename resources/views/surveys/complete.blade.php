@@ -101,21 +101,3 @@
         </div>
 
 
-        @push('styles')
-<link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
-@endpush
-
-@push('scripts')
-<script src="http://malsup.github.com/jquery.form.js"></script>
-<script src="/assets/survey_widget.js" type="text/javascript"></script>
-<script src="/assets/pages/scripts/form-wizard.min.js"></script>
-<script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
-
-
-
-<script src="/assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
-@endpush
