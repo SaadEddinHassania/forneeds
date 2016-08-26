@@ -82,17 +82,13 @@
                         <!-- SIDEBAR MENU -->
                         <div class="profile-usermenu">
                             <ul class="nav">
-                                <li class="active">
-                                    <a href="page_user_profile_1.html">
-                                        <i class="icon-home"></i> Overview </a>
+                                <li class="{!! Request::is('profile*') ? 'active' : '' !!}">
+                                    <a href="{!! url('/profile') !!}">
+                                        <i class="icon-home"></i> Profile </a>
                                 </li>
-                                <li>
-                                    <a href="page_user_profile_1_account.html">
+                                <li class="{!! Request::is('profile*') ? 'active' : '' !!}">
+                                    <a href="{!! url('/settings') !!}">
                                         <i class="icon-settings"></i> Account Settings </a>
-                                </li>
-                                <li>
-                                    <a href="page_user_profile_1_help.html">
-                                        <i class="icon-info"></i> Help </a>
                                 </li>
                             </ul>
                         </div>
