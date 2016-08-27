@@ -118,6 +118,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('profile', 'ProfilePageController@getProfile');
         Route::get('settings', 'ProfilePageController@getSettings');
         Route::post('update_profile', 'ProfilePageController@postUpdate');
+        Route::get('profile_image', 'ProfilePageController@getImage');
+        Route::post('profile_image', 'ProfilePageController@postImage');
     });
 });
 

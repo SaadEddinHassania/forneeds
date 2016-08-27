@@ -65,12 +65,12 @@
                     <div class="portlet light profile-sidebar-portlet ">
                         <!-- SIDEBAR USERPIC -->
                         <div class="profile-userpic">
-                            <img src="../assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
+                            <img src="{{url('/profile_image')}}" class="img-responsive" alt=""></div>
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> Marcus Doe </div>
-                            <div class="profile-usertitle-job"> Developer </div>
+                            <div class="profile-usertitle-name"> {{$user->name}}</div>
+                            <div class="profile-usertitle-job"> Service Provider</div>
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
