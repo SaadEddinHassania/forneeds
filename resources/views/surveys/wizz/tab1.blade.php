@@ -46,15 +46,11 @@
                     {!! Form::label('description', 'Description:') !!}
                     {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
                 </div>
-                <!-- Service Provider Id Field -->
-                <div class="form-group col-sm-6">
-                    {!! Form::label('service-providers-drop-down', 'Service Provider Id:') !!}
-                    {!! Form::select('service-providers-drop-down',array(null=>"Please select one option")+$serviceProviders, null, ['class' => 'form-control','id'=>'service-providers-drop-down']) !!}
-                </div>
+
                 <!-- Project Id Field -->
                 <div class="form-group col-sm-6">
                     {!! Form::label('projects-drop-down', 'Project Id:') !!}
-                    {!! Form::select('project_id',array(null=>"Please select a serviceProvider"), null, ['class' => 'form-control','id'=>'projects-drop-down']) !!}
+                    {!! Form::select('project_id',$projects, null, ['class' => 'form-control','id'=>'projects-drop-down','placeholder'=>'Please Choose A project']) !!}
                 </div>
 
 

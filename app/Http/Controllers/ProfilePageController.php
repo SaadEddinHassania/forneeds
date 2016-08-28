@@ -53,7 +53,7 @@ class ProfilePageController extends Controller
         if($user->isServiceProvider()) {
             return view('profiles.serviceProviders.index', [
                 "user" => $user,
-                'serviceProviders' => $this->serviceProviderRepository->all()->lists('name', 'id')->toarray(),
+                'projects' => $user->projects()->get()->lists('name', 'id')->toarray(),
                 "user_attrs" => $this->userRepository->getFieldsSearchable()
             ]);
         }else if($user->isCitizen()){
