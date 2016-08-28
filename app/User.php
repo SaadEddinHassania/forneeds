@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Models\Citizen;
-use App\Models\Project;
 use App\Models\ServiceProvider;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -76,9 +75,5 @@ class User extends Authenticatable
     public function citizen()
     {
         return $this->hasOne('App\Models\Citizen');
-    }
-    public function projects()
-    {
-        return $this->hasManyThrough(Project::class, ServiceProvider::class);
     }
 }

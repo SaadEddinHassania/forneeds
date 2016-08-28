@@ -58,7 +58,7 @@
                 <div class="form-group col-sm-12">
                     <div class="form-actions">
                         <div class="row  col-md-offset-0">
-                            {!! Form::submit('Save', ['class' => 'btn green']) !!}
+                            {!! Form::submit('Save', ['class' => 'btn green button-next']) !!}
 
                         </div>
                     </div>

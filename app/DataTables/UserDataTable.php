@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\User;
+use App\Models\User;
 use App\Repositories\UserRepository;
 use Form;
 use Yajra\Datatables\Services\DataTable;

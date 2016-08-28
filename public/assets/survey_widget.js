@@ -30,7 +30,6 @@ $(function () {
         FN_App.questionWrapper = $(".question-wrapper").clone();
     $('.config-wrapper .curr-survey').val(FN_App.currentSurveyId);
         FN_App.configWrapper = $(".config-wrapper").clone();
-
     });
 
     $('.question_form').ajaxForm(function (data) {
@@ -47,5 +46,7 @@ $(function () {
     function ConfigAjaxForm(data){
 
     }
+
+
 
 })

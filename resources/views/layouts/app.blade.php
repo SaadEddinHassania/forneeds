@@ -62,7 +62,7 @@
 </head>
 <!-- END HEAD -->
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white page-sidebar-closed">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
 @if (!Auth::guest())
     <!-- BEGIN HEADER -->
     <div class="page-header navbar navbar-fixed-top">
@@ -131,11 +131,11 @@
 
                 <!-- BEGIN PAGE BAR -->
 
-                {{--<div class="page-toolbar">--}}
-                    {{--<div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"--}}
-                         {{--data-placement="bottom" data-original-title="Change dashboard date range">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="page-toolbar">
+                    <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
+                         data-placement="bottom" data-original-title="Change dashboard date range">
+                    </div>
+                </div>
 
                 <!-- END PAGE BAR -->
 
