@@ -382,18 +382,14 @@
         $.ajax({
             url: url,
             type: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: new FormData(this),
             async: false,
             cache: false,
             processData: false, // Don't process the files
             contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-
             error: function (data) {
                 var errors = data.responseJSON;
-//                console.log(JSON.parse(errors));
                 var errorString = '<ul class="alert alert-danger">';
                 $.each(errors, function (key, value) {
                     errorString += '<li>' + value + '</li>';
@@ -410,9 +406,7 @@
                 errorString += '<li>' + value + '</li>';
             });
             errorString += '</ul>';
-
             $('#image-message-div').html(errorString);
-        }).always(function (data) {
         });
     });
 </script>
