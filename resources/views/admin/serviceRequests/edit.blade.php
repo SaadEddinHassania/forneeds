@@ -13,7 +13,7 @@
     </div>
     <div class="portlet-body form">
         <div class="row">
-           {!! Form::model($serviceRequests, ['route' => ['serviceRequests.update', $serviceRequests->id], 'method' => 'patch']) !!}
+           {!! Form::model($serviceRequests, ['route' => ['admin.serviceRequests.update', $serviceRequests->id], 'method' => 'patch']) !!}
 
             @include('admin.serviceRequests.fields')
 
