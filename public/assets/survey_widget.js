@@ -25,14 +25,17 @@ $(function () {
     });
 
     $('form.currSurvey').ajaxForm(function (data) {
-        FN_App.currentSurveyId = data.id;   
+        FN_App.currentSurveyId = data.id;
         $('.question-wrapper .curr-survey').val(FN_App.currentSurveyId);
         FN_App.questionWrapper = $(".question-wrapper").clone();
     $('.config-wrapper .curr-survey').val(FN_App.currentSurveyId);
         FN_App.configWrapper = $(".config-wrapper").clone();
+        $('#form_wizard_1').bootstrapWizard('next');
     });
 
     $('.question_form').ajaxForm(function (data) {
+        $('#form_wizard_1').bootstrapWizard('next');
+
         console.log($(this), data.id);
 
         $(this).find('.answer-wrapper').each(
@@ -42,11 +45,19 @@ $(function () {
 
 
     });
+    $('.config_form').ajaxForm(ConfigAjaxForm);
+
 
     function ConfigAjaxForm(data){
-
+        window.location.replace(document.location.origin+"/surveys/"+FN_App.currentSurveyId);
     }
 
 
-
-})
+    $('#form_wizard_1').on('click','.questions-submit',function(){
+        $(".question_form").submit();
+        console.log("a7a");
+    });
+    $('#form_wizard_1').on('click','.configs-submit',function(){
+        $(".config_form").submit();
+    });
+});

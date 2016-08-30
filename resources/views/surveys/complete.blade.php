@@ -22,11 +22,11 @@
                 </div>
             </div>
             <div class="portlet-body form">
-                    <div class="form-wizard">
+                    <div id="form_wizard_1" class="form-wizard">
                         <div class="form-body">
                             <ul class="nav nav-pills nav-justified steps">
                                 <li class="active">
-                                    <a href="#tab1" data-toggle="tab" class="step" aria-expanded="true">
+                                    <a href="#tab1" data-toggle="tab" class="step first" aria-expanded="true">
                                         <span class="number"> 1 </span>
                                         <span class="desc">
                                                                 <i class="fa fa-check"></i> Survey Details </span>
@@ -41,7 +41,8 @@
                                 </li>
 
                                 <li>
-                                    <a href="#tab3" data-toggle="tab" class="step">
+                                    <a href="#tab3" data-toggle="tab" class="step last">
+                                    <a href="#tab3" data-toggle="tab" class="step last">
                                         <span class="number"> 3 </span>
                                         <span class="desc">
                                                                 <i class="fa fa-check"></i> Targeting Mechanism </span>
@@ -69,7 +70,7 @@
 
                                     </div>
 
-                                    <div class="tab-pane" id="tab3">
+                                    <div class="tab-pane " id="tab3">
 
                                         @include("surveys.wizz.tab3")
 
@@ -77,16 +78,14 @@
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-9">
-                                                <a href="javascript:;" class="btn default button-previous disabled"
+                                          {{--      <a href="javascript:;" class="btn default button-previous disabled"
                                                    style="display: none;">
                                                     <i class="fa fa-angle-left"></i> Back </a>
-                                                <a href="javascript:;" class="btn btn-outline green button-next"> Continue
-                                                    <i class="fa fa-angle-right"></i>
-                                                </a>
+
                                                 <a href="javascript:;" class="btn green button-submit" style="display: none;">
                                                     Submit
                                                     <i class="fa fa-check"></i>
-                                                </a>
+                                                </a>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -108,11 +107,11 @@
 @push('scripts')
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="/assets/survey_widget.js" type="text/javascript"></script>
-<script src="/assets/pages/scripts/form-wizard.min.js"></script>
+<script src="/assets/pages/scripts/form-wizard.js"></script>
 <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js" type="text/javascript"></script>
 
 
 

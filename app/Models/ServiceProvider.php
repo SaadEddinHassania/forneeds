@@ -67,9 +67,9 @@ class ServiceProvider extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
         'mission_statement' => 'string',
     ];
+    protected $appends = array('name');
 
     /**
      * Validation rules
@@ -77,14 +77,25 @@ class ServiceProvider extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
-    
-    public function user(){
-        $this->belongsTo('App\User');
+
+    public function getNameAttribute()
+    {
+        if ($this->user()->exists()) {
+            return $this->user()->first()->name;
+        }else{
+            return "No User";
+        }
     }
 
-    public function serviceProviderType(){
+    public function user()
+    {
+      return  $this->belongsTo('App\User');
+    }
+
+    public function serviceProviderType()
+    {
         $this->belongsTo(ServiceProviderType::class);
     }
 }

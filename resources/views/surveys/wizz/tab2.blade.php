@@ -82,6 +82,7 @@
                         </div>
                     </div>
                 </div>
+
                 {!! Form::close() !!}
 
             </div>
@@ -91,7 +92,15 @@
 
                 </div>
             </div>
+            <!-- Submit Field -->
+            <div class="form-group col-sm-12">
+                <div class="form-actions">
+                    <div class="row  col-md-offset-0">
+                        {!! Form::submit('Continue', ['class' => 'btn green  btn-outline questions-submit']) !!}
 
+                    </div>
+                </div>
+            </div>
         </div>
 
 

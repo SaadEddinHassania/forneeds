@@ -4,7 +4,7 @@ Login page
 ***/
 /* bg color */
 .login {
-  background-color: #5c97bd; }
+  background-color: #282850; }
   .login a {
     color: #edf4f8 !important; }
 
@@ -16,7 +16,7 @@ Login page
 
 .login .content {
   width: 400px;
-  margin: 40px auto 40px auto; }
+  margin: 0px auto 40px auto; }
 
 .login .form-title {
   margin-bottom: 20px; }
