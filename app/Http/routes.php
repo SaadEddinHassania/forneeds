@@ -11,10 +11,6 @@
   |
  */
 
-Route::get('/test', function () {
-    return view('user_profile');
-});
-
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
@@ -29,8 +25,6 @@ Route::get('password/reset', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-Route::get('/home', 'HomeController@index');
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder');
 
@@ -52,7 +46,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 
 Route::resource('users', 'UserController');
 
@@ -124,7 +118,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:web,admin'], function () {
+
     Route::resource('users', 'Admin\UserController');
 
     Route::resource('sectors', 'Admin\SectorController');
@@ -163,6 +158,11 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('serviceRequests', 'Admin\ServiceRequestsController');
     Route::resource('configs', 'ConfigController');
+
+    Route::get('dashboard', 'Admin\DashboardController@getDashboard');
+    Route::get('home', 'Admin\DashboardController@getDashboard');
+    Route::get('/', 'Admin\DashboardController@getDashboard');
+
 });
 
 

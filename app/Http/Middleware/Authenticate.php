@@ -15,7 +15,7 @@ class Authenticate
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next, $guard = null,$role = null)
     {
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
@@ -25,6 +25,14 @@ class Authenticate
             }
         }
 
-        return $next($request);
+        if($role == 'admin' && !Auth::user()->is_admin){
+            if ($request->ajax() || $request->wantsJson()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return response('Unauthorized.', 401);
+            }
+        }else {
+            return $next($request);
+        }
     }
 }

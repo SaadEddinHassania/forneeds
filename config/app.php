@@ -170,6 +170,9 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
+
     ],
 
     /*
@@ -222,6 +225,8 @@ return [
         'Flash'     => Laracasts\Flash\Flash::class,
 
         'Image' => Intervention\Image\Facades\Image::class,
+        'Tracker' => PragmaRX\Tracker\Vendor\Laravel\Facade::class,
+
     ],
 
 ];
