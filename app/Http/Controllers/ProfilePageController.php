@@ -110,47 +110,62 @@ class ProfilePageController extends Controller
     {
         $user = Auth::user();
 
-        $rules =  [
-            'name' => 'required',
-            'email' => 'required|unique:users,email,' . $user->id,
-            'serviceProvider.mission_statement' => 'required',
-            'serviceProvider.service_provider_type_id' => 'required|exists:service_provider_types,id',
-            'serviceProvider.sector_id' => 'required|exists:sectors,id'
-        ];
+        if ($user->isServiceProvider()) {
+            $rules = [
+                'name' => 'required',
+                'email' => 'required|unique:users,email,' . $user->id,
+                'serviceProvider.mission_statement' => 'required',
+                'serviceProvider.service_provider_type_id' => 'required|exists:service_provider_types,id',
+                'serviceProvider.sector_id' => 'required|exists:sectors,id'
+            ];
 
-        $validator = Validator::make($request->input(), $rules);
+            $validator = Validator::make($request->input(), $rules);
+            if ($validator->fails()) {
+                return Response::json($validator->errors()->all(), 400); // 400 being the HTTP code for an invalid request.
+            }
+            $sv = $user->serviceProvider;
+            $sv->update($request->input('serviceProvider'));
+            $sv->save();
 
-// Validate the input and return correct response
-        if ($validator->fails())
-        {
-            return Response::json( $validator->errors()->all(), 400); // 400 being the HTTP code for an invalid request.
+            $user->update($request->all());
+            $user->save();
+
+        } else if ($user->isCitizen()) {
+            $rules = [
+                'name' => 'required',
+                'email' => 'required|unique:users,email,' . $user->id,
+            ];
+
+            $validator = Validator::make($request->input(), $rules);
+            if ($validator->fails()) {
+                return Response::json($validator->errors()->all(), 400); // 400 being the HTTP code for an invalid request.
+            }
+            $citizen = $user->citizen;
+            $citizen->update($request->input('citizen'));
+            $citizen->save();
+
+            $user->update($request->all());
+            $user->save();
         }
-//        return Response::json(array('success' => true), 200);
-
-        //   dd(array_add($request->all(), 'user_id', $user->id));
-        $sv = $user->serviceProvider;
-        $sv->update($request->input('serviceProvider'));
-        $sv->save();
-//        $serviceProvider->save();
 
         Session::flash('flash_message', 'Profile updated successfully');
 
         return ['flash_message' => 'Profile updated successfully'];
+
     }
 
     public function postImage(Request $request)
     {
         $user = Auth::user();
 
-        $rules =  [
+        $rules = [
             'file' => 'image',
         ];
 
         $validator = Validator::make($request->input(), $rules);
 
-        if ($validator->fails())
-        {
-            return Response::json( $validator->errors()->all(), 400); // 400 being the HTTP code for an invalid request.
+        if ($validator->fails()) {
+            return Response::json($validator->errors()->all(), 400); // 400 being the HTTP code for an invalid request.
         }
 //        return Response::json(array('success' => true), 200);
 
@@ -160,8 +175,8 @@ class ProfilePageController extends Controller
 
         if ($request->hasFile('file')) {
             if ($request->file('file')->isValid()) {
-                $destinationPath = storage_path('assets\images\\'. $user->id.'\\');
-                $fileName =  uniqid(). '.' . $request->file('file')->getClientOriginalExtension();
+                $destinationPath = storage_path('assets\images\\' . $user->id . '\\');
+                $fileName = uniqid() . '.' . $request->file('file')->getClientOriginalExtension();
                 $request->file('file')->move($destinationPath, $fileName); // uploading file to given path
                 $user->avatar = $fileName;
                 $user->save();
@@ -178,13 +193,12 @@ class ProfilePageController extends Controller
     public function getImage(Request $request)
     {
         $user = Auth::user();
-        if($user->avatar != null)
-            $img = Image::make(storage_path('assets\images\\'. $user->id.'\\' . $user->avatar))->resize(150, 150);
+        if ($user->avatar != null)
+            $img = Image::make(storage_path('assets\images\\' . $user->id . '\\' . $user->avatar))->resize(150, 150);
         else
             $img = Image::make("http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image")->resize(150, 150);
 
 
         return $img->response('jpg');
-//        return Image::make(storage_path('assets\images\\' . $user->avatar));
     }
 }

@@ -65,7 +65,7 @@
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name"> {{$user->name}}</div>
-                        <div class="profile-usertitle-job"> Service Provider</div>
+                        <div class="profile-usertitle-job"> Citizen </div>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
@@ -186,21 +186,32 @@
                                             {!! Form::email('email', null, ['class' => 'form-control']) !!}
                                         </div>
 
-                                        <div class="form-group {{ $errors->has('mission_statement') ? 'has-error' : ''}}">
-                                            {!! Form::label('mission_statement', 'Mission Statement:') !!}
+                                        <div class="form-group {{ $errors->has('national_id') ? 'has-error' : ''}}">
+                                            {!! Form::label('national_id', 'National Id:') !!}
                                             {{--<input type="text" class="form-control" name="mission_statement"--}}
                                             {{--value="{!! old('mission_statement') !!}"--}}
                                             {{--placeholder="Mission Statement">--}}
-                                            {!! Form::text('serviceProvider[mission_statement]', null, ['class' => 'form-control','placeholder'=>'Mission Statement']) !!}
+                                            {!! Form::text('citizen[national_id]', null, ['class' => 'form-control','placeholder'=>'National Id']) !!}
                                         </div>
 
-                                        <div class="form-group {{ $errors->has('service_provider_type_id') ? 'has-error' : ''}}">
-                                            {!! Form::label('service_provider_type_id', 'Type:') !!}
-                                            {{Form::select('serviceProvider[service_provider_type_id]', $types,$user->serviceProvider->service_provider_type_id,['class'=>'form-control'])}}
-                                        </div>
-                                        <div class="form-group {{ $errors->has('sector_id') ? 'has-error' : ''}}">
-                                            {!! Form::label('sector_id', 'Sector:') !!}
-                                            {{Form::select('serviceProvider[sector_id]', $sectors,$user->serviceProvider->sector_id,['class'=>'form-control'])}}
+                                        <div class="form-group {{ $errors->has('gender') ? 'has-error' : ''}}">
+                                            {!! Form::label('gender', 'Gender:') !!}
+                                            {{Form::select('citizen[gender]', ['male', 'female'],$user->citizen->gender,['class'=>'form-control'])}}                                        </div>
+                                        <div class="form-group ">
+                                            {{--<label class="control-label col-md-3">Disable Past Dates</label>--}}
+                                            {{--<div class="col-md-3">--}}
+                                            {!! Form::label('dob', 'DOB:') !!}
+                                            <div class="input-group date date-picker col-sm-6" data-date-format="yyyy-mm-dd"
+                                                 data-date-start-date="+0d">
+                                                {{--<input type="text" class="form-control" name="dob" readonly>--}}
+                                                {!! Form::text('citizen[dob]', null, ['class' => 'form-control','placeholder'=>'DOB','readonly']) !!}
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </span>
+                                                {{--</div>--}}
+                                            </div>
                                         </div>
                                         <div class="margiv-top-10">
                                             <input type="submit" value="Save Changes" class="btn green"/>
@@ -238,8 +249,8 @@
                                                         <span class="fileinput-new"> Select image </span>
                                                         <span class="fileinput-exists"> Change </span>
                                                         <input type="file" name="file"> </span>
-                                                            <a href="javascript:;" class="btn default fileinput-exists"
-                                                               data-dismiss="fileinput"> Remove </a>
+                                                        <a href="javascript:;" class="btn default fileinput-exists"
+                                                           data-dismiss="fileinput"> Remove </a>
                                                     </div>
                                                 </div>
                                                 <div class="clearfix margin-top-10">
@@ -254,32 +265,32 @@
                                         </form>
 
                                         {{--<div class="row">--}}
-                                            {{--<div class="col-md-12">--}}
-                                                {{--<div class="m-heading-1 border-green m-bordered">--}}
-                                                    {{--<h3>Dropzone</h3>--}}
-                                                    {{--<p> DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews. It’s lightweight, doesn’t depend on any other library (like jQuery) and is highly customizable. </p>--}}
-                                                    {{--<p> For more info please check out--}}
-                                                        {{--<a class="btn red btn-outline" href="http://www.dropzonejs.com/" target="_blank">the official documentation</a>--}}
-                                                    {{--</p>--}}
-                                                    {{--<p>--}}
-                                                        {{--<span class="label label-danger">NOTE:</span> &nbsp; This plugins works only on Latest Chrome, Firefox, Safari, Opera & Internet Explorer 10. </p>--}}
-                                                {{--</div>--}}
-                                                {{--{!! Form::open(['url' => url('profile_image'),'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone','style'=>"width: 500px; margin-top: 50px;"]) !!}--}}
+                                        {{--<div class="col-md-12">--}}
+                                        {{--<div class="m-heading-1 border-green m-bordered">--}}
+                                        {{--<h3>Dropzone</h3>--}}
+                                        {{--<p> DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews. It’s lightweight, doesn’t depend on any other library (like jQuery) and is highly customizable. </p>--}}
+                                        {{--<p> For more info please check out--}}
+                                        {{--<a class="btn red btn-outline" href="http://www.dropzonejs.com/" target="_blank">the official documentation</a>--}}
+                                        {{--</p>--}}
+                                        {{--<p>--}}
+                                        {{--<span class="label label-danger">NOTE:</span> &nbsp; This plugins works only on Latest Chrome, Firefox, Safari, Opera & Internet Explorer 10. </p>--}}
+                                        {{--</div>--}}
+                                        {{--{!! Form::open(['url' => url('profile_image'),'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone','style'=>"width: 500px; margin-top: 50px;"]) !!}--}}
 
-                                                {{--<div class="dz-message">--}}
+                                        {{--<div class="dz-message">--}}
 
-                                                {{--</div>--}}
+                                        {{--</div>--}}
 
-                                                {{--<div class="fallback">--}}
-                                                    {{--<input name="file" type="file" multiple />--}}
-                                                {{--</div>--}}
+                                        {{--<div class="fallback">--}}
+                                        {{--<input name="file" type="file" multiple />--}}
+                                        {{--</div>--}}
 
-                                                {{--<div class="dropzone-previews" id="dropzonePreview"></div>--}}
+                                        {{--<div class="dropzone-previews" id="dropzonePreview"></div>--}}
 
-                                                {{--<h4 style="text-align: center;color:#428bca;">Drop images in this area  <span class="glyphicon glyphicon-hand-down"></span></h4>--}}
+                                        {{--<h4 style="text-align: center;color:#428bca;">Drop images in this area  <span class="glyphicon glyphicon-hand-down"></span></h4>--}}
 
-                                                {{--{!! Form::close() !!}--}}
-                                            {{--</div>--}}
+                                        {{--{!! Form::close() !!}--}}
+                                        {{--</div>--}}
                                         {{--</div>--}}
                                     </div>
                                     <!-- END CHANGE AVATAR TAB -->
@@ -337,6 +348,10 @@
 
 <script src="/assets/pages/scripts/profile.min.js" type="text/javascript"></script>
 <script src="/assets/pages/scripts/timeline.min.js" type="text/javascript"></script>
+
+<script src="/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+        type="text/javascript"></script>
+<script src="/assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
 
 <script>
     $('#account-form').on('submit', function (e) {
@@ -419,6 +434,7 @@
 @endpush
 
 @push('styles')
-
+<link href="/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet"
+      type="text/css"/>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
