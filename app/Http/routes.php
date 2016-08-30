@@ -14,6 +14,12 @@
 Route::get('/test', function () {
     return view('user_profile');
 });
+Route::get('/', function () {
+    return view('home');
+});
+Route::get('/home', function () {
+    return view('home');
+});
 
 
 Route::get('login', 'Auth\AuthController@getLogin');
