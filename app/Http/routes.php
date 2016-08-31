@@ -11,6 +11,9 @@
   |
  */
 
+Route::get('/',"HomeController@index");
+Route::get('/home',"HomeController@index");
+
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
@@ -46,7 +49,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-//Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 Route::resource('users', 'UserController');
 

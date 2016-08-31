@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>Metronic | User Login 2</title>
+    <title>Forneeds | User Login </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
@@ -36,7 +36,7 @@
     <!-- END THEME GLOBAL STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link href="/assets/pages/css/login-2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/pages/css/login-2.css" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <!-- END THEME LAYOUT STYLES -->
@@ -50,14 +50,14 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
-        <img src="/assets/pages/img/logo-big-white.png" style="height: 17px;" alt=""/> </a>
+        <img src="/assets/pages/img/logo.png" style="height: 146px;" alt=""/> </a>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">
     @yield('content')
 </div>
-<div class="copyright hide"> 2014 © Metronic. Admin Dashboard Template.</div>
+<div class="copyright hide"> 2014 © Forneeds</div>
 <!-- END LOGIN -->
 <!--[if lt IE 9]>
 <script src="/assets/global/plugins/respond.min.js"></script>

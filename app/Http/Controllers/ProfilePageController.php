@@ -60,7 +60,7 @@ class ProfilePageController extends Controller
         if ($user->isServiceProvider()) {
             return view('profiles.serviceProviders.index', [
                 "user" => $user,
-                'serviceProviders' => $this->serviceProviderRepository->all()->lists('name', 'id')->toarray(),
+                'projects' => $this->projectRepository->findByField('service_provider_id',$user->serviceProvider()->first()->id,['id','name'])->lists('name', 'id')->toarray(),
                 "user_attrs" => $this->userRepository->getFieldsSearchable()
             ]);
         } else if ($user->isCitizen()) {
@@ -158,14 +158,15 @@ class ProfilePageController extends Controller
     {
         $user = Auth::user();
 
-        $rules = [
+        $rules =  [
             'file' => 'image',
         ];
 
         $validator = Validator::make($request->input(), $rules);
 
-        if ($validator->fails()) {
-            return Response::json($validator->errors()->all(), 400); // 400 being the HTTP code for an invalid request.
+        if ($validator->fails())
+        {
+            return Response::json( $validator->errors()->all(), 400); // 400 being the HTTP code for an invalid request.
         }
 //        return Response::json(array('success' => true), 200);
 
@@ -175,8 +176,8 @@ class ProfilePageController extends Controller
 
         if ($request->hasFile('file')) {
             if ($request->file('file')->isValid()) {
-                $destinationPath = storage_path('assets\images\\' . $user->id . '\\');
-                $fileName = uniqid() . '.' . $request->file('file')->getClientOriginalExtension();
+                $destinationPath = storage_path('assets\images\\'. $user->id.'\\');
+                $fileName =  uniqid(). '.' . $request->file('file')->getClientOriginalExtension();
                 $request->file('file')->move($destinationPath, $fileName); // uploading file to given path
                 $user->avatar = $fileName;
                 $user->save();
@@ -193,12 +194,13 @@ class ProfilePageController extends Controller
     public function getImage(Request $request)
     {
         $user = Auth::user();
-        if ($user->avatar != null)
-            $img = Image::make(storage_path('assets\images\\' . $user->id . '\\' . $user->avatar))->resize(150, 150);
+        if($user->avatar != null)
+            $img = Image::make(storage_path('assets\images\\'. $user->id.'\\' . $user->avatar))->resize(150, 150);
         else
             $img = Image::make("http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image")->resize(150, 150);
 
 
         return $img->response('jpg');
+//        return Image::make(storage_path('assets\images\\' . $user->avatar));
     }
 }

@@ -6,6 +6,7 @@
 @endpush
 @section('content')
 
+
     <!-- END THEME PANEL -->
     <!-- BEGIN PAGE BAR -->
     <div class="page-bar">
@@ -82,7 +83,7 @@
                                 <a href="{!! url('/profile') !!}">
                                     <i class="icon-home"></i> Profile </a>
                             </li>
-                            <li class="{!! Request::is('profile*') ? 'active' : '' !!}">
+                            <li class="{!! Request::is('settings*') ? 'active' : '' !!}">
                                 <a href="{!! url('/settings') !!}">
                                     <i class="icon-settings"></i> Account Settings </a>
                             </li>

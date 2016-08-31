@@ -65,12 +65,12 @@
                     <div class="portlet light profile-sidebar-portlet ">
                         <!-- SIDEBAR USERPIC -->
                         <div class="profile-userpic">
-                            <img src="{{url('/profile_image')}}" class="img-responsive" alt=""></div>
+                            <img src="../assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> {{$user->name}}</div>
-                            <div class="profile-usertitle-job"> Service Provider</div>
+                            <div class="profile-usertitle-name"> Marcus Doe </div>
+                            <div class="profile-usertitle-job"> Developer </div>
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
@@ -82,13 +82,17 @@
                         <!-- SIDEBAR MENU -->
                         <div class="profile-usermenu">
                             <ul class="nav">
-                                <li class="{!! Request::is('profile*') ? 'active' : '' !!}">
-                                    <a href="{!! url('/profile') !!}">
-                                        <i class="icon-home"></i> Profile </a>
+                                <li class="active">
+                                    <a href="page_user_profile_1.html">
+                                        <i class="icon-home"></i> Overview </a>
                                 </li>
-                                <li class="{!! Request::is('profile*') ? 'active' : '' !!}">
-                                    <a href="{!! url('/settings') !!}">
+                                <li>
+                                    <a href="page_user_profile_1_account.html">
                                         <i class="icon-settings"></i> Account Settings </a>
+                                </li>
+                                <li>
+                                    <a href="page_user_profile_1_help.html">
+                                        <i class="icon-info"></i> Help </a>
                                 </li>
                             </ul>
                         </div>
@@ -148,19 +152,16 @@
                                     <div class="actions">
                                         <div class="btn-group btn-group-devided" data-toggle="buttons">
                                             <label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
-                                                <input type="radio" name="options" class="toggle"
-                                                       id="option1">Today</label>
+                                                <input type="radio" name="options" class="toggle" id="option1">Today</label>
                                             <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-                                                <input type="radio" name="options" class="toggle"
-                                                       id="option2">Week</label>
+                                                <input type="radio" name="options" class="toggle" id="option2">Week</label>
                                             <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-                                                <input type="radio" name="options" class="toggle"
-                                                       id="option2">Month</label>
+                                                <input type="radio" name="options" class="toggle" id="option2">Month</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    @include("surveys.complete")
+                                  @include("surveys.complete")
                                 </div>
                             </div>
                             <!-- END PORTLET -->
@@ -298,7 +299,7 @@
 
 @endsection
 @push('styles')
-<link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
 @endpush
 
 @push('scripts')
@@ -309,6 +310,7 @@
 <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+
 
 
 <script src="/assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
