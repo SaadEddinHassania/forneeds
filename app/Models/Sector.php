@@ -27,7 +27,7 @@ class Sector extends Model
     use SoftDeletes;
 
     public $table = 'sectors';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -57,6 +57,11 @@ class Sector extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
+
+    public function ServiceProviderTypes()
+    {
+        return $this->hasMany(ServiceProviderType::class);
+    }
 }

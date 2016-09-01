@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\App;
 
 /**
  * @SWG\Definition(
@@ -33,7 +34,7 @@ class ServiceProviderType extends Model
     use SoftDeletes;
 
     public $table = 'service_provider_types';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -65,6 +66,11 @@ class ServiceProviderType extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
+
+    public function sectors()
+    {
+        return $this->belongsTo(Sector::class);
+    }
 }
