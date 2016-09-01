@@ -55,7 +55,7 @@ class District extends Model
     use SoftDeletes;
 
     public $table = 'districts';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -95,6 +95,14 @@ class District extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
+
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+    public function streets()
+    {
+        return $this->hasMany(Street::class);
+    }
 }

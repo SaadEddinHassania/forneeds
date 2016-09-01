@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\Models\ServiceRequests;
+use App\Models\ServiceRequest;
 
 class CreateServiceRequestsRequest extends Request
 {
@@ -25,6 +25,6 @@ class CreateServiceRequestsRequest extends Request
      */
     public function rules()
     {
-        return ServiceRequests::$rules;
+        return ServiceRequest::$rules;
     }
 }

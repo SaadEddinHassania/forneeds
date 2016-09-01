@@ -87,4 +87,8 @@ class Area extends Model
     public static $rules = [
         
     ];
+
+    public function cities(){
+        return $this->hasMany(City::class);
+    }
 }

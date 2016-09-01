@@ -84,4 +84,8 @@ class Survey extends Model
     public static $rules = [
         
     ];
+
+    public function Config(){
+        return $this->belongsToMany(Config::class);
+    }
 }

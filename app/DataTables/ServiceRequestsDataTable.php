@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\ServiceRequests;
+use App\Models\ServiceRequest;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 
@@ -17,7 +17,7 @@ class ServiceRequestsDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "serviceRequests";
+                $model = "admin.serviceRequests";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model', 'id'));
             })
@@ -31,7 +31,7 @@ class ServiceRequestsDataTable extends DataTable
      */
     public function query()
     {
-        $serviceRequests = ServiceRequests::query();
+        $serviceRequests = ServiceRequest::query();
 
         return $this->applyScopes($serviceRequests);
     }
@@ -76,7 +76,7 @@ class ServiceRequestsDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
+            'citizen_id' => ['name' => 'citizen_id', 'data' => 'citizen_id'],
             'service_type_id' => ['name' => 'service_type_id', 'data' => 'service_type_id'],
             'location_meta_id' => ['name' => 'location_meta_id', 'data' => 'location_meta_id'],
             'state' => ['name' => 'state', 'data' => 'state'],

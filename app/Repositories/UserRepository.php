@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
+use App\User;
 use InfyOm\Generator\Common\BaseRepository;
 
 class UserRepository extends BaseRepository
@@ -11,7 +11,7 @@ class UserRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        
+        'gender','bod','location_meta_id'
     ];
 
     /**

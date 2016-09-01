@@ -60,8 +60,8 @@ class Sector extends Model
 
     ];
 
-    public function ServiceProviderTypes()
+    public function serviceTypes()
     {
-        return $this->hasMany(ServiceProviderType::class);
+        return $this->hasMany(ServiceType::class);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use App\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+
 
 /**
  * @SWG\Definition(
@@ -49,22 +51,13 @@ class ServiceProvider extends Model
 {
     use SoftDeletes;
 
-    public $table = 'service_providers';
-    
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-
-
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
-        'name',
         'mission_statement',
-        'user_id',
+//        'user_id',
         'service_provider_type_id',
         'sector_id',
-        'deleted_at'
     ];
 
     /**
@@ -74,13 +67,9 @@ class ServiceProvider extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
         'mission_statement' => 'string',
-        'user_id' => 'integer',
-        'service_provider_type_id' => 'integer',
-        'sector_id' => 'integer',
-        'deleted_at' => 'datetime'
     ];
+    protected $appends = array('name');
 
     /**
      * Validation rules
@@ -88,6 +77,25 @@ class ServiceProvider extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
+
+    public function getNameAttribute()
+    {
+        if ($this->user()->exists()) {
+            return $this->user()->first()->name;
+        }else{
+            return "No User";
+        }
+    }
+
+    public function user()
+    {
+      return  $this->belongsTo('App\User');
+    }
+
+    public function serviceProviderType()
+    {
+        $this->belongsTo(ServiceProviderType::class);
+    }
 }

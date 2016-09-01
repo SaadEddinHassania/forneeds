@@ -2,8 +2,8 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
 use App\Repositories\UserRepository;
+use App\User;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 use Yajra\Datatables\Datatables;
@@ -31,7 +31,7 @@ class UserDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function ($row) {
-                $model = "users";
+                $model = "admin.users";
                 $id = $row->id;
                 return view('layouts.datatables_actions', compact('model','id'));
             })
@@ -91,9 +91,7 @@ class UserDataTable extends DataTable
         return [
             'name' => ['name' => 'name', 'data' => 'name'],
             'email' => ['name' => 'email', 'data' => 'email'],
-            'password' => ['name' => 'password', 'data' => 'password'],
             'deleted_at' => ['name' => 'deleted_at', 'data' => 'deleted_at'],
-            'remember_token' => ['name' => 'remember_token', 'data' => 'remember_token'],
             'created_at' => ['name' => 'created_at', 'data' => 'created_at'],
             'updated_at' => ['name' => 'updated_at', 'data' => 'updated_at']
         ];

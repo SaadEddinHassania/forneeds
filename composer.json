@@ -14,7 +14,10 @@
         "infyomlabs/generator-builder": "dev-master",
         "InfyOmLabs/swagger-generator": "dev-master",
         "jlapp/swaggervel": "dev-master",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "intervention/image": "^2.3",
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "pragmarx/tracker": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -22,7 +25,8 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "laracasts/generators": "^1.1"
+        "laracasts/generators": "^1.1",
+        "intervention/image": "^2.3"
     },
     "autoload": {
         "classmap": [

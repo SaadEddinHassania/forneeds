@@ -11,9 +11,8 @@
   |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',"HomeController@index");
+Route::get('/home',"HomeController@index");
 
 
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -29,8 +28,6 @@ Route::get('password/reset', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-Route::get('/home', 'HomeController@index');
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder');
 
@@ -79,6 +76,21 @@ Route::get('location/cities/{area_id}', "AjaxApiController@cities");
 Route::get('location/districts/{city_id}', "AjaxApiController@districts");
 Route::get('location/streets/{district_id}', "AjaxApiController@streets");
 Route::get('listings/service_types/{sector_id}', "AjaxApiController@serviceTypes");
+Route::get('listings/projects/{service_provider_id}', "AjaxApiController@projects");
+Route::get('listings/surveys/{project_id}', "AjaxApiController@surveys");
+Route::get('listings/questions/{survey_id}', "AjaxApiController@questions");
+
+/*
+  |--------------------------------------------------------------------------
+  | Survey Gateway API routes
+  |--------------------------------------------------------------------------
+ */
+Route::get('gateways/surveys/create', "Surveys\\SurveysController@create");
+Route::post('gateways/surveys/store/survey', "Surveys\\SurveysController@storeSurvey")->name('storeSurvey');
+Route::post('gateways/surveys/store/questions', "Surveys\\SurveysController@storeQuestions")->name('storeQuestions');
+Route::post('gateways/surveys/store/configs', "Surveys\\SurveysController@storeConfig")->name('storeConfig');
+Route::post('gateways/projects/store/', "Projects\\ProjectsController@store")->name('storeProject');
+Route::post('gateways/service_requests/store', "ServiceRequests\\ServiceRequestsController@store")->name('storeServiceRequest');
 
 /*
   |--------------------------------------------------------------------------
@@ -93,42 +105,69 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
 });
 
 
-Route::resource('users', 'UserController');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::resource('sectors', 'SectorController');
+    Route::group(['middleware' => 'notCompleted'], function () {
+        Route::get('complete_registration', 'Auth\CompleteRegistrationController@getCompleteRegistration');
+        Route::post('complete_citizen_registration', 'Auth\CompleteRegistrationController@postCompleteCitizenRegistration');
+        Route::post('complete_service_provider_registration', 'Auth\CompleteRegistrationController@postCompleteServiceProviderRegistration');
+    });
+    Route::group(['middleware' => 'completed'], function () {
 
-Route::resource('serviceTypes', 'ServiceTypeController');
+        Route::get('profile', 'ProfilePageController@getProfile');
+        Route::get('settings', 'ProfilePageController@getSettings');
+        Route::post('update_profile', 'ProfilePageController@postUpdate');
+        Route::get('profile_image', 'ProfilePageController@getImage');
+        Route::post('profile_image', 'ProfilePageController@postImage');
+    });
+});
 
-Route::resource('serviceProviders', 'ServiceProviderController');
 
-Route::resource('serviceProviderTypes', 'ServiceProviderTypeController');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:web,admin'], function () {
 
-Route::resource('locationMetas', 'LocationMetaController');
+    Route::resource('users', 'Admin\UserController');
 
-Route::resource('areas', 'AreaController');
+    Route::resource('sectors', 'Admin\SectorController');
 
-Route::resource('cities', 'CityController');
+    Route::resource('serviceTypes', 'Admin\ServiceTypeController');
 
-Route::resource('districts', 'DistrictController');
+    Route::resource('serviceProviders', 'Admin\ServiceProviderController');
 
-Route::resource('streets', 'StreetController');
+    Route::resource('serviceProviderTypes', 'Admin\ServiceProviderTypeController');
 
-Route::resource('services', 'ServiceController');
+    Route::resource('locationMetas', 'Admin\LocationMetaController');
 
-Route::resource('marginalizedSituations', 'MarginalizedSituationController');
+    Route::resource('areas', 'Admin\AreaController');
 
-Route::resource('projects', 'ProjectController');
+    Route::resource('cities', 'Admin\CityController');
 
-Route::resource('surveyMetas', 'SurveyMetasController');
+    Route::resource('districts', 'Admin\DistrictController');
 
-Route::resource('surveys', 'SurveyController');
+    Route::resource('streets', 'Admin\StreetController');
 
-Route::resource('questions', 'QuestionController');
+    Route::resource('services', 'Admin\ServiceController');
 
-Route::resource('answers', 'AnswerController');
+    Route::resource('marginalizedSituations', 'Admin\MarginalizedSituationController');
 
-Route::resource('services', 'ServiceController');
+    Route::resource('projects', 'Admin\ProjectController');
 
-Route::resource('serviceRequests', 'ServiceRequestsController');
+    Route::resource('surveyMetas', 'Admin\SurveyMetasController');
+
+    Route::resource('surveys', 'Admin\SurveyController');
+
+    Route::resource('questions', 'Admin\QuestionController');
+
+    Route::resource('answers', 'Admin\AnswerController');
+
+    Route::resource('services', 'Admin\ServiceController');
+
+    Route::resource('serviceRequests', 'Admin\ServiceRequestsController');
+    Route::resource('configs', 'ConfigController');
+
+    Route::get('dashboard', 'Admin\DashboardController@getDashboard');
+    Route::get('home', 'Admin\DashboardController@getDashboard');
+    Route::get('/', 'Admin\DashboardController@getDashboard');
+
+});
 
 
