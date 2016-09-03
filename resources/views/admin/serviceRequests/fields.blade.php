@@ -1,7 +1,7 @@
-<!-- User Id Field -->
+<!-- Citizen Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::select('user_id', array(null=>"Please select user") + $users ,null, ['class' => 'form-control']) !!}
+    {!! Form::label('citizen_id', 'Citizen Id:') !!}
+    {!! Form::select('citizen_id', array(null=>"Please select user") + $users ,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Sector Id Field -->

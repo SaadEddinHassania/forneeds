@@ -25,7 +25,7 @@ class Authenticate
             }
         }
 
-        if($role == 'admin' && !Auth::user()->is_admin){
+            if($role == 'admin' && !Auth::user()->is_admin){
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {

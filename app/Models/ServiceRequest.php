@@ -52,7 +52,7 @@ class ServiceRequest extends Model
 
 
     public $fillable = [
-        'user_id',
+        'citizen_id',
         'service_type_id',
         'location_meta_id',
         'state',
@@ -66,7 +66,7 @@ class ServiceRequest extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'user_id' => 'integer',
+        'citizen_id' => 'integer',
         'service_type_id' => 'integer',
         'location_meta_id' => 'integer',
         'state' => 'boolean',

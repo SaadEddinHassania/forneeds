@@ -42,11 +42,6 @@ class User extends Authenticatable
             return true;
     }
 
-    public function isAdmin()
-    {
-        return $this->is_admin;
-    }
-
     /**
      * The attributes that should be casted to native types.
      *
@@ -56,6 +51,7 @@ class User extends Authenticatable
         'id' => 'integer',
         'name' => 'string',
         'email' => 'email',
+        'is_admin' =>'boolean',
     ];
 
     /**

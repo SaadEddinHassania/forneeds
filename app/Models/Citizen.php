@@ -41,7 +41,7 @@ class Citizen extends Model
 {
 
     public $fillable = [
-        'national_id','gender','dob'
+        'national_id', 'gender', 'dob'
     ];
 
     /**
@@ -60,11 +60,25 @@ class Citizen extends Model
     public static $rules = [
     ];
 
-    public function user(){
+    protected $appends = array('name');
+
+
+    public function getNameAttribute()
+    {
+        if ($this->user()->exists()) {
+            return $this->user()->first()->name;
+        } else {
+            return "No User";
+        }
+    }
+
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 
-    public function servicesRequests(){
-       return $this->hasMany('App\Models\ServiceRequest');
+    public function servicesRequests()
+    {
+        return $this->hasMany('App\Models\ServiceRequest');
     }
 }

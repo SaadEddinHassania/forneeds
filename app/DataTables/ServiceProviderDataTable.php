@@ -31,7 +31,7 @@ class ServiceProviderDataTable extends DataTable
      */
     public function query()
     {
-        $serviceProviders = ServiceProvider::query();
+        $serviceProviders = ServiceProvider::with('user');
 
         return $this->applyScopes($serviceProviders);
     }
@@ -76,7 +76,7 @@ class ServiceProviderDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'name' => ['name' => 'name', 'data' => 'name'],
+            'user.name' => ['title'=>'Name','name' => 'user.name', 'data' => 'user.name'],
             'mission_statement' => ['name' => 'mission_statement', 'data' => 'mission_statement'],
             'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
             'service_provider_type_id' => ['name' => 'service_provider_type_id', 'data' => 'service_provider_type_id'],
