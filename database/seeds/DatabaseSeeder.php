@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SectorsSeeder::class);
         $this->call(ServiceProviderTypesSeeder::class);
         $this->call(MarginalizedSituationsSeeder::class);
+        $this->call(BeneficiariesSeeder::class);
         $this->call(AreasSeeder::class);
     }
 }

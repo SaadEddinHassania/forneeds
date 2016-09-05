@@ -180,3 +180,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web,admin'], function (
 });
 
 
+
+
+Route::get('admin/beneficiaries', ['as'=> 'admin.beneficiaries.index', 'uses' => 'BeneficiariesController@index']);
+Route::post('admin/beneficiaries', ['as'=> 'admin.beneficiaries.store', 'uses' => 'BeneficiariesController@store']);
+Route::get('admin/beneficiaries/create', ['as'=> 'admin.beneficiaries.create', 'uses' => 'BeneficiariesController@create']);
+Route::put('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.update', 'uses' => 'BeneficiariesController@update']);
+Route::patch('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.update', 'uses' => 'BeneficiariesController@update']);
+Route::delete('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.destroy', 'uses' => 'BeneficiariesController@destroy']);
+Route::get('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.show', 'uses' => 'BeneficiariesController@show']);
+Route::get('admin/beneficiaries/{beneficiaries}/edit', ['as'=> 'admin.beneficiaries.edit', 'uses' => 'BeneficiariesController@edit']);

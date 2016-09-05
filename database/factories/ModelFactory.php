@@ -65,3 +65,9 @@ $factory->define(App\Models\Street::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Beneficiary::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->jobTitle,
+    ];
+});
+

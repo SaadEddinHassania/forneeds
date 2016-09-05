@@ -29,6 +29,13 @@
     <span  class="title">ServiceProviders</span></a>
 </li>
 
+<li class="{!! Request::is('beneficiaries*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('admin.beneficiaries.index') !!}">
+        <i class="fa fa-edit"></i>
+        <span  class="title">Beneficiaries</span></a>
+</li>
+
+
 <li class="{!! Request::is('admin/serviceProviderTypes*') ? 'active' : '' !!}">
     <a class="nav-link nav-toggle" href="{!! route('admin.serviceProviderTypes.index') !!}">
     <i class="fa fa-edit"></i>
