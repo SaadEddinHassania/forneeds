@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\ServiceRequestsDataTable;
 use App\Http\Requests\CreateServiceRequestsRequest;
 use App\Http\Requests\UpdateServiceRequestsRequest;
+use App\Models\District;
 use App\Models\Street;
 use App\Repositories\CitizenRepository;
 use App\Repositories\ServiceRequestsRepository;
@@ -73,7 +74,7 @@ class ServiceRequestsController extends AppBaseController
     public function store(CreateServiceRequestsRequest $request)
     {
         $input = $request->all();
-        $st = Street::find($input['street_id']);
+        $st = District::find($input['district_id']);
         $input['location_meta_id']=$st->location_meta_id;
         $serviceRequests = $this->serviceRequestsRepository->create($input);
 

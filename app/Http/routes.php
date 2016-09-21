@@ -190,3 +190,13 @@ Route::patch('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries
 Route::delete('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.destroy', 'uses' => 'BeneficiariesController@destroy']);
 Route::get('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.show', 'uses' => 'BeneficiariesController@show']);
 Route::get('admin/beneficiaries/{beneficiaries}/edit', ['as'=> 'admin.beneficiaries.edit', 'uses' => 'BeneficiariesController@edit']);
+
+
+Route::get('admin/companies', ['as'=> 'admin.companies.index', 'uses' => 'CompanyController@index']);
+Route::post('admin/companies', ['as'=> 'admin.companies.store', 'uses' => 'CompanyController@store']);
+Route::get('admin/companies/create', ['as'=> 'admin.companies.create', 'uses' => 'CompanyController@create']);
+Route::put('admin/companies/{companies}', ['as'=> 'admin.companies.update', 'uses' => 'CompanyController@update']);
+Route::patch('admin/companies/{companies}', ['as'=> 'admin.companies.update', 'uses' => 'CompanyController@update']);
+Route::delete('admin/companies/{companies}', ['as'=> 'admin.companies.destroy', 'uses' => 'CompanyController@destroy']);
+Route::get('admin/companies/{companies}', ['as'=> 'admin.companies.show', 'uses' => 'CompanyController@show']);
+Route::get('admin/companies/{companies}/edit', ['as'=> 'admin.companies.edit', 'uses' => 'CompanyController@edit']);

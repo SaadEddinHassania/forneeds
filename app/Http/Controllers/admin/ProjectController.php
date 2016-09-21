@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\ProjectDataTable;
-use App\Http\Requests;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Repositories\AreaRepository;
+use App\Repositories\MarginalizedSituationRepository;
 use App\Repositories\ProjectRepository;
 use App\Repositories\SectorRepository;
 use App\Repositories\ServiceProviderRepository;
-use App\Repositories\MarginalizedSituationRepository;
+use App\Models\District;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
@@ -27,15 +28,21 @@ class ProjectController extends AppBaseController
 
     /** @var  MarginalizedSituationRepository */
     private $marginalizedSituationRepository;
-    public function __construct(ProjectRepository $projectRepo,SectorRepository $sectorRepo,ServiceProviderRepository $serviceProviderRepo,MarginalizedSituationRepository $marginalizedSituationRepo)
+
+    /** @var  $AreaRepository */
+    private $areaRepository;
+
+    public function __construct(ProjectRepository $projectRepo,
+                                SectorRepository $sectorRepo,
+                                ServiceProviderRepository $serviceProviderRepo,
+                                MarginalizedSituationRepository $marginalizedSituationRepo,
+                                AreaRepository $areaRepo)
     {
         $this->projectRepository = $projectRepo;
         $this->sectorRepository = $sectorRepo;
         $this->serviceProviderRepository = $serviceProviderRepo;
         $this->marginalizedSituationRepository = $marginalizedSituationRepo;
-
-
-
+        $this->areaRepository = $areaRepo;
     }
 
     /**
@@ -54,12 +61,14 @@ class ProjectController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public
+    function create()
     {
-        return view('admin.projects.create',[
-            'sectors'=>$this->sectorRepository->all()->lists('name','id')->toarray(),
-            'serviceProviders'=>$this->serviceProviderRepository->all()->lists('name','id')->toarray(),
-            'marginalizedSituations'=>$this->marginalizedSituationRepository->all()->lists('name','id')->toarray()
+        return view('admin.projects.create', [
+            'sectors' => $this->sectorRepository->all()->lists('name', 'id')->toarray(),
+            'serviceProviders' => $this->serviceProviderRepository->all()->lists('name', 'id')->toarray(),
+            'marginalizedSituations' => $this->marginalizedSituationRepository->all()->lists('name', 'id')->toarray(),
+            'areas' => $this->areaRepository->all()->lists('name', 'id')->toarray()
         ]);
     }
 
@@ -70,9 +79,12 @@ class ProjectController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateProjectRequest $request)
+    public
+    function store(CreateProjectRequest $request)
     {
         $input = $request->all();
+        $st = District::find($input['district_id']);
+        $input['location_meta_id']=$st->location_meta_id;
 
         $project = $this->projectRepository->create($input);
 
@@ -88,7 +100,8 @@ class ProjectController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public
+    function show($id)
     {
         $project = $this->projectRepository->findWithoutFail($id);
 
@@ -108,7 +121,8 @@ class ProjectController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
+    public
+    function edit($id)
     {
         $project = $this->projectRepository->findWithoutFail($id);
 
@@ -124,12 +138,13 @@ class ProjectController extends AppBaseController
     /**
      * Update the specified Project in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateProjectRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateProjectRequest $request)
+    public
+    function update($id, UpdateProjectRequest $request)
     {
         $project = $this->projectRepository->findWithoutFail($id);
 
@@ -153,7 +168,8 @@ class ProjectController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         $project = $this->projectRepository->findWithoutFail($id);
 

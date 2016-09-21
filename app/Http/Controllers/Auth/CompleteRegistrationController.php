@@ -39,12 +39,15 @@ class CompleteRegistrationController extends Controller
         ]);
 
     //   dd(array_add($request->all(), 'user_id', $user->id));
-        $serviceProvider = ServiceProvider::create($request->all());
+        $input=$request->all();
+        $inputWithoutSector = $input;
+        unset($inputWithoutSector['sector_id']);
+        $serviceProvider = ServiceProvider::create($inputWithoutSector);
 
         $serviceProvider->user_id = $user->id;
 
         $serviceProvider->save();
-
+        $serviceProvider->sectors()->attach($request->get('sector_id'));
         Session::flash('flash_message', 'Registration Completed');
 
         return redirect('profile');

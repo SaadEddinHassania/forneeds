@@ -70,6 +70,7 @@ class Project extends Model
         'sector_id',
         'service_provider_id',
         'marginalized_situation_id',
+        'location_meta_id',
         'deleted_at'
     ];
 

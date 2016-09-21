@@ -18,6 +18,12 @@
     {!! Form::select('user_id', array(null=>"Please select user") + $users ,null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Company Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('company', 'Name:') !!}
+    {!! Form::text('company', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Service Provider Type Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('service_provider_type_id', 'Service Provider Type Id:') !!}
@@ -26,8 +32,14 @@
 
 <!-- Sector Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('sectors-drop-down', 'Sector :') !!}
-    {!! Form::select('sectors-drop-down',array(null=>"Please select one option")+ $sectors, null, ['class' => 'form-control']) !!}
+    {!! Form::label('sectors-drop-down', 'Sectors :') !!}
+    {!! Form::select('sector_id[]',array(null=>"Please select one option")+ $sectors, null, ['class' => 'form-control' , 'id'=>'sectors-drop-down' ,'multiple']) !!}
+</div>
+
+<!-- Beneficiary Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('beneficiaries-drop-down', 'Beneficiaries :') !!}
+    {!! Form::select('beneficiary_id[]',array(null=>"Please select one option")+ $beneficiaries, null, ['class' => 'form-control' , 'id'=>'beneficiaries' ,'multiple']) !!}
 </div>
 
 

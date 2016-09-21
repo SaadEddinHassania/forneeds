@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\ServiceProvider;
+use App\Models\Company;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 
-class ServiceProviderDataTable extends DataTable
+class CompanyDataTable extends DataTable
 {
 
     /**
@@ -16,11 +16,7 @@ class ServiceProviderDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', function ($row) {
-                $model = "admin.serviceProviders";
-                $id = $row->id;
-                return view('layouts.datatables_actions', compact('model', 'id'));
-            })
+            ->addColumn('action', 'admin.datatables_actions')
             ->make(true);
     }
 
@@ -31,9 +27,9 @@ class ServiceProviderDataTable extends DataTable
      */
     public function query()
     {
-        $serviceProviders = ServiceProvider::with(array('user','sectors'));
+        $companies = Company::query();
 
-        return $this->applyScopes($serviceProviders);
+        return $this->applyScopes($companies);
     }
 
     /**
@@ -56,13 +52,13 @@ class ServiceProviderDataTable extends DataTable
                     'reset',
                     'reload',
                     [
-                        'extend' => 'collection',
-                        'text' => '<i class="fa fa-download"></i> Export',
-                        'buttons' => [
-                            'csv',
-                            'excel',
-                            'pdf',
-                        ],
+                         'extend'  => 'collection',
+                         'text'    => '<i class="fa fa-download"></i> Export',
+                         'buttons' => [
+                             'csv',
+                             'excel',
+                             'pdf',
+                         ],
                     ]
                 ]
             ]);
@@ -76,11 +72,7 @@ class ServiceProviderDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'name' => ['title'=>'Name','name' => 'user.name', 'data' => 'name'],
-            'mission_statement' => ['name' => 'mission_statement', 'data' => 'mission_statement'],
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
-            'service_provider_type_id' => ['name' => 'service_provider_type_id', 'data' => 'service_provider_type_id'],
-            'sectors' => ['title'=>'Sectors','name' => 'sectors', 'data' => 'sectors'],
+            'name' => ['name' => 'name', 'data' => 'name'],
             'deleted_at' => ['name' => 'deleted_at', 'data' => 'deleted_at'],
             'created_at' => ['name' => 'created_at', 'data' => 'created_at'],
             'updated_at' => ['name' => 'updated_at', 'data' => 'updated_at']
@@ -94,6 +86,6 @@ class ServiceProviderDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'serviceProviders';
+        return 'companies';
     }
 }

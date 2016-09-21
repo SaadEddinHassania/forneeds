@@ -5,7 +5,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">Project</span>
+                <span class="caption-subject font-red-sunglo bold uppercase">Company</span>
             </div>
         </div>
         <div>
@@ -13,15 +13,12 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'admin.projects.store']) !!}
+                {!! Form::open(['route' => 'admin.companies.store']) !!}
 
-                    @include('admin.projects.fields')
+                    @include('admin.companies.fields')
 
                  {!! Form::close() !!}
             </div>
         </div>
   </div>
 @endsection
-@push('scripts')
-<script src="/assets/ajax_dynamic_forms.js" type="text/javascript"></script>
-@endpush

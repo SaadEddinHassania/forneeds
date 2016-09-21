@@ -16,6 +16,9 @@
     {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
 </div>
 
+
+
+
 <!-- Sector Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('sectors-drop-down', 'Sector :') !!}
@@ -33,6 +36,8 @@
     {!! Form::label('marginalized_situation_id', 'Marginalized Situation Id:') !!}
     {!! Form::select('marginalized_situation_id',array(null=>"Please select one option")+$marginalizedSituations ,null, ['class' => 'form-control']) !!}
 </div>
+
+@include('formsComponents.location',$areas)
 
 
 <!-- Submit Field -->

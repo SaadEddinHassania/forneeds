@@ -29,6 +29,13 @@
     <span  class="title">ServiceProviders</span></a>
 </li>
 
+<li class="{!! Request::is('companies*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('admin.companies.index') !!}">
+        <i class="fa fa-edit"></i>
+        <span  class="title">Companies</span></a>
+</li>
+
+
 <li class="{!! Request::is('beneficiaries*') ? 'active' : '' !!}">
     <a class="nav-link nav-toggle" href="{!! route('admin.beneficiaries.index') !!}">
         <i class="fa fa-edit"></i>

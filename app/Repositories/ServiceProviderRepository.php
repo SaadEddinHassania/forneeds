@@ -11,7 +11,7 @@ class ServiceProviderRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        
+
     ];
 
     /**
@@ -22,7 +22,10 @@ class ServiceProviderRepository extends BaseRepository
         return ServiceProvider::class;
     }
 
-    public function getActiveServiceProvider(){
-        return ServiceProvider::where('user_id','!=',null);
+
+
+    public function getActiveServiceProvider()
+    {
+        return ServiceProvider::where('user_id', '!=', null);
     }
 }

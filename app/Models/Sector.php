@@ -64,4 +64,9 @@ class Sector extends Model
     {
         return $this->hasMany(ServiceType::class);
     }
+
+    public function serviceProviders()
+    {
+        return $this->belongsToMany(ServiceProvider::class);
+    }
 }

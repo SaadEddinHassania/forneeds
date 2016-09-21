@@ -13,12 +13,12 @@ class AreasSeeder extends Seeder
     {
         factory(App\Models\Area::class, 10)->create()->each(function ($s) {
             $s->save();
-            factory(App\Models\City::class, 10)->create(['area_id' => $s->id])->each(function ($c) {
+            return factory(App\Models\City::class, 10)->create(['area_id' => $s->id])->each(function ($c) {
                 $c->save();
-                factory(App\Models\District::class, 10)->create(['city_id' => $c->id])->each(function ($d) {
-                    $d->save();
-                    factory(App\Models\Street::class, 10)->create(['district_id' => $d->id])->each(function ($t) {
-                        $t->save();
+                return  factory(App\Models\District::class, 10)->create(['city_id' => $c->id])->each(function ($d) {
+                     $d->save();
+                    return factory(App\Models\Street::class, 10)->create(['district_id' => $d->id])->each(function ($t) {
+                        return $t->save();
                     });
                 });
             });

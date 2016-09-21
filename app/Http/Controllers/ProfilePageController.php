@@ -71,7 +71,8 @@ class ProfilePageController extends Controller
                 "sp"=>$user->serviceProvider()->first(),
                 'projects' => $this->projectRepository->findByField('service_provider_id', $user->serviceProvider()->first()->id, ['id', 'name'])->lists('name', 'id')->toarray(),
                 "user_attrs" => $this->userRepository->getFieldsSearchable(),
-                'marginalizedSituations'=>$this->marginalizedSituationRepository->all()->lists('name', 'id')->toarray()
+                'marginalizedSituations'=>$this->marginalizedSituationRepository->all()->lists('name', 'id')->toarray(),
+                'sectors' => $user->serviceProvider()->first()->sectors()->lists('name', 'id')->toarray(),
 
             ]);
         } else if ($user->isCitizen()) {

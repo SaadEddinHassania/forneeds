@@ -22,6 +22,8 @@ class Projects extends Migration {
             $table->foreign('service_provider_id')->references('id')->on('service_providers')->onDelete('SET NULL');
             $table->integer('marginalized_situation_id')->unsigned()->nullable()->index();
             $table->foreign('marginalized_situation_id')->references('id')->on('marginalized_situations')->onDelete('SET NULL');
+            $table->integer('location_meta_id')->unsigned()->nullable()->index();
+            $table->foreign('location_meta_id')->references('id')->on('location_metas')->onDelete('SET NULL');
             $table->softDeletes();
             $table->timestamps();
         });

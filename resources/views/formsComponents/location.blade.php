@@ -14,8 +14,8 @@
     {!! Form::label('district_id', 'District') !!}
     {!! Form::select('district_id',array(null=>"Please select a City")+ array(),null, ['class' => 'form-control','place_holder'=>'Area','id'=>'district-drop-down']) !!}
 </div>
-<!-- Street Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('street_id', 'Street') !!}
-    {!! Form::select('street_id',array(null=>"Please select a District")+ array(),null, ['class' => 'form-control','place_holder'=>'Area','id'=>'street-drop-down']) !!}
-</div>
+{{--<!-- Street Id Field -->--}}
+{{--<div class="form-group col-sm-6">--}}
+    {{--{!! Form::label('street_id', 'Street') !!}--}}
+    {{--{!! Form::select('street_id',array(null=>"Please select a District")+ array(),null, ['class' => 'form-control','place_holder'=>'Area','id'=>'street-drop-down']) !!}--}}
+{{--</div>--}}

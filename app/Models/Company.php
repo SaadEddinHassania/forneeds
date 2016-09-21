@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="Beneficiaries",
+ *      definition="Company",
  *      required={""},
  *      @SWG\Property(
  *          property="id",
@@ -22,12 +22,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class Beneficiary extends Model
+class Company extends Model
 {
     use SoftDeletes;
 
-    public $table = 'beneficiaries';
-
+    public $table = 'companies';
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -36,7 +36,8 @@ class Beneficiary extends Model
 
 
     public $fillable = [
-        'name'
+        'name',
+        'deleted_at'
     ];
 
     /**
@@ -46,7 +47,8 @@ class Beneficiary extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string'
+        'name' => 'string',
+        'deleted_at' => 'datetime'
     ];
 
     /**
@@ -55,11 +57,6 @@ class Beneficiary extends Model
      * @var array
      */
     public static $rules = [
-
+        
     ];
-
-    public function serviceProviders()
-    {
-        return $this->belongsToMany(ServiceProvider::class);
-    }
 }

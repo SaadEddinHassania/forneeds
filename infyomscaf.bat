@@ -60,5 +60,8 @@ echo "done"
 echo "scaffolding service_requests"
 php artisan infyom:scaffold ServiceRequests --fromTable --tableName=service_requests
 echo "done"
+echo "scaffolding companies"
+php artisan infyom:scaffold Company --fromTable --tableName=companies
+echo "done"
 
 echo "all done ..."
