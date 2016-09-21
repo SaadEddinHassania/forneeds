@@ -144,7 +144,9 @@
         lastSelector: ".wizard li.last",
         onShow: null,
         onInit: null,
-        onNext: null,
+        onNext: function(){
+            console.log(this);
+        },
         onPrevious: null,
         onLast: null,
         onFirst: null,

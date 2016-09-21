@@ -36,7 +36,7 @@ var ComponentsDateTimePickers = function () {
             });
 
             // handle input group button click
-            $('.timepicker').parent('.input-group').on('click', '.input-group-btn', function(e){
+            $('.timepicker').parent('.input-group').on('click', '.input-group-btn', function (e) {
                 e.preventDefault();
                 $(this).parent('.input-group').find('.timepicker').timepicker('showWidget');
             });
@@ -68,7 +68,7 @@ var ComponentsDateTimePickers = function () {
             function (start, end) {
                 $('#defaultrange input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
-        );        
+        );
 
         $('#defaultrange_modal').daterangepicker({
                 opens: (App.isRTL() ? 'left' : 'right'),
@@ -82,11 +82,11 @@ var ComponentsDateTimePickers = function () {
             function (start, end) {
                 $('#defaultrange_modal input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
-        );  
+        );
 
         // this is very important fix when daterangepicker is used in modal. in modal when daterange picker is opened and mouse clicked anywhere bootstrap modal removes the modal-open class from the body element.
         // so the below code will fix this issue.
-        $('#defaultrange_modal').on('click', function(){
+        $('#defaultrange_modal').on('click', function () {
             if ($('#daterangepicker_modal').is(":visible") && $('body').hasClass("modal-open") == false) {
                 $('body').addClass("modal-open");
             }
@@ -96,8 +96,8 @@ var ComponentsDateTimePickers = function () {
                 opens: (App.isRTL() ? 'left' : 'right'),
                 startDate: moment().subtract('days', 29),
                 endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2014',
+                minDate: moment().format("MM/DD/YYYY"),
+
                 dateLimit: {
                     days: 60
                 },
@@ -108,11 +108,7 @@ var ComponentsDateTimePickers = function () {
                 timePicker12Hour: true,
                 ranges: {
                     'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                    'Last 7 Days': [moment().subtract('days', 6), moment()],
-                    'Last 30 Days': [moment().subtract('days', 29), moment()],
                     'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
                 },
                 buttonClasses: ['btn'],
                 applyClass: 'green',
@@ -121,20 +117,24 @@ var ComponentsDateTimePickers = function () {
                 separator: ' to ',
                 locale: {
                     applyLabel: 'Apply',
-                    fromLabel: 'From',
-                    toLabel: 'To',
+                    fromLabel: 'Starts At',
+                    toLabel: 'Expires At',
                     customRangeLabel: 'Custom Range',
-                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                    daysOfWeek: ['Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
                     monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     firstDay: 1
                 }
             },
             function (start, end) {
+                $('#starts_at').val(start.format("YYYY-m-d"));
+                $('#expires_at').val(end.format("YYYY-m-d"));
                 $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
         );
         //Set the initial state of the picker label
-        $('#reportrange span').html(moment().subtract('days', 29).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+        $('#reportrange span').html(moment().format('MMMM D, YYYY') + ' - ' + moment().add(29,'days').format('MMMM D, YYYY'))  ;
+        $('#starts_at').val(moment().format("YYYY-m-d"));
+        $('#expires_at').val(moment().add(29,'days').format("YYYY-m-d"));
     }
 
     var handleDatetimePicker = function () {
@@ -218,8 +218,8 @@ var ComponentsDateTimePickers = function () {
 
 }();
 
-if (App.isAngularJsApp() === false) { 
-    jQuery(document).ready(function() {    
-        ComponentsDateTimePickers.init(); 
+if (App.isAngularJsApp() === false) {
+    jQuery(document).ready(function () {
+        ComponentsDateTimePickers.init();
     });
 }

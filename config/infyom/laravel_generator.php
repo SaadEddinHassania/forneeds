@@ -120,11 +120,11 @@ return [
 
     'prefixes' => [
 
-        'route' => '',  // using admin will create route('admin.?.index') type routes
+        'route' => 'admin',  // using admin will create route('admin.?.index') type routes
 
         'path' => '',
 
-        'view' => '',  // using backend will create return view('backend.?.index') type the backend views directory
+        'view' => 'admin',  // using backend will create return view('backend.?.index') type the backend views directory
 
         'public' => '',
     ],
@@ -142,11 +142,11 @@ return [
 
         'tests'         => true,
 
-        'datatables'    => false,
+        'datatables'    => true,
 
         'menu'          => [
 
-            'enabled'       => false,
+            'enabled'       => true,
 
             'menu_file'     => 'layouts/menu.blade.php',
         ],
