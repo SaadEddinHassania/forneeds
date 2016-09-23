@@ -1,92 +1,107 @@
-<!DOCTYPE html>
-<html>
+@extends('auth.layout')
+@push('styles')
+<link rel="stylesheet" type="text/css" href="/assets/home.css">
+@endpush
+@section('content')
 
-<head>
-    <title>ForNeeds</title>
-    <link rel="stylesheet" type="text/css" href="/assets/home.css">
-    <meta charset="UTF-8">
-    <meta name="description" content="Free Web tutorials">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Hege Refsnes">
+    <div id="googlemaps"></div>
+    <div class="popup_result">
+        <div class="arod_wdith">
+            <form class="login-form" action="{!! url('/login') !!}" method="post">
+                {!! csrf_field() !!}
+                <div class="form-title">
+                    <span class="form-title">Welcome.</span>
+                    <span class="form-subtitle">Please login.</span>
+                </div>
+                <div class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span> Enter any username and password. </span>
+                </div>
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">Username</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
+                           placeholder="Username" name="email"/></div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">Password</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
+                           placeholder="Password" name="password"/></div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn red btn-block btn-flat">Sign In</button>
+                </div>
+                <div class="form-actions">
+                    <div class="pull-left">
+                        <label class="rememberme check">
+                            <input type="checkbox" name="remember" value="1"/>Remember me </label>
+                    </div>
+                    <div class="pull-right forget-password-block">
+                        <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="create-account">
+                    <p>
+                        <a href="javascript:;" class="btn-primary btn" id="register-btn">Create an account</a>
+                    </p>
+                </div>
+            </form>
+            <!-- END LOGIN FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+            <form class="forget-form" action="{!! url('/password/reset') !!}" method="post">
+                <div class="form-title">
+                    <span class="form-title">Forget Password ?</span>
+                    <span class="form-subtitle">Enter your e-mail to reset it.</span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email"
+                           name="email"/></div>
+                <div class="form-actions">
+                    <button type="button" id="back-btn" class="btn btn-default">Back</button>
+                    <button type="submit" class="btn btn-primary uppercase pull-right">Submit</button>
+                </div>
+            </form>
 
-</head>
+            <form class="register-form" method="post" action="{!! url('/register') !!}">
 
-<body>
+                {!! csrf_field() !!}
+                <div class="form-title">
+                    <span class="form-title">Sign Up</span>
+                </div>
+                <p class="hint"> Enter your personal details below: </p>
 
-<div id="googlemaps"></div>
-<div class="popup_result">
-    <div class="arod_wdith">
-        <div class="welcomemessage">Start stating Your needs using ForNeeds</div>
-        <div class="loginInput">
+                <div class="form-group ">
+                    <input type="text" class="form-control" name="name" value="{!! old('name') !!}" placeholder="Full Name">
+                </div>
 
-            <div>
-                <style scoped>
-                    .button-success,
-                    .button-error,
-                    .button-warning,
-                    .button-secondary {
-                        color: white;
-                        border-radius: 4px;
-                        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                        text-decoration: none;
+                <div class="form-group ">
+                    <input type="email" class="form-control" name="email" value="{!! old('email') !!}" placeholder="Email">
+                </div>
 
-                    }
+                <div class="form-group ">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
 
-                    .button-xsmall {
-                        font-size: 70%;
-                    }
+                <div class="form-group ">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm password">
+                </div>
 
-                    .button-small {
-                        font-size: 85%;
-                    }
+                <div class="form-group margin-top-20 margin-bottom-20">
+                    <label class="check">
+                        <input type="checkbox"> I agree to the <a href="#">terms</a>
+                    </label>
+                </div>
 
-                    .button-large {
-                        font-size: 110%;
-                        padding: 10px;
-                        outline: 0;
-                        border: 0;
+                <!-- /.col -->
+                <div class="form-group ">
+                    <button type="submit" class="btn btn red btn-block btn-flat">Register</button>
+                </div>
+                <!-- /.col -->
 
-                    }
-
-                    .button-xlarge {
-                        font-size: 125%;
-                    }
-
-                    .button-success {
-                        background: rgb(28, 184, 65);
-                        /* this is a green */
-                    }
-
-                    .button-error {
-                        background: rgb(202, 60, 60);
-                        /* this is a maroon */
-                    }
-
-                    .button-warning {
-                        background: rgb(223, 117, 20);
-                        /* this is an orange */
-                    }
-
-                    .button-secondary {
-                        background: rgb(66, 184, 221);
-                        /* this is a light blue */
-                    }
-                </style>
-                <span class="register-wrapper">
-                    <a href="{{url("/register")}}" class="button-large pure-button button-success">Register</a>
-                </span>
-                <span class="spacer"></span>
-                <span class="login-wrapper">
-                <a href="{{url("/login")}}" class="button-large pure-button button-error">Login</a>
-                <span>
-
-            </div>
+            </form>
 
         </div>
     </div>
-</div>
-
-</body>
+@endsection
+@push('scripts')
 <!-- Include the Google Maps API library - required for embedding maps -->
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAaNuex0pQrp9Kv2AiYwZOdMACBQ64Nl3g&sensor=false"></script>
 
@@ -120,5 +135,4 @@
 
     google.maps.event.addDomListener(window, 'load', showGoogleMaps);
 </script>
-
-</html>
+@endpush

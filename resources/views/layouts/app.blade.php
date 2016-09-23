@@ -62,59 +62,9 @@
 </head>
 <!-- END HEAD -->
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
-@if (!Auth::guest())
-    <!-- BEGIN HEADER -->
-    <div class="page-header navbar navbar-fixed-top">
-        <!-- BEGIN HEADER INNER -->
-        <div class="page-header-inner ">
+<body class="   page-container-bg-solid page-content-white">
 
-            <!-- BEGIN LOGO -->
-            <div class="page-logo">
-                <a href="index.html">
-                    <img src="/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/>
-                </a>
-                <div class="menu-toggler sidebar-toggler"></div>
-            </div>
-            <!-- END LOGO -->
 
-            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
-               data-target=".navbar-collapse"> </a>
-            <!-- END RESPONSIVE MENU TOGGLER -->
-
-            <!-- BEGIN TOP NAVIGATION MENU -->
-            <div class="top-menu">
-                <ul class="nav navbar-nav pull-right">
-                    <!-- BEGIN USER LOGIN DROPDOWN -->
-                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li class="dropdown dropdown-user">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                           data-close-others="true">
-                            <img alt="" class="img-circle"
-                                 src="http://infyom.com/images/logo/blue_logo_150x150.jpg"/>
-                            @if (Auth::guest())
-                                <span class="username username-hide-on-mobile">  InfyOm</span>
-                            @else
-                                <span class="username username-hide-on-mobile"> {!! Auth::user()->name !!}</span>
-                                <i class="fa fa-angle-down"></i>
-                            @endif
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-default">
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{!! url('/logout') !!}">
-                                    <i class="icon-key"></i> Log Out </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- END USER LOGIN DROPDOWN -->
-                </ul>
-            </div>
-            <!-- END TOP NAVIGATION MENU -->
-        </div>
-        <!-- END HEADER INNER -->
-    </div>
     <!-- END HEADER -->
     <!-- BEGIN HEADER & CONTENT DIVIDER -->
     <div class="clearfix"></div>
@@ -122,89 +72,11 @@
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
         <!-- BEGIN SIDEBAR -->
-    @include('layouts.sidebar')
-    <!-- BEGIN CONTENT -->
-        <div class="page-content-wrapper">
-            <!-- BEGIN CONTENT BODY -->
-            <div class="page-content">
-                <!-- BEGIN PAGE HEADER-->
-
-                <!-- BEGIN PAGE BAR -->
-
-                <div class="page-toolbar">
-                    <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
-                         data-placement="bottom" data-original-title="Change dashboard date range">
-                    </div>
-                </div>
-
-                <!-- END PAGE BAR -->
-
-                <!-- END PAGE HEADER-->
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        @yield('content')
-                    </div>
-                </div>
-
-            </div>
-            <!-- END CONTENT BODY -->
-        </div>
-        <!-- END CONTENT -->
-    </div>
-    <!-- END CONTAINER -->
-    <!-- BEGIN FOOTER -->
-@else
-
-    <!-- BEGIN HEADER -->
-    <div class="page-header navbar navbar-fixed-top">
-        <!-- BEGIN HEADER INNER -->
-        <div class="page-header-inner ">
-            <!-- BEGIN LOGO -->
-            <div class="page-logo">
-                <a href="index.html">
-                    <img src="/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/> </a>
-                <div class="menu-toggler sidebar-toggler"></div>
-            </div>
-            <!-- END LOGO -->
-            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
-               data-target=".navbar-collapse"> </a>
-            <!-- END RESPONSIVE MENU TOGGLER -->
-            <!-- BEGIN TOP NAVIGATION MENU -->
-            <div class="top-menu">
-                <ul class="nav navbar-nav pull-right">
-                    <!-- BEGIN USER LOGIN DROPDOWN -->
-                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li class="dropdown dropdown-user">
-                        <a href="{!! url('/login') !!}" class="dropdown-toggle" data-hover="dropdown"
-                           data-close-others="true">
-                            <span class="username ">  login</span></a>
-                    </li>
-                    <li class="dropdown dropdown-user">
-                        <a href="{!! url('/register') !!}" class="dropdown-toggle" data-hover="dropdown"
-                           data-close-others="true">
-                            <span class="username"> Register</span></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- END TOP NAVIGATION MENU -->
-        </div>
-        <!-- END HEADER INNER -->
-    </div>
-    <!-- END HEADER -->
-    <!-- BEGIN HEADER & CONTENT DIVIDER -->
-    <div class="clearfix"></div>
-    <!-- END HEADER & CONTENT DIVIDER -->
-    <!-- BEGIN CONTAINER -->
-    <div class="page-container">
-        <!-- BEGIN SIDEBAR -->
-    @include('layouts.sidebar')
     <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
             <!-- BEGIN CONTENT BODY -->
-            <div class="page-content">
+            <div   class="page-content" style="margin-left: 0">
                 <!-- BEGIN PAGE HEADER-->
                 <!-- BEGIN PAGE BAR -->
                 <div class="page-toolbar">
@@ -229,7 +101,6 @@
     </div>
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
-@endif
 
 <div class="page-footer">
     <div class="page-footer-inner"> 2016 &copy; Generator by InfyOm
@@ -300,9 +171,9 @@
 <!-- END PAGE LEVEL SCRIPTS -->
 
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
-<script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+{{--<script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>--}}
 <script src="/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
-<script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+{{--<script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>--}}
 @stack('scripts')
 <!-- END THEME LAYOUT SCRIPTS -->
 </body>

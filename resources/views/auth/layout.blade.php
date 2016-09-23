@@ -48,10 +48,10 @@
 
 <body class=" login">
 <!-- BEGIN LOGO -->
-<div class="logo">
-    <a href="index.html">
-        <img src="/assets/pages/img/logo.png" style="height: 146px;" alt=""/> </a>
-</div>
+{{--<div class="logo">--}}
+    {{--<a href="index.html">--}}
+        {{--<img src="/assets/pages/img/logo.png" style="height: 146px;" alt=""/> </a>--}}
+{{--</div>--}}
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">

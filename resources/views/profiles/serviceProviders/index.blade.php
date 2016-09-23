@@ -65,12 +65,12 @@
                     <div class="portlet light profile-sidebar-portlet ">
                         <!-- SIDEBAR USERPIC -->
                         <div class="profile-userpic">
-                            <img src="../assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
+                            <img src="{{url('/profile_image')}}" class="img-responsive" alt=""></div>
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> Marcus Doe </div>
-                            <div class="profile-usertitle-job"> Developer </div>
+                            <div class="profile-usertitle-name"> {{$user->name}} </div>
+                            <div class="profile-usertitle-job"> Service Provider </div>
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
@@ -82,17 +82,13 @@
                         <!-- SIDEBAR MENU -->
                         <div class="profile-usermenu">
                             <ul class="nav">
-                                <li class="active">
-                                    <a href="page_user_profile_1.html">
-                                        <i class="icon-home"></i> Overview </a>
+                                <li class="{!! Request::is('profile*') ? 'active' : '' !!}">
+                                    <a href="{!! url('/profile') !!}">
+                                        <i class="icon-home"></i> Profile </a>
                                 </li>
-                                <li>
-                                    <a href="page_user_profile_1_account.html">
+                                <li class="{!! Request::is('settings*') ? 'active' : '' !!}">
+                                    <a href="{!! url('/settings') !!}">
                                         <i class="icon-settings"></i> Account Settings </a>
-                                </li>
-                                <li>
-                                    <a href="page_user_profile_1_help.html">
-                                        <i class="icon-info"></i> Help </a>
                                 </li>
                             </ul>
                         </div>
