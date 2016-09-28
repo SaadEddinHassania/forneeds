@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @push('styles')
-<link href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
-<link href="../assets/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>
 
 @endpush
 @section('content')
@@ -10,7 +10,7 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>
@@ -196,11 +196,11 @@
 
                                         <div class="form-group {{ $errors->has('service_provider_type_id') ? 'has-error' : ''}}">
                                             {!! Form::label('service_provider_type_id', 'Type:') !!}
-                                            {{Form::select('serviceProvider[service_provider_type_id]', $types,$user->serviceProvider->service_provider_type_id,['class'=>'form-control'])}}
+{{--                                            {{Form::select('serviceProvider[service_provider_type_id]', $types,$user->serviceProvider->service_provider_type_id,['class'=>'form-control'])}}--}}
                                         </div>
                                         <div class="form-group {{ $errors->has('sector_id') ? 'has-error' : ''}}">
                                             {!! Form::label('sector_id', 'Sector:') !!}
-                                            {{Form::select('serviceProvider[sector_id]', $sectors,$user->serviceProvider->sector_id,['class'=>'form-control'])}}
+{{--                                            {{Form::select('serviceProvider[sector_id]', $sectors,$user->serviceProvider->sector_id,['class'=>'form-control'])}}--}}
                                         </div>
                                         <div class="margiv-top-10">
                                             <input type="submit" value="Save Changes" class="btn green"/>
