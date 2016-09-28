@@ -1,4 +1,5 @@
 <?php
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 /*
   |--------------------------------------------------------------------------
@@ -10,19 +11,65 @@
   | and give it the controller to call when that URI is requested.
   |
  */
-
 Route::get('/', "HomeController@index");
 Route::get('/home', "HomeController@index");
+//Social Login
+Route::get('/login/{provider?}', [
+    'uses' => 'Auth\SocialAuthController@getSocialAuth',
+    'as' => 'auth.getSocialAuth'
+]);
 
-Route::get('test',function(){
-    auth::user()->isAdmin();
+Route::get('/login/callback/{provider?}', [
+    'uses' => 'Auth\SocialAuthController@getSocialAuthCallback',
+    'as' => 'auth.getSocialAuthCallback'
+]);
+
+//Social Login end
+Route::get('test', function () {
+    $map = Mapper::map(31.3546763, 34.30882550000001,[
+        'zoom'=>10
+    ]);
+    $map->circle([
+        ['latitude' => 31.3546763,
+            'longitude' => 34.30882550000001]
+    ], [
+        'strokeColor' => '#000000',
+        'strokeOpacity' => 0.1,
+        'strokeWeight' => 2,
+        'fillColor' => '#2b8cbe',
+        'radius' => 4200]);
+
+    $map->circle([
+        ['latitude' => 31.3546763,
+            'longitude' => 34.30882550000001]
+    ], [
+        'strokeColor' => '#000000',
+        'strokeOpacity' => 0.1,
+        'strokeWeight' => 2,
+        'fillColor' => '#2b8cbe',
+        'radius' => 3000]);
+
+    $map->circle([
+        ['latitude' => 31.3546763,
+            'longitude' => 34.30882550000001]
+    ], [
+        'strokeColor' => '#000000',
+        'strokeOpacity' => 0.1,
+        'strokeWeight' => 2,
+        'fillColor' => '#2b8cbe',
+        'radius' => 1500]);
+
+    //->circle([['latitude' => 53.381128999999990000, 'longitude' => -1.470085000000040000]], ['strokeColor' => '#000000', 'strokeOpacity' => 0.1, 'strokeWeight' => 2, 'fillColor' => '#FFFFFF', 'radius' => 1000]);
+
+    //Mapper::map(24, 24, ['zoom' => 10]);
+    return $map->render();
 });
 Route::get('/black', function () {
     if (Auth::check()) {
         $user = auth::user();
         $user->is_admin = true;
         $user->save();
-   }
+    }
 });
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
@@ -180,23 +227,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web,admin'], function (
 });
 
 
+Route::get('admin/beneficiaries', ['as' => 'admin.beneficiaries.index', 'uses' => 'BeneficiariesController@index']);
+Route::post('admin/beneficiaries', ['as' => 'admin.beneficiaries.store', 'uses' => 'BeneficiariesController@store']);
+Route::get('admin/beneficiaries/create', ['as' => 'admin.beneficiaries.create', 'uses' => 'BeneficiariesController@create']);
+Route::put('admin/beneficiaries/{beneficiaries}', ['as' => 'admin.beneficiaries.update', 'uses' => 'BeneficiariesController@update']);
+Route::patch('admin/beneficiaries/{beneficiaries}', ['as' => 'admin.beneficiaries.update', 'uses' => 'BeneficiariesController@update']);
+Route::delete('admin/beneficiaries/{beneficiaries}', ['as' => 'admin.beneficiaries.destroy', 'uses' => 'BeneficiariesController@destroy']);
+Route::get('admin/beneficiaries/{beneficiaries}', ['as' => 'admin.beneficiaries.show', 'uses' => 'BeneficiariesController@show']);
+Route::get('admin/beneficiaries/{beneficiaries}/edit', ['as' => 'admin.beneficiaries.edit', 'uses' => 'BeneficiariesController@edit']);
 
 
-Route::get('admin/beneficiaries', ['as'=> 'admin.beneficiaries.index', 'uses' => 'BeneficiariesController@index']);
-Route::post('admin/beneficiaries', ['as'=> 'admin.beneficiaries.store', 'uses' => 'BeneficiariesController@store']);
-Route::get('admin/beneficiaries/create', ['as'=> 'admin.beneficiaries.create', 'uses' => 'BeneficiariesController@create']);
-Route::put('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.update', 'uses' => 'BeneficiariesController@update']);
-Route::patch('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.update', 'uses' => 'BeneficiariesController@update']);
-Route::delete('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.destroy', 'uses' => 'BeneficiariesController@destroy']);
-Route::get('admin/beneficiaries/{beneficiaries}', ['as'=> 'admin.beneficiaries.show', 'uses' => 'BeneficiariesController@show']);
-Route::get('admin/beneficiaries/{beneficiaries}/edit', ['as'=> 'admin.beneficiaries.edit', 'uses' => 'BeneficiariesController@edit']);
-
-
-Route::get('admin/companies', ['as'=> 'admin.companies.index', 'uses' => 'CompanyController@index']);
-Route::post('admin/companies', ['as'=> 'admin.companies.store', 'uses' => 'CompanyController@store']);
-Route::get('admin/companies/create', ['as'=> 'admin.companies.create', 'uses' => 'CompanyController@create']);
-Route::put('admin/companies/{companies}', ['as'=> 'admin.companies.update', 'uses' => 'CompanyController@update']);
-Route::patch('admin/companies/{companies}', ['as'=> 'admin.companies.update', 'uses' => 'CompanyController@update']);
-Route::delete('admin/companies/{companies}', ['as'=> 'admin.companies.destroy', 'uses' => 'CompanyController@destroy']);
-Route::get('admin/companies/{companies}', ['as'=> 'admin.companies.show', 'uses' => 'CompanyController@show']);
-Route::get('admin/companies/{companies}/edit', ['as'=> 'admin.companies.edit', 'uses' => 'CompanyController@edit']);
+Route::get('admin/companies', ['as' => 'admin.companies.index', 'uses' => 'CompanyController@index']);
+Route::post('admin/companies', ['as' => 'admin.companies.store', 'uses' => 'CompanyController@store']);
+Route::get('admin/companies/create', ['as' => 'admin.companies.create', 'uses' => 'CompanyController@create']);
+Route::put('admin/companies/{companies}', ['as' => 'admin.companies.update', 'uses' => 'CompanyController@update']);
+Route::patch('admin/companies/{companies}', ['as' => 'admin.companies.update', 'uses' => 'CompanyController@update']);
+Route::delete('admin/companies/{companies}', ['as' => 'admin.companies.destroy', 'uses' => 'CompanyController@destroy']);
+Route::get('admin/companies/{companies}', ['as' => 'admin.companies.show', 'uses' => 'CompanyController@show']);
+Route::get('admin/companies/{companies}/edit', ['as' => 'admin.companies.edit', 'uses' => 'CompanyController@edit']);

@@ -11,6 +11,8 @@ use App\Repositories\CityRepository;
 use Flash;
 use InfyOm\Generator\Controller\AppBaseController;
 use Response;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+
 
 class CityController extends AppBaseController
 {
@@ -45,7 +47,24 @@ class CityController extends AppBaseController
     public function create()
     {
 
-        return view('admin.cities.create', ['areas' =>$this->areaRepository->all()->lists('name','id')]);
+        $map = Mapper::map(31.3546763, 34.30882550000001, ['zoom' => 11, 'eventAfterLoad' => "
+        
+            marker = new google.maps.Marker({
+                map: maps[0].map, position: {
+                    'lat': 31.3546763
+                    , lng: 34.30882550000001
+                }, clickable: true, draggable: true
+            });
+            function handleEvent(event) {
+                document.getElementById('lat').value = event.latLng.lat();
+                document.getElementById('lng').value = event.latLng.lng();
+            }
+
+            marker.addListener('drag', handleEvent);
+            marker.addListener('dragend', handleEvent);
+        
+    "]);
+        return view('admin.cities.create', ['areas' => $this->areaRepository->all()->lists('name', 'id')]);
     }
 
     /**

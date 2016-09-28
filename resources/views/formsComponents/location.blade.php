@@ -1,3 +1,47 @@
+
+
+
+
+<div style="width:100%;height:400px" class="form-group col-sm-6">
+    {!! Mapper::render() !!}
+</div>
+<ul class="nav nav-pills">
+<li class="dropdown ">
+    <a href="javascript:;"  class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> Dropdown
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+        <li class="dropdown ">
+            <a href="javascript:;"  class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> Dropdown
+                <i class="fa fa-angle-right"></i>
+            </a>
+            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="myTabDrop1">
+                <li>
+                    <a href="#tab_2_3" tabindex="-1" data-toggle="tab"> Option 1 </a>
+                </li>
+                <li>
+                    <a href="#tab_2_4" tabindex="-1" data-toggle="tab"> Option 2 </a>
+                </li>
+                <li>
+                    <a href="#tab_2_3" tabindex="-1" data-toggle="tab"> Option 3 </a>
+                </li>
+                <li>
+                    <a href="#tab_2_4" tabindex="-1" data-toggle="tab"> Option 4 </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#tab_2_4" tabindex="-1" data-toggle="tab"> Option 2 </a>
+        </li>
+        <li>
+            <a href="#tab_2_3" tabindex="-1" data-toggle="tab"> Option 3 </a>
+        </li>
+        <li>
+            <a href="#tab_2_4" tabindex="-1" data-toggle="tab"> Option 4 </a>
+        </li>
+    </ul>
+</li>
+</ul>
 <!-- Area Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('area-drop-down', 'Area') !!}

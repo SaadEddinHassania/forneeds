@@ -34,5 +34,14 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    'facebook' => [
+        'client_id' => '367247323663971',
+        'client_secret' => 'b56a7ede55369b6af44a984651fa2990',
+        'redirect' => 'http://forneeds.dev/login/callback/facebook',
+    ],
+    'google' => [
+        'client_id' => '552797852029-i1944u6ua63008n0t3ar2mej9ntf9sn3.apps.googleusercontent.com',
+        'client_secret' => '10Kjp3eYmEEiHa3OLQnOdc6-',
+        'redirect' => 'http://forneeds.dev/login/callback/google',
+    ],
 ];

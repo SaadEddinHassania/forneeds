@@ -242,11 +242,17 @@
 
 <script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-<script src="/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
+
 
 
 <script src="/assets/pages/scripts/profile.min.js" type="text/javascript"></script>
 <script src="/assets/pages/scripts/timeline.min.js" type="text/javascript"></script>
 
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 @endpush

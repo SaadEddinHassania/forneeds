@@ -39,6 +39,9 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
+                <div style="width:450px ; height:450px;">
+                    {!! Mapper::render() !!}
+                </div>
             </div>
         </div>
     </body>

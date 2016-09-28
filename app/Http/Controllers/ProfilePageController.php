@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class ProfilePageController extends Controller
 {
@@ -58,7 +59,7 @@ class ProfilePageController extends Controller
         $this->projectRepository = $projectRepo;
         $this->userRepository = $userRepo;
         $this->serviceProviderTypeRepository = $serviceProviderTypeRepo;
-        $this->marginalizedSituationRepository=$marginalizedSituationRepo;
+        $this->marginalizedSituationRepository = $marginalizedSituationRepo;
     }
 
     public function getProfile(Request $request)
@@ -68,16 +69,36 @@ class ProfilePageController extends Controller
         if ($user->isServiceProvider()) {
             return view('profiles.serviceProviders.index', [
                 "user" => $user,
-                "sp"=>$user->serviceProvider()->first(),
+                "sp" => $user->serviceProvider()->first(),
                 'projects' => $this->projectRepository->findByField('service_provider_id', $user->serviceProvider()->first()->id, ['id', 'name'])->lists('name', 'id')->toarray(),
                 "user_attrs" => $this->userRepository->getFieldsSearchable(),
-                'marginalizedSituations'=>$this->marginalizedSituationRepository->all()->lists('name', 'id')->toarray(),
+                'marginalizedSituations' => $this->marginalizedSituationRepository->all()->lists('name', 'id')->toarray(),
                 'sectors' => $user->serviceProvider()->first()->sectors()->lists('name', 'id')->toarray(),
 
             ]);
         } else if ($user->isCitizen()) {
             $sRequests = $user->citizen->servicesRequests;
-//            dd($sRequests);
+            $map = Mapper::map(31.3546763, 34.30882550000001, [
+                'zoom' => 12
+            ]);
+            foreach ($this->areaRepository->all() as $area) {
+                $map->circle([
+                    ['latitude' => $area->lat,
+                        'longitude' => $area->lng]
+                ], [
+                    'strokeColor' => '#FF0000',
+                    'strokeOpacity' => 0.89,
+                    'strokeWeight' => 2,
+                    'fillColor' => '#FF0000',
+                    'fillOpacity' => 0.01,
+                    'radius' => 4200,
+                    'title' => $area->name
+                ]);
+
+                $map->informationWindow($area->lat, $area->lng, view('formsComponents.chart')->render(), ['open' => true,
+                                         'markers' => ['title' => $area->name,'visible'=>false]]);
+            }
+
 
             return view('profiles.users.index', [
                 "user" => $user,

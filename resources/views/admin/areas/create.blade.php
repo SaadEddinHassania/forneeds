@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
- <div class="portlet light bordered">
+    <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
@@ -15,10 +15,13 @@
             <div class="row">
                 {!! Form::open(['route' => 'admin.areas.store']) !!}
 
-                    @include('admin.areas.fields')
+                @include('admin.areas.fields')
 
-                 {!! Form::close() !!}
+                {!! Form::close() !!}
             </div>
         </div>
-  </div>
+    </div>
+
 @endsection
+
+

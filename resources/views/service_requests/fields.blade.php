@@ -13,9 +13,6 @@
 
 @include('formsComponents.location',$areas)
 
-
-
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     <div class="form-actions">

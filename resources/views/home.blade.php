@@ -73,9 +73,13 @@
                     }
                 </style>
                 <span class="register-wrapper">
+
                     <a href="{{url("/register")}}" class="button-large pure-button button-success">Register</a>
                 </span>
-                <span class="spacer"></span>
+                <span class="spacer">
+
+                </span>
+
                 <span class="login-wrapper">
                 <a href="{{url("/login")}}" class="button-large pure-button button-error">Login</a>
                 <span>

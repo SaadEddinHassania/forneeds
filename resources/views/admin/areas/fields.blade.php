@@ -6,6 +6,31 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
+<div  class="form-group col-sm-8">
+    <!-- Lat Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('lat', 'Lat:') !!}
+        {!! Form::text('lat', null, ['class' => 'form-control','readonly']) !!}
+    </div>
+
+    <!-- Lng Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('lng', 'Lng:') !!}
+        {!! Form::text('lng', null, ['class' => 'form-control','readonly']) !!}
+    </div>
+
+    <div style="width:100%;height:300px;" class="form-group col-sm-6">
+        {!! Mapper::render() !!}
+
+    </div>
+
+
+</div>
+
+
+
+
+
 <!-- Population Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('population', 'Population:') !!}
